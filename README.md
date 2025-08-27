@@ -9,8 +9,8 @@ HTML, CSS, JavaScript를 활용한 UI 구현부터 Node.js, Java 기반의 서�
 ---
 ## Contact & Link
 <!--![프로필](./track001_github/me.png) -->
-<img src="./track001_github/me.png"
-    alt="프로필" width="100">
+<img src = "./track001_github/me.png"
+    alt = "프로필" width = "100">
 
 | 항목       | 내용 |
 |------------|------|
@@ -21,7 +21,7 @@ HTML, CSS, JavaScript를 활용한 UI 구현부터 Node.js, Java 기반의 서�
 
 ---
 
-## Golds
+## 🎯 Golds
 - Github에 핵심기능 이해하고 버전 관리 역량
 - markdown을 활용한 **문서를 체계적으로 작성**
 - github 워크플로우를 통해 **효율적인 협업 방식 경험**
@@ -29,7 +29,7 @@ HTML, CSS, JavaScript를 활용한 UI 구현부터 Node.js, Java 기반의 서�
 
 ---
 
-## 기술스택 기반 cs역량
+## 💻 기술스택 기반 cs역량
 
 - **GitHub**를 활용한 버전 관리 및 협업 경험  
 - **Markdown**을 통한 개발 문서 작성 및 정보 구조화 능력  
@@ -140,7 +140,7 @@ CONFLICT (content): Merge conflict in day002.md
 
 ---
 
-## 참고문헌
+## 📚 참고문헌
 
 - [Git 공식 문서](https://git-scm.com/doc)  
 - [Markdown 가이드](https://www.markdownguide.org/basic-syntax/)  

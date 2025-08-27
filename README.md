@@ -46,7 +46,9 @@ HTML, CSS, JavaScript를 활용한 UI 구현부터 Node.js, Java 기반의 서�
 ## 🛠️ 트러블슈팅 기록
 <div  style="background-color:rgba(0,0,0,0.15); padding:20px; border-radius:30px; box-shadow:0 0 5px rgba(0,0,0,0 5)">
 
-- [트러블슈팅 01: 커밋 오류와 해결방안](./track001_github/troubleshooting001.md)
+- [트러블슈팅 001: 커밋 오류와 해결방안](./track001_github/troubleshooting001.md)
+- [트러블슈팅 002: 확장자 충돌로 인한 Push 오류 해결](./track001_github/troubleshooting002.md)
+- [트러블슈팅 003: Git Pull 시 병합 충돌(Merge Conflict) 해결](./track001_github/troubleshooting003.md)
 
 ### **문제점**
 ```bash

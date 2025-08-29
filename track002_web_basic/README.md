@@ -62,7 +62,8 @@
    2. 글자크기
       font-size:16px
    3. 정렬
-      text-align:center /left /right/justify 문단의 정렬을 체크해주는 부분인데 left(왼쪽정렬) , right(오른쪽정렬) , center(중앙) , justify(수평정렬)
+      text-align:center / left / right / justify 
+      문단의 정렬을 체크해주는 부분인데 left(왼쪽정렬) , right(오른쪽정렬) , center(중앙) , justify(수평정렬)
    4. 밑줄
       text-decoration:none; 깃허브
    5. 글꼴
@@ -78,7 +79,7 @@
     -             색상 경로 반복여부 중앙배치 가로사이즈 세로사이즈  
 
 4. 박스디자인
-   1. 가로 : width:300px
-   2. 선 : border:3px solid red
+   1. 가로 : width : 300px
+   2. 선 : border : 3px solid red
    3. 둥근모서리 : borer-radius : 20px
    4. 그림자효과 : box-shadow: 0 4px 12px rgba(0,0,0,0.5)

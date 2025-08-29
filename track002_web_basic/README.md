@@ -57,13 +57,13 @@
    2. padding : 안쪽여백
 
 2. 글자스타일
-   1.글자색상
+   1. 글자색상
       color:red
-   2.글자크기
+   2. 글자크기
       font-size:16px
-   3.정렬
+   3. 정렬
       text-align:center /left /right/justify 문단의 정렬을 체크해주는 부분인데 left(왼쪽정렬) , right(오른쪽정렬) , center(중앙) , justify(수평정렬)
-   4.밑줄
+   4. 밑줄
       text-decoration:none; 깃허브
    5. 글꼴
       font-family:sans-serif;
@@ -71,11 +71,11 @@
       font-weight:bold;
 
 3. 배경꾸미기
-      background-color: gold;
-      background:black;
-      background:linear-gradient(to right, pink, orange) background:linear-gradient(45deg, pink, orange)
-      background: red url(./img/five.png) repeat center / 20px 20px
-                  색상 경로 반복여부 중앙배치 가로사이즈 세로사이즈  
+    - background-color: gold;
+    - background:black;
+    - background:linear-gradient(to right, pink, orange) background:linear-gradient(45deg, pink, orange)
+    - background: red url(./img/five.png) repeat center / 20px 20px
+    -             색상 경로 반복여부 중앙배치 가로사이즈 세로사이즈  
 
 4. 박스디자인
    1. 가로 : width:300px

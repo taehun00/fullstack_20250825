@@ -219,9 +219,40 @@ System.out.println( "" + 1 + 2);  // 12
     좋아하는 수(정수)   입력하시오 > _입력받기
     좋아하는 숫자는 ** 입니다.
 
+    ```bash
+    package com.company.java002_ex;
+    import java.util.Scanner;
+
+    public class InputEx002 {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int num;
+            
+            System.out.println("좋아하는 수(정수)를 입력하시오 > ");
+            num = sc.nextInt();
+            
+            System.out.println("좋아하는 숫자는 " + num + "입니다.");
+        }
+    }
+    ```
+
 연습문제3)
 패키지명 : com.company.java002_ex
 클래스명 : InputEx003
 출력내용 :  Scanner이용해서 태어난 년도 입력받아 나이 출력하기
      태어난 년도를 입력하세요. > _입력받기    2000
      당신의 나이는 25살 입니다.
+
+    ```bash
+    public class InputEx002 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int year;
+		
+		System.out.println("태어난 년도 입력 > ");
+		year = sc.nextInt();
+		
+		System.out.println("당신의 나이는 " + (2025 - year + 1) + "입니다.");
+		}
+    }
+    ```

@@ -2,7 +2,7 @@ package com.company.java002;
 
 import java.util.Scanner;
 
-public class input001 {
+public class Input001 {
 	public static void main(String[] args) {
 		// 자료형의 분류 : 기본형(값) / 참조형(주소)
 		// 기본형 : 논리형(boolean), 정수형(byte, short, int, long), 실수형(float, double)

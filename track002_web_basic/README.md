@@ -84,7 +84,9 @@
    3. 둥근모서리 : borer-radius : 20px
    4. 그림자효과 : box-shadow: 0 4px 12px rgba(0,0,0,0.5)
 
+
    > 1. CSS 연습문제  `web003_1_user.html`
+
    ```html
     <!DOCTYPE html>
     <html lang="en">
@@ -125,3 +127,142 @@
     </body>
     </html>
    ```
+
+   2. MARKUP 연습문제  `web003_2_users.html`
+   ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body style="margin: 0px; padding: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:linear-gradient(135deg, #fdfbfb, violet) no-repeat">
+        <div>
+            <h1 style="text-align: center; color: #e1306c; margin-bottom: 40px;"> 사용자 프로필 카드 </h1>
+            <div style="background-color:rgb(255, 255, 255); width:250px; margin: 0 auto; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; padding: 20px;">
+                
+                    <img src="./img/one.png"
+                    
+                    alt = "사용자 카드"
+                    style="width: 90px; height: 90px; border-radius: 50px; border: 3px solid #e1306c;"
+                    >
+
+                    <h2 style="margin-top: 10px; margin-bottom: 5px; font-size: 18px; color: #333"> Jack </h2>
+                    <p style="font-size: 14px; color:#666; margin-bottom: 10px">
+                        백앤드 개발자 | Node.js & DB 전문가
+                    </p>
+                    <p style="font-size: 14px; color:#666; margin-bottom: 10px;">
+                        팔로워: 3,200명
+                    </p>
+                    <p>
+                        <a href="https://github.com/taehun00" style="margin-top: 5px; font-size: 13px; color: #e1306c; text-decoration: none;"
+                        target="_blank"
+                        title="프로필 가기"
+                        >
+                        깃허브 보기
+                    </a>
+                    </p>
+
+                    <h3 style="font-size: 15px; color: #333"> Jack이 좋아하는 기술 </h3>
+                    <ul style="text-align: left;">
+                        <li>Node.js</li>
+                        <li>MongoDB</li>
+                        <li>Docker</li>
+                    </ul>
+            </div><!--end div1-->>
+
+            <div style="background-color:rgb(255, 255, 255); width:250px; margin: 0 auto; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; padding: 20px;">
+                <p>
+                    <img src="./img/two.png"
+                    
+                    alt = "사용자 카드"
+                    style="width: 90px; height: 90px; border-radius: 50px; border: 3px solid #e1306c;"
+                    >
+                </p>
+                <h2 style="margin-top: 10px; margin-bottom: 5px; font-size: 18px; color: #333">
+                    June
+                </h2>
+                <p style="font-size: 14px; color:#666; margin-bottom: 10px">
+                    프론트엔드 디자이너 | React & UI/UX
+                </p>
+                <p style="font-size: 14px; color:#666; margin-bottom: 10px;">
+                    팔로워:2,100명
+                </p>
+                <p>
+                    <a href="https://github.com/taehun00" style="margin-top: 5px; font-size: 13px; color: #e1306c; text-decoration: none;"
+                        target="_blank"
+                        title="프로필 가기"
+                    >
+                        깃허브 보기
+                    </a>
+                </p>
+
+                <h3 style="font-size: 15px; color: #333"> 프론트엔드 학습 추천 순서 </h3>
+                <ol style="text-align: left;">
+                    <li>HTML & CSS</li>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                </ol>
+            </div><!--end div2-->>
+            
+            <div style="background-color:rgb(255, 255, 255); width:250px; margin: 0 auto; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; padding: 20px;">
+                <p>
+                    <img src="./img/three.png"
+                    
+                    alt = "사용자 카드"
+                    style="width: 90px; height: 90px; border-radius: 50px; border: 3px solid #e1306c;"
+                    >
+                </p>
+                <h2 style="margin-top: 10px; margin-bottom: 5px; font-size: 18px; color: #333"> Mina </h2>
+                <p style="font-size: 14px; color:#666; margin-bottom: 10px">
+                    AI 연구원 | Python & 머신러닝
+                </p>
+                <p style="font-size: 14px; color:#666; margin-bottom: 10px;">
+                    팔로워: 1,500명
+                </p>
+                <p>
+                    <a href="https://github.com/taehun00" style="margin-top: 5px; font-size: 13px; color: #e1306c; text-decoration: none;"
+                        target="_blank"
+                        title="프로필 가기"
+                    >
+                        깃허브 보기
+                    </a>
+                </p>
+                <h3 style="font-size: 15px; color: #333">
+                    Mina의 역할 정의
+                </h3>
+                <dl style="text-align: left; margin-left: 20px;">
+                    <dt style="font-size : 15px; font-weight:bold; color:#333;">직무</dt>
+                    <dd style="margin-left: 0; margin-bottom: 10px;">AI 연구원</dd>
+
+                    <dt style="font-size : 15px; font-weight:bold; color:#333;">주요 기술</dt>
+                    <dd style="margin-left: 0; margin-bottom: 10px;">Python, 머신러닝</dd>
+
+                    <dt style="font-size : 15px; font-weight:bold; color:#333;">관심 분야</dt>
+                    <dd style="margin-left: 0; margin-bottom: 10px;">자연어 처리, 딥러닝</dd>
+                </dl>
+            </div><!--end div3-->>
+        </div>
+        
+    </body>
+    </html>
+   ```
+
+## 5. css 내부적용 id  vs  class
+
+1. id? 유일한 값
+
+2. id 특징
+    - html 문서에서 한번만 사용가능
+    - 중복불가
+    - css에서 #id명
+    - 우선순위가 id와 class모두 있을때 id가 더 높음
+
+3. class? 여러개 선택시
+
+4. class 의 특징
+    - 재사용가능 : 여러요소에 class 지정
+    - 하나의 요소에 여러개의 class 사용가능
+    - css에서 .class명
+    - 반복스타일에 적합

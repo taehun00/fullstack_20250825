@@ -56,50 +56,6 @@ System.out.println("Hello\nSally");   // 줄바꿈.
 // 포맷형식  %s , %d
 System.out.printf("이름 : %s  나이: %d " , "길동"  , 12 );
 
-```bash
-package com.company.java001;
-
-public class A002 {
-    public static void main(String[] args) {
-        System.out.println("A");
-        System.out.println("AB");
-        System.out.println("ABC"); // 여러줄사용
-        
-        // 한줄로만드는 방법은?
-        System.out.println("A\nAB\nABC");  // 줄바꿈  \n
-        
-        // 포맷형식  %s , %d
-        System.out.printf("이름 : %s  나이: %d " , "길동"  , 12 );
-    }
-}
-
-```
-```bash
-Q1
-package : com.company.java001_ex
-class   : A001_ex
-출력내용  : Hello World! 
-```
-
-```bash
-Q2
-package : com.company.java001_ex
-class   : A002_ex
-문제 : 다음을 한줄로, 포맷형식에 맞게 처리하시오
-    // 다음을 한 줄 출력
-        System.out.println("X");
-        System.out.println("XY");
-        System.out.println("XYZ");
-    // 포맷형식이용해서 출력	
-
-출력내용  : 
-    X
-    XY
-    XYZ
-
-    도시 : 인천  ,  인구:1000000
-```
-
 #### ■7. 출력 (1)   println, print, printf
  1)  System.out.println("문자열-하고싶은말");  // \n줄바꿈
  2)  System.out.print("문자열-하고싶은말");   //줄바꿈처리안됨
@@ -164,7 +120,7 @@ System.out.println( "" + 1 + 2);  // 12
 
 ※ 상수    final   int    JAVA_HOME ;   - 수정못해!
 
-#### ■9. 자료형 (1)
+### 9. 자료형 (1)
 1) 자료형의 구분
 - 기본형 : 실제값 저장
 - 참조형 : 주소값 저장 ( String ) 
@@ -180,79 +136,3 @@ System.out.println( "" + 1 + 2);  // 12
 ***★ 실수는 정수보다 크다(표현가능한 값의 범위와 타입의 복잡성) *** 
 ㅁ long(8byte)           <   float(4byte) 소수점 포함한 실수표현
   큰물통(딱물정량-정수)         고압탱크(압축해서 엄청난 물 담기 - 실수+지수)
-
-
-기본문제1) DataType001
-기본문제2) Input002 - scanner.nextInt
-기본문제3) DataType003 - scanner.nextFloat
-
-연습문제1)    ※ Input002  참고
-패키지명 : com.company.java002_ex
-클래스명 : InputEx001
-출력내용 : 
-   1-1.  나이를 입력받을 자료형 선택후  변수명  age로 하시오.  예) 10,20
-   1-2.  Scanner이용해서 나이 입력받고 출력하시오.
-  
-    당신의 나이를 입력하시오 > _입력받기
-    내 나이는 ** 입니다.
-
-    ```bash
-    package com.company.java002_ex;
-    import java.util.Scanner;
-
-    public class InputEx001 {
-        public static void main(String[] args) {
-            Scanner sc = new Scanner(System.in);
-            
-            System.out.println("당신의 나이를 입력하시오 >");
-            int age = sc.nextInt();
-            
-            System.out.println("내 나이는 " + age + "입니다.");
-        }
-    }
-    ```
-
-연습문제2)
-패키지명 : com.company.java002_ex
-클래스명 : InputEx002
-출력내용 :  Scanner이용해서 좋아하는 수를 입력받고 출력하시오.
-    좋아하는 수(정수)   입력하시오 > _입력받기
-    좋아하는 숫자는 ** 입니다.
-
-    ```bash
-    package com.company.java002_ex;
-    import java.util.Scanner;
-
-    public class InputEx002 {
-        public static void main(String[] args) {
-            Scanner sc = new Scanner(System.in);
-            int num;
-            
-            System.out.println("좋아하는 수(정수)를 입력하시오 > ");
-            num = sc.nextInt();
-            
-            System.out.println("좋아하는 숫자는 " + num + "입니다.");
-        }
-    }
-    ```
-
-연습문제3)
-패키지명 : com.company.java002_ex
-클래스명 : InputEx003
-출력내용 :  Scanner이용해서 태어난 년도 입력받아 나이 출력하기
-     태어난 년도를 입력하세요. > _입력받기    2000
-     당신의 나이는 25살 입니다.
-
-    ```bash
-    public class InputEx002 {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int year;
-		
-		System.out.println("태어난 년도 입력 > ");
-		year = sc.nextInt();
-		
-		System.out.println("당신의 나이는 " + (2025 - year + 1) + "입니다.");
-		}
-    }
-    ```

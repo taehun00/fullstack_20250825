@@ -56,7 +56,7 @@ System.out.println("Hello\nSally");   // 줄바꿈.
 // 포맷형식  %s , %d
 System.out.printf("이름 : %s  나이: %d " , "길동"  , 12 );
 
-#### ■7. 출력 (1)   println, print, printf
+#### ■ 7. 출력 (1)   println, print, printf
  1)  System.out.println("문자열-하고싶은말");  // \n줄바꿈
  2)  System.out.print("문자열-하고싶은말");   //줄바꿈처리안됨
  3)  System.out.printf("내나이%d ,  내이름%s , 좋아하는 숫자  파이 %f" , 10 , "ab" , 1.23 );
@@ -70,7 +70,7 @@ System.out.printf("이름 : %s  나이: %d " , "길동"  , 12 );
 
    System.out.println("A\nAB\nABC");   
 
-#### ■7. 출력 (2)   + 의미 , ()
+#### ■ 7. 출력 (2)   + 의미 , ()
 System.out.println( 1+ 2 );    //3
 System.out.println( 1+ 2 + "+" + 3 + 4);  // 3 + 34    ?
 System.out.println( "" + 1 + 2);  // 12

@@ -50,11 +50,11 @@ public class A000_ex {
 ```
 
 ### 7. 출력
-System.out.print("Hello");   // 줄바꿈안됨.
-System.out.println("Hello");   // 줄바꿈 됨.
-System.out.println("Hello\nSally");   // 줄바꿈.
-// 포맷형식  %s , %d
-System.out.printf("이름 : %s  나이: %d " , "길동"  , 12 );
+    System.out.print("Hello");   // 줄바꿈안됨.
+    System.out.println("Hello");   // 줄바꿈 됨.
+    System.out.println("Hello\nSally");   // 줄바꿈.
+    // 포맷형식  %s , %d
+    System.out.printf("이름 : %s  나이: %d " , "길동"  , 12 );
 
 #### ■ 7. 출력 (1)   println, print, printf
  1)  System.out.println("문자열-하고싶은말");  // \n줄바꿈

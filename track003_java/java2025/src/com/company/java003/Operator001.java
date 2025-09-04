@@ -49,7 +49,22 @@ public class Operator001 {
 		int q3 = sc.nextInt();
 		String result = q3 > 0 ? "양수" : (q3 < 0 ? "음수" : "0");
 		
-		System.out.println(result);
+		// 5. 대입연산자
+		int c = 10; int d = 3;
+		System.out.println("1: " + ( c+=d ));   //1) c+d 2) c=13
+		System.out.println("2: " + ( c-=d ));	//2) c-d 2) c=10
 		
+		// 6. 단항
+		int a1 = 1, b1 = 1, c1 = 1, d1 = 1;
+		
+		System.out.println( ++ a1 );
+		System.out.println(    a1 );
+		System.out.println( b1 ++ );
+		System.out.println(    b1 );
+		
+		System.out.println( -- c1 );
+		System.out.println(    c1 );
+		System.out.println( d1 -- );
+		System.out.println( d1    );
 	}
 }

@@ -71,9 +71,9 @@ public class A000_ex {
    System.out.println("A\nAB\nABC");   
 
 #### ■ 7. 출력 (2)   + 의미 , ()
-System.out.println( 1+ 2 );    //3
-System.out.println( 1+ 2 + "+" + 3 + 4);  // 3 + 34    ?
-System.out.println( "" + 1 + 2);  // 12
+    System.out.println( 1+ 2 );    //3
+    System.out.println( 1+ 2 + "+" + 3 + 4);  // 3 + 34    ?
+    System.out.println( "" + 1 + 2);  // 12
 
 1)            +    연산(더하기)
 2)     숫자 +   숫자        - 더하기연산
@@ -81,9 +81,9 @@ System.out.println( "" + 1 + 2);  // 12
  
 
 연습문제1)  
-패키지명 : com.company.java002_ex
-클래스명 : PrintEx001
-출력내용 : 
+    패키지명 : com.company.java002_ex
+    클래스명 : PrintEx001
+    출력내용 : 
      println, print, printf를 이용해서 
    
     좋아하는 색상은 RED입니다.

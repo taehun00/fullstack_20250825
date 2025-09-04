@@ -136,3 +136,103 @@ System.out.println( "" + 1 + 2);  // 12
 ***★ 실수는 정수보다 크다(표현가능한 값의 범위와 타입의 복잡성) *** 
 ㅁ long(8byte)           <   float(4byte) 소수점 포함한 실수표현
   큰물통(딱물정량-정수)         고압탱크(압축해서 엄청난 물 담기 - 실수+지수)
+
+###  ■10. 형변환
+1.  실수형입력 -  Input002
+
+형변환연습문제
+
+연습문제1)
+패키지명 : com.company.java003_ex
+클래스명 : CastingEx001
+출력내용 :  Scanner이용해서 나누기 프로그램만들기 
+	숫자입력1>  _입력받기  10   ( ☆자료형을 int )
+	숫자입력2>  _입력받기  3     ( ☆자료형을 int )      	     
+	
+	10 / 3 = 3.33
+
+> 힌트
+   1단계)  변수 - 입력- 처리 - 출력
+   2단계)  정수/정수 = 정수
+              정수/실수 = 실수
+              실수/정수 = 실수
+              실수/실수 = 실수    
+   	※  형변환법 :    by = (byte) in;   나 잠깐만 byte할게.... 데이터 누수있을수 있음!
+
+```java
+package com.company.java003_ex;
+import java.util.Scanner;
+
+public class CastingEx001 {
+	public static void main(String[] args) {
+		int num1;
+		int num2;
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("숫자입력1 >");
+		num1 = sc.nextInt();
+		System.out.print("숫자입력2 >");
+		num2 = sc.nextInt();
+		
+		System.out.print(num1 + " / " + num2 + " = " + String.format("%.2f", (float)num1/num2));
+	}
+}
+
+```
+
+  
+연습문제2)
+패키지명 : com.company.java003_ex
+클래스명 : CastingEx002
+출력내용 :  Scanner이용해서  성적처리를 입력받고 출력하시오.
+ 1.  국어, 영어, 수학, 총점☆자료형을 int 
+ 2.  레벨 - 평균이 90점대이면 레벨 9, 80점대면 8, 70점대면 7, 60점대면 6,,,,
+
+국어점수 입력 > 100
+영어점수 입력 > 100
+수학점수 입력 > 99
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: GOOD  IT SCORE ::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+국어	영어	수학	총점	평균	레벨
+100	100	99	299	99.67	9
+
+```java
+package com.company.java003_ex;
+import java.util.Scanner;
+
+public class CastingEx002 {
+	public static void main(String[] args) {
+		int kor;
+		int eng;
+		int math;
+		int total;
+		Scanner sc = new Scanner(System.in);
+		System.out.print("국어점수입력 : ");
+		kor = sc.nextInt();
+		System.out.print("영어점수입력 : ");
+		eng = sc.nextInt();
+		System.out.print("수학점수입력 : ");
+		math = sc.nextInt();
+		total = kor + eng + math;
+		
+		double avg = (double)total/3;
+		int level = (int)avg/10;
+		
+		System.out.println("::::::::::::::::::::::");
+		System.out.println("::  GOOD IT SCORE  ::");
+		System.out.println("::::::::::::::::::::::");
+		System.out.println("국어 영어 수학 총점 평균 레벨");
+		System.out.printf("%d %d %d %d %.2f %d\n", kor, eng, math, total, avg, level);
+	}
+}
+```
+
+### ■11. 연산자
+1.  연산?
+1)  데이터를 처리해서 결과값을 산출하는 과정
+
+2.  종류
+먼저  값을구하고                   비교                         조건처리후        대입
+( )   ++,--,  +,-,*,/,%(나머지)          <, >, <=, >=, == , !=     && ,||, ?:         = ,+=

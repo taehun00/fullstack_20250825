@@ -12,8 +12,6 @@ public class CastingEx001 {
 		System.out.print("숫자입력2 >");
 		num2 = sc.nextInt();
 		
-		
 		System.out.print(num1 + " / " + num2 + " = " + String.format("%.2f", (float)num1/num2));
 	}
-
 }

@@ -266,3 +266,126 @@
     - 하나의 요소에 여러개의 class 사용가능
     - css에서 .class명
     - 반복스타일에 적합
+
+## 6 배치요소
+1. block(그릇) vs  inline(콘텐츠:간장)
+  1) box model 
+     - 콘텐츠가 자리하는 영역
+  2) block 
+     - width/hegiht O , 앞뒤줄바꿈 O , div,h3,p
+  3) inline
+     - width/height X , 앞뒤줄바꿈 X , a , span, strong       
+
+2. 배치(1) - float
+   - 좌우배치 (왼쪽 또는 오른쪽 배치)
+   - clear:both 끊기 : 다음요소의 흐름 정리
+
+3. 배치(2) - position
+   - 절대/고정위치 
+   - 부모 relative 위치기준 / 자식 absolute 이동
+   - fixed 브라우저 기준
+
+3. 배치(3) - display
+   - 요소의 속성바꾸기
+
+`web005_1.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web005_1.html</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {font-family: 'Courier New'; background-color: aqua;}
+        h3 {border-left: 3px solid blueviolet; border-bottom: 1px solid #123456;
+            background-color: antiquewhite;}
+        strong {background-color: blueviolet; color:aliceblue; padding:2px;
+                width: 500px; /* 적용 X inline */
+            }
+
+        .container { width: 60%; margin: 30px; background-color:#fff;
+                    padding:20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);}
+        
+        .item { padding: 10px; background-color: #333; color: #fff;}
+
+        .i1 { float: left; width: 100px; text-align: center;}
+        .i2 { float: right;}
+        .i3 { clear: both; margin: 80px 0;}
+
+        .me { background-color: gold; padding: 10px; color:white;
+            position:relative;
+            top: 5px; left:10px;
+        }
+        .p1 { position: relative;}
+        .p1 .me { position: absolute; left:0;}
+        .p2 .me { position: fixed; bottom: 100; right: 0px;
+            background-color: #123456;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>1. block vs inline</h3>
+        <p><strong>block</strong> 그릇 width/height O, 줄바꿈 O</p>
+        <p><strong>inline</strong> 콘텐츠-간장 wid/height X, 줄바꿈 X</p>
+    </div>
+
+    <div class="container f1">
+        <h3>2. 배치 (1) - float</h3>
+        <p class="item i1">LEFT</p>
+        <p class="item i2">RIGHT</p>
+        <p class="item i3">float:left, float:right 사용시 왼쪽, 오른쪽 배치 / clear:both</p>
+    </div>
+    <div class="container p1">
+        <h3>3. 배치 (2) - position - relative + absolute</h3>
+        <p class="me">WHERE I AM?</p>
+        <p>부모 : relative (공간확보) / 자식요소 absolute (공간유지안됨.) </p>
+    </div>
+    <div class="container p2">
+        <h3>3. 배치 (2) - position - fixed</h3>
+        <p class="me">WHERE I AM?</p>
+    </div>
+</body>
+</html>
+```
+
+### 1. block vs inline
+
+1) box model  
+- 콘텐츠가 자리하는 영역을 의미하며, 박스의 구성 요소는 __content, padding, border, margin__ 로 이루어진다.
+
+2) block 요소  
+- width/height 설정이 (O/X): __O__  
+- 앞뒤 줄바꿈이 (O/X): __O__  
+- 대표 태그: __div, h3, p__
+
+3) inline 요소  
+- width/height 설정이 (O/X): __X__  
+- 앞뒤 줄바꿈이 (O/X): __X__  
+- 대표 태그: __a, span, strong__
+ 
+
+### 2. 배치(1) - float
+
+- 요소를 좌우로 배치할 때 사용하는 속성은 __float__ 이다.  
+- 다음 요소의 흐름을 정리하려면 __clear__ 속성을 사용한다.  
+- float를 끊는 대표적인 방법은 클래스명으로 __clear__ 를 사용한다.
+
+ 
+
+### 3. 배치(2) - position
+
+- 자식 요소를 부모 기준으로 위치시키려면 부모에 __relative__, 자식에 __absolute__ 를 설정한다.  
+- 브라우저 전체 기준으로 고정하려면 __fixed__ 속성을 사용한다.  
+- position의 주요 값 4가지는 __static, relative, absolute, fixed__ 이다.
+
+ 
+
+### 4. 배치(3) - display
+
+- 요소의 기본 속성을 바꾸려면 __display__ 속성을 사용한다.  
+- block 요소를 inline처럼 보이게 하려면 __inline__,  
+  inline 요소를 block처럼 보이게 하려면 __block__ 값을 사용한다.

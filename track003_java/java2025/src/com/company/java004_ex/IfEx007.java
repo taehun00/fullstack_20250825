@@ -12,6 +12,5 @@ public class IfEx007 {
 		if(year%4==0 && year%100 != 0) result = "윤년";
 		
 		System.out.printf("%d는 %s입니다.", year, result);
-		
 	}
 }

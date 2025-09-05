@@ -49,6 +49,7 @@
 - [트러블슈팅 001: 커밋 오류와 해결방안](./track001_github/troubleshooting001.md)
 - [트러블슈팅 002: 확장자 충돌로 인한 Push 오류 해결](./track001_github/troubleshooting002.md)
 - [트러블슈팅 003: Git Pull 시 병합 충돌(Merge Conflict) 해결](./track001_github/troubleshooting003.md)
+- [트러블슈팅 004: GitHub 403 오류 — Push 권한 문제 해결](./track001_github/troubleshooting004.md)
 
 ---
 

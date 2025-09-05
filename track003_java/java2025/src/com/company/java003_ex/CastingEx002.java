@@ -23,7 +23,6 @@ public class CastingEx002 {
 		System.out.println("::  GOOD IT SCORE  ::");
 		System.out.println("::::::::::::::::::::::");
 		System.out.println("국어 영어 수학 총점 평균 레벨");
-		System.out.println(kor+" "+eng+" "+math+" "+ total+" "+ String.format("%.2f", avg)+" "+level);
 		System.out.printf("%d %d %d %d %.2f %d\n", kor, eng, math, total, avg, level);
 	}
 }

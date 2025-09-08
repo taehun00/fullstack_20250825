@@ -56,7 +56,6 @@
 ### ☕ Java 트러블슈팅
 
 - [트러블슈팅 005: Java 컴파일 오류 — string 클래스 인식 실패](./track003_java/java_trouble/troubleshooting001.md)
-
 - [트러블슈팅 006: Java 문자열 인덱스 초과 오류 — char 비교 실수로 인한 예외 발생](./track003_java/java_trouble/troubleshooting002.md)
 
 

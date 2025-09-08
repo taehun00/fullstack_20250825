@@ -20,6 +20,12 @@ public class Repeat010 {
 		System.out.print("(1, 2, 3) 숫자 한개를 입력하세요");
 		num = sc.nextInt();
 		
+		/*
+		if (num==1) {result="one";}
+		else if (num==2) {result="two";}
+		else if (num==3) {result="three";}
+		else {result="1, 2, 3이 아니다";}
+		*/
 		
 		result = (num==1) ? "one":
 				 (num==2) ? "two":

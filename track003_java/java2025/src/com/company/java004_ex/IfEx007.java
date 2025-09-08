@@ -39,8 +39,6 @@ public class IfEx007 {
 		show = (operator == '/' ? String.format("%.2f", result) : String.valueOf((int)result));
 		
 		System.out.println(""+d1+operator+d2+"="+show);
-				 
-		
 		
 	}
 }

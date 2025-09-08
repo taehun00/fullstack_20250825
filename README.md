@@ -53,6 +53,10 @@
 - [트러블슈팅 004: GitHub 403 오류 — Push 권한 문제 해결](./track001_github/troubleshooting004.md)
 
 
+### 🔍 Web 트러블슈팅
+- 
+- 
+
 ### ☕ Java 트러블슈팅
 
 - [트러블슈팅 005: Java 컴파일 오류 — string 클래스 인식 실패](./track003_java/java_trouble/troubleshooting001.md)

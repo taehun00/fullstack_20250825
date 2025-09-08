@@ -46,11 +46,22 @@
 ## 🛠️ 트러블슈팅 기록
 <div  style="background-color:rgba(0,0,0,0.15); padding:20px; border-radius:30px; box-shadow:0 0 5px rgba(0,0,0,0 5)">
 
+### 🧩 Git 트러블슈팅
+<div style="border: 1px solid black; border-radius:10px; padding:10px; color: black;">
+
 - [트러블슈팅 001: 커밋 오류와 해결방안](./track001_github/troubleshooting001.md)
 - [트러블슈팅 002: 확장자 충돌로 인한 Push 오류 해결](./track001_github/troubleshooting002.md)
 - [트러블슈팅 003: Git Pull 시 병합 충돌(Merge Conflict) 해결](./track001_github/troubleshooting003.md)
 - [트러블슈팅 004: GitHub 403 오류 — Push 권한 문제 해결](./track001_github/troubleshooting004.md)
+</div>
 
+### ☕ Java 트러블슈팅
+<div style="border: 1px solid black; border-radius:10px; padding:10px; color: black;">
+
+- [트러블슈팅 005: Java 컴파일 오류 — string 클래스 인식 실패](./track003_java/java_trouble/troubleshooting001.md)
+
+- [트러블슈팅 006: Java 문자열 인덱스 초과 오류 — char 비교 실수로 인한 예외 발생](./track003_java/java_trouble/troubleshooting002.md)
+</div>
 ---
 
 ## 📚 참고문헌

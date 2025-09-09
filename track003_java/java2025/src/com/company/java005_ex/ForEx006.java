@@ -6,16 +6,10 @@ public class ForEx006 {
 		int result = 0;
 		
 		//int a = str.charAt(0) - '0';
-		for (int i=0; i<=10; i++) {
-			if(str != null) {
-				int a = str.charAt(i)-'0';
-				result += a;
-			}
-			
+		for (int i=0; i<str.length(); i++) {
+			int a = str.charAt(i)-'0';
+			result += a;
 		}
-		
-		System.out.println(result);
-		
-		
+		System.out.println(result);	
 	}
 }

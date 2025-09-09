@@ -1,6 +1,6 @@
 package com.company.java005_ex;
 
-public class ForEx006 {
+public class ForEx006_1 {
 	public static void main(String[] args) {
 		String str = "12345";
 		int result = 0;

@@ -1,7 +1,7 @@
 package com.company.java005_ex;
 import java.util.Scanner;
 
-public class ForEx007 {
+public class ForEx007_1 {
 	public static void main(String[] args) {
 		String before = "";
 		String after = "";

@@ -62,6 +62,7 @@
 - [트러블슈팅 001: Java 컴파일 오류 — string 클래스 인식 실패](./track003_java/java_trouble/troubleshooting001.md)
 - [트러블슈팅 002: Java 문자열 인덱스 초과 오류 — char 비교 실수로 인한 예외 발생](./track003_java/java_trouble/troubleshooting002.md)
 - [트러블슈팅 003: Java Scanner 입력 : next() vs nextLine()](./track003_java/java_trouble/troubleshooting003.md)
+- [트러블슈팅 004: Java 문자열 비교 시 변수 이름 혼동으로 인한 조건문 오류](./track003_java/java_trouble/troubleshooting004.md)
 
 ---
 

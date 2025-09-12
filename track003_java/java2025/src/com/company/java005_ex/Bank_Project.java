@@ -9,21 +9,25 @@ public class Bank_Project {
         String findName;
         String findJob;
         int[] level = new int[3];            // 캐릭터 레벨
-        double[] mana = new double[3];       // 골드
+        double[] mana = new double[3];       // 마나
+        double[] money = new double[3];      // 골드
         int count = 0;
         int menu = 0;
         double chargeMana = 0; 					// 마력 충전
         double useMana = 0;
         String confirm;
+        String[] skillList = {"파이어볼", "아이스쉴드", "라이트닝스트라이크"};
+        double[] skillCost = {50.0, 70.0, 100.0};
+        String[][] skillBag = new String[3][10]; // 최대 3명의 마법사, 각자 최대 10개의 스킬 보유
         Scanner sc = new Scanner(System.in);
 
         for (;;) {
             System.out.println("====== RPG CHARACTER MANAGER ======");
             System.out.println("1. 캐릭터 생성");
             System.out.println("2. 캐릭터 조회");
-            System.out.println("3. 골드 획득");
+            System.out.println("3. 스킬 구매");
             System.out.println("4. 골드 사용");
-            System.out.println("5. 캐릭터 삭제");
+            System.out.println("6. 캐릭터 삭제");
             System.out.println("9. 종료");
             System.out.print("메뉴 선택 >>> ");
             menu = sc.nextInt();
@@ -45,29 +49,29 @@ public class Bank_Project {
 
                     wizardName[count] = targetName;
 
-                    System.out.print("직업 입력 (예: 전사, 마법사): ");
+                    System.out.print("마법 속성 입력(불, 얼음, 번개): ");
                     element[count] = sc.next();
 
                     System.out.print("레벨 입력: ");
                     level[count] = sc.nextInt();
 
-                    System.out.print("초기 골드 입력: ");
-                    mana[count] = sc.nextDouble();
-
-                    if (mana[count] < 0) {
-                        System.out.println("초기 골드는 음수가 될 수 없습니다.");
+                    mana[count] = 0;
+                    money[count] = 1110;
+/*
+                    if (mana[count] < 0 || money[count] < 0) {
+                        System.out.println("초기 마나, 골드는 음수가 될 수 없습니다.");
                         wizardName[count] = null;
                         element[count] = null;
                         level[count] = 0;
                         mana[count] = 0;
                         break;
                     }
-
+*/
                     count++;
                     System.out.println("캐릭터 생성 완료!");
                     break;
 
-                case 2: case 3: case 4: case 5:
+                case 2: case 3: case 4: case 5: case 6:
                     System.out.print("캐릭터 이름 입력: ");
                     findName = sc.next();
                     System.out.print("직업 입력: ");
@@ -92,19 +96,47 @@ public class Bank_Project {
                             System.out.println("이름: " + wizardName[found]);
                             System.out.println("직업: " + element[found]);
                             System.out.println("레벨: " + level[found]);
-                            System.out.println("골드: " + mana[found]);
+                            System.out.println("마나: " + mana[found]);
+                            System.out.println("마나: " + money[found]);
                             break;
 
                         case 3:
-                            System.out.print("획득할 골드 입력: ");
-                            chargeMana = sc.nextDouble();
-                            if (chargeMana < 0) {
-                                System.out.println("음수는 입력할 수 없습니다.");
+                            System.out.println("현재 내 돈: " + money[found]);
+                            for(int i=0;i<skillList.length;i++) {
+                            	System.out.print((i+1) + "." + skillList[i] + "(" + skillCost[i] + ")" + "\t");
+                            }
+                            System.out.println();
+                            System.out.print("무슨 마력을 구매하시겠습니까?(번호 입력)");
+                            int choice = sc.nextInt();
+                            
+                            if (choice < 1 || choice > skillList.length) {
+                                System.out.println("잘못된 선택입니다.");
                                 break;
                             }
-                            mana[found] += chargeMana;
-                            System.out.println("골드 획득 완료! 현재 골드: " + mana[found]);
+                            
+                            if(money[found] < skillCost[found]) {
+                            	System.out.println("골드가 부족합니다. 구매할 수 없습니다.");
+                                break;
+                            }
+                            
+                            // 가방 슬롯
+                            int slot = -1;
+                            for (int i=0; i<skillBag[found].length; i++) {
+                            	slot = i;
+                            	break;
+                            }
+                            if (slot == -1) {
+                                System.out.println("가방이 가득 찼습니다. 더 이상 스킬을 구매할 수 없습니다.");
+                                break;
+                            }
+                            
+                            skillBag[found][slot] = skillList[choice-1];
+                            money[found] -= skillCost[choice-1];
+                            
+                            System.out.println(skillList[choice-1] + " 마력을 구매했습니다.");
+                            System.out.println("남은 골드: " + money[found]);
                             break;
+                            
 
                         case 4:
                             System.out.print("사용할 골드 입력: ");
@@ -122,6 +154,12 @@ public class Bank_Project {
                             break;
 
                         case 5:
+                        	System.out.println("구매할 스킬 번호 입력:");
+                        	int skillChoice = sc.nextInt();
+                        	
+                        	
+                        
+                        case 6:
                             System.out.println("캐릭터를 삭제하시겠습니까? (Y/N)");
                             confirm = sc.next();
                             if (confirm.equals("Y")) {

@@ -40,7 +40,7 @@
 ---
 
 ## 포트폴리오
-[rpg 미니 프로젝트](https://youtu.be/sZHlCwEIuB8)
+[rpg 미니 프로젝트](https://www.youtube.com/watch?v=BP88lz3tHtM)
 ---
 
 ## 🛠️ 트러블슈팅 기록

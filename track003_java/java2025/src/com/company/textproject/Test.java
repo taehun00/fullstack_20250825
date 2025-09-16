@@ -1,7 +1,84 @@
-package com.company.java005_ex;
+package com.company.textproject;
+
 import java.util.Scanner;
 
-public class Bank_Project {
+public class Test {
+	public static void startBossBattle(int found, String[][] skillBag, String[] skillList, int[] skillDamage, double[] money, Scanner sc) {
+	    int bossHp = 10;
+	    int totalDamage = 0;
+
+	    System.out.println("=== 1단계 보스 ===");
+	    System.out.println("보스 체력: " + bossHp);
+
+	    while (totalDamage < bossHp) {
+	        System.out.println("== 사용 가능한 스킬 목록 ==");
+	        int skillCount = 0;
+	        for (int i = 0; i < skillBag[found].length; i++) {
+	            if (skillBag[found][i] != null) {
+	                String skillName = skillBag[found][i];
+	                int damage = 0;
+	                for (int j = 0; j < skillList.length; j++) {
+	                    if (skillList[j].equals(skillName)) {
+	                        damage = skillDamage[j];
+	                        break;
+	                    }
+	                }
+	                System.out.println((skillCount + 1) + ". " + skillName + " (데미지: " + damage + ")");
+	                skillCount++;
+	            }
+	        }
+
+	        if (skillCount == 0) {
+	            System.out.println("사용 가능한 스킬이 없습니다. 전투를 진행할 수 없습니다.");
+	            break;
+	        }
+
+	        System.out.print("사용할 스킬 번호를 입력하세요: ");
+	        int skillChoice = sc.nextInt();
+
+	        int actualIndex = -1;
+	        int visibleIndex = 1;
+	        for (int i = 0; i < skillBag[found].length; i++) {
+	            if (skillBag[found][i] != null) {
+	                if (visibleIndex == skillChoice) {
+	                    actualIndex = i;
+	                    break;
+	                }
+	                visibleIndex++;
+	            }
+	        }
+
+	        if (actualIndex == -1) {
+	            System.out.println("잘못된 선택입니다.");
+	            break;
+	        }
+
+	        String selectedSkill = skillBag[found][actualIndex];
+	        int damage = 0;
+	        for (int i = 0; i < skillList.length; i++) {
+	            if (skillList[i].equals(selectedSkill)) {
+	                damage = skillDamage[i];
+	                break;
+	            }
+	        }
+
+	        totalDamage += damage;
+	        System.out.println(selectedSkill + " 스킬을 사용했습니다! 보스에게 " + damage + " 데미지를 입혔습니다.");
+	        System.out.println("누적 데미지: " + totalDamage + " / " + bossHp);
+
+	        skillBag[found][actualIndex] = null;
+
+	        if (totalDamage >= bossHp) {
+	            System.out.println("🎉 보스를 처치했습니다!");
+	            double reward = 300.0;
+	            money[found] += reward;
+	            System.out.println("보상으로 골드 " + reward + "를 획득했습니다.");
+	            System.out.println("현재 골드: " + money[found]);
+	            break;
+	        }
+	    }
+	}
+	
     public static void main(String[] args) {
         String[] wizardName = new String[3];       // 마법사 이름
         String targetName;
@@ -207,84 +284,7 @@ public class Bank_Project {
                             break;
 
                         case 5:
-                            int bossHp = 10;
-                            int totalDamage = 0;
-
-                            System.out.println("=== 1단계 보스 ===");
-                            System.out.println("보스 체력: " + bossHp);
-
-                            while (totalDamage < bossHp) {
-                                System.out.println("== 사용 가능한 스킬 목록 ==");
-                                int skillCount1 = 0;
-                                for (int i = 0; i < skillBag[found].length; i++) {
-                                    if (skillBag[found][i] != null) {
-                                        String skillName = skillBag[found][i];
-                                        int damage = 0;
-
-                                        for (int j = 0; j < skillList.length; j++) {
-                                            if (skillList[j].equals(skillName)) {
-                                                damage = skillDamage[j];
-                                                break;
-                                            }
-                                        }
-
-                                        System.out.println((skillCount1 + 1) + ". " + skillName + " (데미지: " + damage + ")");
-                                        skillCount1++;
-                                    }
-                                }
-
-                                if (skillCount1 == 0) {
-                                    System.out.println("사용 가능한 스킬이 없습니다. 전투를 진행할 수 없습니다.");
-                                    break;
-                                }
-
-                                System.out.print("사용할 스킬 번호를 입력하세요: ");
-                                int skillChoice = sc.nextInt();						// 사용할 스킬 번호
-
-                                // skillBag에서 사용할 스킬 인덱스 찾기
-                                int actualIndex = -1;								// 사용할 스킬 위치 
-                                int countIndex1 = 0;								// 배열 안에서만 사용되는 변수
-                                for (int i = 0; i < skillBag[found].length; i++) {
-                                    if (skillBag[found][i] != null) {
-                                        countIndex1++;
-                                        if (countIndex1 == skillChoice) {
-                                            actualIndex = i;						// 사용할 스킬 리스트 번호(0 1 2 ...)
-                                            break;
-                                        }
-                                    }
-                                }
-
-                                if (actualIndex == -1) {
-                                    System.out.println("잘못된 선택입니다.");
-                                    break;
-                                }
-
-                                // 데미지 계산
-                                String selectedSkill = skillBag[found][actualIndex];
-                                int damage = 0;
-                                for (int i = 0; i < skillList.length; i++) {
-                                    if (skillList[i].equals(selectedSkill)) {		// 스킬 리스트에 있는 스킬 이름과 내가 가방에서 선택한 스킬 이름이 같으면
-                                        damage = skillDamage[i];					
-                                        break;
-                                    }
-                                }
-                                
-                                totalDamage += damage;
-                                System.out.println(selectedSkill + " 스킬을 사용했습니다! 보스에게 " + damage + " 데미지를 입혔습니다.");
-                                System.out.println("누적 데미지: " + totalDamage + " / " + bossHp);
-
-                                // 스킬 사용 후 제거
-                                skillBag[found][actualIndex] = null;
-
-                                if (totalDamage >= bossHp) {
-                                    System.out.println("🎉 보스를 처치했습니다!");
-                                    double reward = 300.0;
-                                    money[found] += reward;
-                                    System.out.println("보상으로 골드 " + reward + "를 획득했습니다.");
-                                    System.out.println("현재 골드: " + money[found]);
-                                    break;
-                                }
-                            }
+                        	startBossBattle(found, skillBag, skillList, skillDamage, money, sc);
                             break;
                             
                         

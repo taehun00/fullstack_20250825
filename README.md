@@ -54,7 +54,7 @@
 
 
 ### 🔍 Web 트러블슈팅
-- 
+- [트러블슈팅 001: HTML5 iframe 오류: frameborder 속성 제거 및 CSS 대체](./track002_web_basic/web_trouble/troubleshooting001.md)
 - 
 
 ### ☕ Java 트러블슈팅
@@ -63,7 +63,7 @@
 - [트러블슈팅 002: Java 문자열 인덱스 초과 오류 — char 비교 실수로 인한 예외 발생](./track003_java/java_trouble/troubleshooting002.md)
 - [트러블슈팅 003: Java Scanner 입력 : next() vs nextLine()](./track003_java/java_trouble/troubleshooting003.md)
 - [트러블슈팅 004: Java 문자열 비교 시 변수 이름 혼동으로 인한 조건문 오류](./track003_java/java_trouble/troubleshooting004.md)
-
+- [트러블슈팅 006: 자바 메서드 반환 오류: 모든 실행 경로에 return이 필요](./track003_java/java_trouble/troubleshooting006.md)
 ---
 
 ## 📚 참고문헌

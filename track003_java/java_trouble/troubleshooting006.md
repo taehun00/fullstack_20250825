@@ -1,33 +1,21 @@
 ## 코드
 ```java
-public class ArrayExUpgrade1 { 
-    public static void main(String[] args) { 
-        char [] answer = {'A', 'C', 'B', 'D', 'A'}; 
-        char [] correct = null; 
-        Scanner sc = new Scanner(System.in); 
-        for(int i=0; i<answer.length; i++) { 
-            System.out.print("입력 > "); 
-            correct[i] = sc.next().charAt(0); 
-        } 
-        ...
+public static String stdAvg(int a) {   // 오류
+    if(a>=90) return "A";
+    else if(a>=80) return "B";
+    else if(a>=70) return "C";
+}
 ```
 
 ### 문제점
-```java
-char[] correct = null;
-```
-이 줄에서 correct 배열을 생성하지 않고 null로 선언했기 때문에, 아래에서 값을 넣으려고 하면 오류가 난다.
-```java
-correct[i] = sc.next().charAt(0); // 여기서 오류 발생!
-```
-null 사태의 배열에 값을 넣으려고 하면 자바는 "그 배열이 존재하지 않는데 어떻게 값을 넣어?"라고 하며 NullPointerException을 던진다.
+- 이 오류 메시지는 자바에서 String 타입을 반환해야 하는 메서드가 return 문을 제대로 작성하지 않았을 때 발생하는 전형적인 컴파일 오류이다.
+- 자바는 String을 반환하겠다고 선언을 하면, 모든 실행 경로에서 반드시 return String이 있어야 한다.
+- else 에서의 반환이 없기 때문에, java는 else 일때 반환 값이 없기 때문에 오류를 발생시킨다.
 
 ### 해결방안
+- 모든 경로에 return을 추가한다.
 ```java
-char[] correct = new char[answer.length];
+else return null;
 ```
-배열을 선언할 때 크기를 지정해서 실제 배열을 생성해줘야 합니다. answer.length만큼 입력을 받을 거니까, 그 길이만큼 correct 배열을 생성하면 된다.
-
 ### 느낀점
-- 배열을 만들고 입력받을 때, 배열을 null로 설정하면 입력값이 하나씩 저장되지 않을까? 하는 생각을 하였다. 하지만 내가 생각하는 null과 자바가 정의하는 null은 다르다는 것을 깨달았다. 자바에서 null은 단순히 "비어 있다"는 의미가 아니라, 아예 존재하지 않는 객체를 의미한다.
-- 이 경험을 통해 배열을 사용할 때는 반드시 크기를 지정하여 실제 배열을 생성해야 한다는 점을 명확히 이해하게 되었다.
+- String 타입을 반환할 때 모든 실행 경로에 반환 값을 넣어야 한다는 것을 명확히 이해하고 깨달았다.

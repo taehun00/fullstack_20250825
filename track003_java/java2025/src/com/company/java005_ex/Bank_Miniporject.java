@@ -2,6 +2,48 @@ package com.company.java005_ex;
 import java.util.Scanner;
 
 public class Bank_Miniporject {
+	//1. 필요한기능들
+	// 각각의 기능별 - 추가, 조회, 입금, 출금, 삭제 
+	// 보조기능     - empty()  빈칸찾기 ,  사용자인증정보 
+	
+	//2. 리턴값 메서드명 파라미터
+	// 보조기능     - find()  빈칸찾기    int  find(){} ,  사용자인증정보   int  auth(){    }
+	// 각각의 기능별 -        추가, 조회, 입금, 출금, 삭제 
+	public static int is_idfind(String targetId, String[] Id) { // 회원가입 시
+		for (int i =0;i<Id.length;i++) {					 // 아이디 동일하면 컷
+			if(Id[i]!=null && targetId.equals(Id[i])) {
+				System.out.println("이미 존재하는 아이디입니다.");
+				return 0;
+			}
+		}
+		return 1;
+	}
+	
+	public static int aa(String []id,String []pw) {
+		Scanner sc = new Scanner(System.in);
+		int find = -1;  //find 인증할 번호
+		
+        System.out.print("[1]아이디 입력 > ");
+        String tempid = sc.next();
+        System.out.print("[2]비밀번호입력 > ");
+        String temppass = sc.next();
+		
+		for(int i=0; i<id.length; i++) {
+			if (tempid.equals(id[i]) && temppass.equals(pw[i])){
+				find = i;
+				break;
+			}
+		}
+		return find;
+	}
+	
+	public static int ebgum(Double put) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("입금 : ");
+		put = sc.nextDouble();
+		
+	}
+	
 	public static void main(String[] args) {
 		String []id = new String[3];
 		String targetid;
@@ -36,17 +78,9 @@ public class Bank_Miniporject {
 					
 					int findd = -1;
 					
-					for(int i=0; i<id.length; i++) {
-						if (id[i] != null && targetid.equals(id[i])) {
-					        System.out.println("이미 존재하는 아이디입니다.");
-					        findd = 0;
-					        break;
-					    }
-					}
-					if(findd ==0) {
+					if(is_idfind(targetid, id) == 0){
 						break;
 					}
-					
 					id[count]=targetid;
 					
 					System.out.print("비밀번호 입력 : ");
@@ -65,19 +99,18 @@ public class Bank_Miniporject {
 					break;
 					
 				case 2 : case 3 : case 4 : case 5 :
-					System.out.print("아이디 입력 : ");
-					findid = sc.next();
-					System.out.print("비밀번호 입력 : ");
-					findpw = sc.next();
-					
-					int find = -1;
-					
-					for(int i=0; i<id.length; i++) {
-						if (findid.equals(id[i]) && findpw.equals(pw[i])){
-							find = i;
-							break;
-						}
-					}
+					int find = aa(id,pw);
+					/*
+					 int find=-1;  //find 인증할 번호
+            System.out.print("[1]아이디 입력 > ");  
+            String tempid = scanner.next();
+            System.out.print("[2]비밀번호입력 > ");  
+            String temppass = scanner.next();
+            for(int i=0; i<id.length; i++) { 
+               if(tempid.equals(id[i]) && temppass.equals( pass[i] )  )
+               { find=i;  break; } 
+            }
+					 */
 					if (find == -1) {
 						System.out.println("다시 입력해주세요");
 						break;

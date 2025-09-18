@@ -88,14 +88,6 @@ public class MethodEx006 {
 		
 		System.out.print("캐릭터 이름을 입력하세요 > ");
 		name = sc.next();
-		/*
-		System.out.print("공격력을 입력하세요(0~100) > ");
-		attack = sc.nextInt();
-		System.out.print("방어력을 입력하세요(0~100) > ");
-		defense = sc.nextInt();
-		System.out.print("민첩성을 입력하세요(0~100) > ");
-		speed = sc.nextInt();
-		*/
 		
 		attack = input_num("공격력");
 		defense = input_num("방어력");

@@ -23,6 +23,7 @@ public class MethodEx010 {
 			if(pets[i][0].equals(name)) {
 				find = i;
 				System.out.println(pets[i][0] + "는 예방접종 예약이 되어 있어요.");
+				break;
 			}
 		}
 		
@@ -47,6 +48,7 @@ public class MethodEx010 {
 				String change = sc.next();
 				pets[i][2] = change;
 				System.out.println("예약 정보 확인: " + Arrays.toString(pets[i]));
+				break;
 			}
 		}
 		
@@ -78,8 +80,5 @@ public class MethodEx010 {
 			case 3 : j(); break;
 			}
 		}
-		//jhj(pets);
-		//jhb(pets);
-		//j();
 	}
 }

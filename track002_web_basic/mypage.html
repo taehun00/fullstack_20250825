@@ -65,7 +65,9 @@
   margin: 0 auto 15px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
+.about1{
+  text-align: center;
+}
 .about1 h3 {
   text-align: center;
   font-size: 22px;
@@ -101,9 +103,21 @@
   text-decoration: underline;
 }
 
+.typing-box {
+  min-height: 6em;               /* 3줄 정도의 높이 확보 */
+  overflow: hidden;              /* 넘치는 텍스트 숨김 */
+  white-space: normal;           /* 줄바꿈 허용 */
+  line-height: 1.6;              /* 줄 간격 여유 있게 */
+  transition: height 0.3s ease;  /* 높이 변화가 부드럽게 */
+}
+.typing-box p {
+  margin: 0;
+}
+
 /* Experience 섹션 */
-.experience {
+.project-section {
   background-color: #f9f9f9;
+  padding: 60px 20px;
 }
 
 .project-title {
@@ -114,17 +128,91 @@
   font-weight: bold;
 }
 
-.experience .container {
+.card-container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 30px;
-  flex-wrap: wrap
+  justify-content: center;
 }
-.market {
+
+.project-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
   width: 100%;
-  height: 300px;
-  border-radius: 8px;
+  max-width: 500px;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-media iframe,
+.card-media img {
+  width: 100%;
+  height: 280px;
   object-fit: cover;
+  border: none;
+  display: block;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h4 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.card-content p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+.stacks-section{
+  background-color: #f5f7fa;
+}
+.stacks-title{
+  text-align: center;
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+.tag-cloud {
+  text-align: center;
+  padding: 20px;
+  
+}
+
+.tag {
+  display: inline-block;
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 8px 12px;
+  margin: 6px;
+  border-radius: 20px;
+  font-size: 14px;
+  text-decoration: none;
+}
+.tag:hover {
+  background-color: #c0c0c0;
+}
+#git{
+  padding-top: 100px;
+}
+#java {
+  padding-top: 100px;
+}
+#springboot{
+  padding-top: 1000px;
+}
+#html{
+  padding-top: 500px;
 }
     </style>
   </head>
@@ -141,50 +229,155 @@
       <section class="about">
         <div class="container">
           <div class="about1">
-            <p><img class="mt-3 profile" src="/workspace/track002_web_basic/img/my.jpg" alt=""></p>
+            <p><img class="mt-3 profile" src="img/my.jpg" alt=""></p>
             <h3 class="mt-4">성태훈</h3>
             <ul>
               <li>iiss07007@gmail.com</li>
-              <li><a href="">깃허브 주소</a></li>
+              <li><a href="https://github.com/taehun00/">깃허브 주소</a></li>
             </ul>
           </div>
           <div class="about2">
             <h3 class="">Project</h3>
             <ul>
-              <li>akakk</li>
+              <li>- 마켓 노트</li>
             </ul>
           </div>
           <div class="about3">
             <h3>Stacks</h3>
             <ul>
-              <li>hhh</li>
+              <li>Frontend : HTML, CSS, JavaScript, Flutter, React</li>
+              <li>Backend : Java, Python, Nodejs</li>
+              <li>Database :</li>
+              <li>Tools : Git, VS Code, Intellij</li>
             </ul>
           </div>
         </div>
       </section>
       <section class="values">
         <div class="container">
-          <div class="personality-slide">
+          <div>
             <h3>성격 (Personality)</h3>
-            <p class="slide-right">저는 ESTP 유형으로, 현실적이고 활동적인 성향을 가지고 있습니다. 빠르게 상황을 파악하고 행동으로 옮기는 것을 좋아하며, 그 과정에서 성실함과 꼼꼼함을 바탕으로 실수를 줄이고 완성도를 높이려 노력합니다.</p>
+            <div id="personality" class="typing-box"></div>
           </div>
-          <div class="spacer"></div>
-          <div class="Motto-slide">
+          <div>
             <h3>Philosophy</h3>
-            <p class="slide-left">“작은 디테일이 큰 차이를 만든다.” 이 문장은 저의 일하는 태도를 가장 잘 설명합니다. 겉으로는 빠르게 움직이는 것처럼 보여도, 그 안에는 치밀한 계획과 세심한 검토가 담겨 있습니다.</p>
+            <div id="philosophy" class="typing-box"></div>
           </div>
         </div>
       </section>
-      <section class="experience">
+      <!-- JavaScript 함수 시작-->
+      <script>
+        function typeText(lines, containerId, delayBetweenLines = 200, typingSpeed = 30) {
+          const container = document.getElementById(containerId);
+          let lineIndex = 0;
+
+          function typeLine() {
+            if (lineIndex >= lines.length) return;
+
+            const line = lines[lineIndex];
+            const p = document.createElement("p");
+            container.appendChild(p);
+
+            let charIndex = 0;
+            function typeChar() {
+              if (charIndex < line.length) {
+                p.innerHTML += line.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeChar, typingSpeed);
+              } else {
+                lineIndex++;
+                setTimeout(typeLine, delayBetweenLines);
+              }
+            }
+
+            typeChar();
+          }
+
+          typeLine();
+        }
+
+        // 타이핑할 문장들
+        const personalityLines = [
+          "저는 ESTP 유형으로, 현실적이고 활동적인 성향을 가지고 있습니다.",
+          "빠르게 상황을 파악하고 행동으로 옮기는 것을 좋아하며,",
+          "그 과정에서 성실함과 꼼꼼함을 바탕으로 실수를 줄이고 완성도를 높이려 노력합니다."
+        ];
+
+        const philosophyLines = [
+          "“작은 디테일이 큰 차이를 만든다.” 이 문장은 저의 일하는 태도를 가장 잘 설명합니다.",
+          "겉으로는 빠르게 움직이는 것처럼 보여도,",
+          "그 안에는 치밀한 계획과 세심한 검토가 담겨 있습니다."
+        ];
+
+        // 실행
+        typeText(personalityLines, "personality");
+        setTimeout(() => {
+          typeText(philosophyLines, "philosophy");
+        }, personalityLines.length * 600 + 1000); // personality 끝난 후 시작
+      </script>
+      <!-- JavaScript 함수 끝 -->
+      <section class="project-section"> <!--experience-->
         <h3 class="project-title">프로젝트</h3>
-          <div class="container">
-            <div class="project1">
-              <iframe class="w-40 border-0" src="https://www.youtube.com/embed/BP88lz3tHtM?si=-ZHHCAZ8XvvNoFXs" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="card-container">
+
+            <div class="project-card">
+              <div class="card-media">   <!-- project 1-->
+                <iframe class="w-40 border-0" src="https://www.youtube.com/embed/BP88lz3tHtM?si=-ZHHCAZ8XvvNoFXs" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div class="card-content">
+                <h4>🎬 개인 프로젝트1</h4>
+                <p">이 영상은 프로젝트의 핵심 기능을 소개합니다. 사용자 흐름과 인터페이스를 시각적으로 확인할 수 있어요.</p>
+              </div>
             </div>
-            <div class="project2">
-              <p><img class="market" src="/workspace/track002_web_basic/img/project.jpg" alt=""></p>
+          
+            <div class="project-card">
+              <div class="card-media"> <!-- project 2-->
+                <a href="https://github.com/taehun00/shopping-app.git" target="_blank">
+                  <img src="img/project.jpg" alt="프로젝트 이미지">
+                </a>
+              </div>
+              <div class="card-content">
+                <h4>🖼️ 마켓 노트</h4>
+                <p>로그인, 회원가입</p>
+                <p>물품 조회, 추가, 삭제</p>
+                <p>장바구니 상품 추가, 조회, 삭제</p>
+                <p>메모 생성, 조회, 수정, 삭제</p>
+              </div>
             </div>
-          </div>
+        </div>
+      </section>
+      <section class="stacks-section">
+        <h3 class="stacks-title">스택(stacks)</h3>
+        <div class="tag-cloud">
+          <a href="#git" class="tag">Git</a>
+          <a href="#java" class="tag">Java</a>
+          <a href="#springboot" class="tag">Spring Boot</a>
+          <a href="#html" class="tag">HTML</a>
+          <a href="#" class="tag">CSS</a>
+          <a href="#" class="tag">React</a>
+          <a href="#" class="tag">MySQL</a>
+        </div>
+      </section>
+      <section id="git">
+        <h3>git</h3>
+        <p></p>
+      </section>
+      <section id="java">
+        <h3>Java</h3>
+        <p>객체지향 언어로 백엔드 개발에 활용됩니다.</p>
+      </section>
+
+      <section id="springboot">
+        <h3>Spring Boot</h3>
+        <p>Java 기반의 웹 프레임워크로 빠른 개발이 가능합니다.</p>
+      </section>
+
+      <section id="html">
+        <h3>HTML</h3>
+        <p>웹 페이지의 구조를 정의하는 마크업 언어입니다.</p>
+      </section>
+      <section>
+
       </section>
     </body>
   </html>

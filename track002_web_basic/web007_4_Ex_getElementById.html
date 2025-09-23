@@ -48,7 +48,6 @@
         window.addEventListener("load", function(){
           document.getElementById("fontSizeBtn").onclick=function(){
               let num = prompt("숫자1~5","1~5");
-              alert("선택하신 숫자는" + num + "입니다.");
               if(num==1)document.getElementById("ex1").style.fontSize=1 + "em";
               if(num==2)document.getElementById("ex1").style.fontSize=2 + "em";
               if(num==3)document.getElementById("ex1").style.fontSize=3 + "em";
@@ -81,7 +80,6 @@
       window.addEventListener("load", function(){
           document.getElementById("colorChangeBtn").onclick=function(){
               let color = prompt("","");
-              alert("선택하신 색은" + color + "입니다.");
               let card = document.getElementById("a");
               card.style.backgroundColor = color;
               
@@ -112,8 +110,7 @@
     <script>
       window.addEventListener("load", function(){
           document.getElementById("borderStyleBtn").onclick=function(){
-              let border = prompt("","");
-              alert("테두리 스타일은" + border + "입니다.");
+              let border = prompt("선 종류를 선택해주세요","");
               document.getElementById("b").style.border = "5px " + border + " black";
               /*document.getElementById("b").style.border=border;
               어이없다.

@@ -11,5 +11,7 @@ public class Friend {
 	public void setSecretToy(String secretToy) {
 		this.secretToy = secretToy;
 	}
-	
+	public void printInfo() {
+        System.out.println("Friend [sharedToy=\"" + sharedToy + "\", secretToy=\"" + secretToy + "\", familyToy=\"" + familyToy + "\"]");
+    }
 }

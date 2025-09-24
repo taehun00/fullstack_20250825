@@ -12,5 +12,7 @@ public class ModifierEx001 {
         
         box.setSecretToy("로봇~~");
         System.out.println(box.getSecretToy());
+        System.out.println(box);
+        box.printInfo();
 	}
 }

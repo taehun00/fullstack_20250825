@@ -8,7 +8,11 @@ class Parent7  extends Object{
 class Child7 extends Parent7 {
    int x = 200;
    public Child7() { super(); }
-   @Override  void method() { System.out.println("Child Method"); }
+   @Override  void method() { 
+	   
+	   System.out.println("Child Method"); 
+	   }
+   void papamethod() {super.method();}
 }
 public class PolyEx005 {
    public static void main(String[] args) {
@@ -26,5 +30,7 @@ public class PolyEx005 {
       p.method();  // Q6. 출력되는 내용     						Child Method
       System.out.println("c.x = " + c.x);   // Q7. 출력되는 내용  	200
       c.method();   // Q8. 출력되는 내용   						Child Method
+      
+      ((Child7)p).papamethod();
    }
 }

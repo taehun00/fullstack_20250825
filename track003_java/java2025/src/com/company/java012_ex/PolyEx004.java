@@ -5,7 +5,7 @@ Object
   ↑
 Papa (int money = 10000, sing)
   ↑
-Son  (int money = 1500 , sing)
+Son  (int money = 1500 , @sing)
 */
 
 class Papa extends Object{  
@@ -29,7 +29,7 @@ public class PolyEx004 {
       
       // Q4. 인스턴스화한 실제 메모리 빌려온그림
       
-      // {int money = 1500, sing()}, {int money = 10000, sing()}
+      // {int money = 1500, @sing()}, {int money = 10000, sing()}
       
       System.out.println(mypapa.money); // Q5.  출력   :		10000
       mypapa.sing();  //Q6. 출력 	:		빅뱅-거짓말

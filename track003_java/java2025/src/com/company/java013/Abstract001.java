@@ -52,7 +52,7 @@ public class Abstract001 {
 		int cnt = 0;
 		for(Animal a : arr) { 
 			a.name = "ani" + ++cnt;
-			a.eat(); 
+			a.eat();
 		}
 	}
 }

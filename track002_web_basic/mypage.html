@@ -271,11 +271,13 @@ section[id] p {
     <body>
       <header class="title">
         <h2>Tae Hun</h2>
-        
+
         <div class="button-container">
-            <button type="button" class="bu_about" onclick="location.href='about.html'">About</button>
-            <button type="button" class="bu_like" onclick="location.href='like.html'">Like</button>
-            <button type="button" class="bu_work" onclick="location.href='work.html'">Work</button>
+          <button type="button" class="bu_about" onclick="location.href='#about'">About</button>
+          <button type="button" class="bu_values" onclick="location.href='#values'">Values</button>
+          <button type="button" class="bu_project" onclick="location.href='#project'">Project</button>
+          <button type="button" class="bu_stacks" onclick="location.href='#stacks'">Stacks</button>
+          <button type="button" class="bu_contact" onclick="location.href='#contact'">Contact</button>
         </div>
       </header>
       <section class="about">
@@ -428,8 +430,71 @@ section[id] p {
         <h3>HTML</h3>
         <p>웹 페이지의 구조를 정의하는 마크업 언어입니다.</p>
       </section>
-      <section>
-        
+      <section id="contact" class="contact m-5">
+        <div class="container">
+            <h3 class="text-center">Contact Me</h3>
+            <p class="text-center">  열정적인 개발자 홍길동에 문의 주세요! </p>
+            
+            <script type="text/javascript"
+                    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+            </script>
+            <script type="text/javascript">
+            (function(){
+                emailjs.init({
+                    publicKey: "3BYbJ5FJy04XiS3XP",
+                });
+            })();
+            ////////////////////////////
+            function sendEmail( e ){
+                e.preventDefault();  //무조건 전송기능 막기
+                var templateParams = {
+                    title: document.getElementById("title").value,
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    message: document.getElementById("message").value,
+                };
+
+                emailjs.send('taehun0612', 'template_32mpowz', templateParams).then(
+                (response) => {
+                    alert("메일이 성공적으로 전송됐습니다.");
+                    console.log('SUCCESS!', response.status, response.text);
+                },
+                (error) => {
+                    alert("메일 전송에 실패했습니다.")
+                    console.log('FAILED...', error);
+                },
+                );
+            }
+
+            </script>
+
+
+
+            <form onsubmit="sendEmail(event)">
+                <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">name:</label>
+                    <input type="text" class="form-control" id="name" 
+                          placeholder="이름을 적어주세요!" name="name">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="email" class="form-label">email:</label>
+                    <input type="email" class="form-control" id="email" 
+                          placeholder="이메일을 적어주세요!" name="email">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="title" class="form-label">title:</label>
+                    <input type="text" class="form-control" id="title" 
+                          placeholder="제목을 적어주세요!" name="title">
+                </div>
+                <div class="mb-3">
+                    <label for="message">Comments:</label>
+                    <textarea class="form-control" rows="5" id="message" name="massage"></textarea>            
+                </div>
+                <div class="mb-3 text-end">
+                    <button type="submit" class="btn btn-success">메일보내기</button>
+                </div>
+            </form> 
+        </div><!--end container-->
       </section>
     </body>
   </html>

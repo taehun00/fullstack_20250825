@@ -64,6 +64,7 @@
 - [트러블슈팅 003: Java Scanner 입력 : next() vs nextLine()](./track003_java/java_trouble/troubleshooting003.md)
 - [트러블슈팅 004: Java 문자열 비교 시 변수 이름 혼동으로 인한 조건문 오류](./track003_java/java_trouble/troubleshooting004.md)
 - [트러블슈팅 006: 자바 메서드 반환 오류: 모든 실행 경로에 return이 필요](./track003_java/java_trouble/troubleshooting006.md)
+- [트러블슈팅 007: Java 객체 배열 초기화 누락으로 인한 NullPointerException](./track003_java/java_trouble/troubleshooting007.md)
 ---
 
 ## 📚 참고문헌

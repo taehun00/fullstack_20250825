@@ -107,6 +107,18 @@ body {
 .about a:hover {
   text-decoration: underline;
 }
+
+.about1, .about2, .about3 {
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
 /* 성격 섹션 */
 .values{
   margin-top: 50px;
@@ -204,6 +216,17 @@ body {
   line-height: 1.6;
 }
 
+.card-content {
+  animation: fadeIn 3s ease-in-out forwards;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
 /* 스택 섹션 */
 .stacks-section {
   background-color: #fff8f0;
@@ -262,10 +285,19 @@ section[id] p {
   padding-top: 100px;
 }
 #springboot{
-  padding-top: 1000px;
+  padding-top: 100px;
 }
 #html{
-  padding-top: 500px;
+  padding-top: 100px;
+}
+#css{
+  padding-top: 100px;
+}
+#react{
+  padding-top: 100px;
+}
+#mysql{
+  padding-top: 100px;
 }
     </style>
   </head>
@@ -294,7 +326,7 @@ section[id] p {
           <div class="about2">
             <h3 class="">Project</h3>
             <ul>
-              <li>- 마켓 노트</li>
+              <li>마켓 노트</li>
             </ul>
           </div>
           <div class="about3">
@@ -431,10 +463,26 @@ section[id] p {
         <h3>HTML</h3>
         <p>웹 페이지의 구조를 정의하는 마크업 언어입니다.</p>
       </section>
+
+      <section id="css">
+        <h3>CSS</h3>
+        <p></p>
+      </section>
+
+      <section id="react">
+        <h3>React</h3>
+        <p></p>
+      </section>
+
+      <section id="mysql">
+        <h3>MySQL</h3>
+        <p></p>
+      </section>
+
       <section id="contact" class="contact m-5">
         <div class="container">
             <h3 class="text-center">Contact Me</h3>
-            <p class="text-center">  열정적인 개발자 홍길동에 문의 주세요! </p>
+            <p class="text-center">  열정적인 개발자 성태훈 문의 주세요! </p>
             
             <script type="text/javascript"
                     src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">

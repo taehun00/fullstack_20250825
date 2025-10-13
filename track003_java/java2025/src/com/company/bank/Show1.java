@@ -23,7 +23,7 @@ public class Show1 implements MainController1 {
             for (String skillName : skillInfo.getSkillBag()) {
                 System.out.print(skillName + " ");
             }
-            System.out.println(); // 줄바꿈
+            System.out.println();
         }
 
 		

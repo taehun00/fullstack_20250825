@@ -22,7 +22,7 @@ public class ChDelete implements MainController1 {
 	        if (confirm.equalsIgnoreCase("Y")) {
 	            users.remove(find);
 	            System.out.println("캐릭터가 삭제되었습니다.");
-	            return -1; // 삭제 후 인덱스 무효화
+	            return -1;
 	        } else {
 	            System.out.println("삭제를 취소했습니다.");
 	            return find;

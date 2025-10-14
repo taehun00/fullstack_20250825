@@ -31,7 +31,7 @@ public class List003 {
 				
 				icecream.add( new IceCreamDTO(price, name));
 			}
-			if (num == 2) {
+			else if (num == 2) {
 				System.out.println("현재 아이스크림 목록:");
 				if(icecream.size() == 0) {
 					System.out.print("아직 등록된 아이스크림이 없습니다.");
@@ -42,7 +42,7 @@ public class List003 {
 			        }
 				}
 			}
-			if (num == 3) {
+			else if (num == 3) {
 				System.out.print("제거할 아이스크림 이름:");
 				name = sc.next();
 				int find = -1;
@@ -59,7 +59,7 @@ public class List003 {
 					System.out.println("해당 아이스크림이 존재하지 않습니다.");
 				}
 			}
-			if (num == 4) {
+			else if (num == 4) {
 				System.out.print("확인할 아이스크림 이름:");
 				name = sc.next();
 				int find = -1;
@@ -75,7 +75,7 @@ public class List003 {
 					System.out.println("존재하지 않습니다.");
 				}
 			}
-			if (num == 5) {
+			else if (num == 5) {
 				System.out.println("총 아이스크림 개수:" + icecream.size());
 			}
 		}

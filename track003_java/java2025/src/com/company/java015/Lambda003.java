@@ -47,7 +47,8 @@ public class Lambda003 {
 		System.out.println(basic3.method(1000, 3));
 		
 		
-		Ex1 ex1 = s -> s.length();
+		//Ex1 ex1 = s -> s.length();
+		Ex1 ex1 = String::length;
 		System.out.println(ex1.getLength("hello"));
 		
 		Ex2 ex2 = System.out::println;

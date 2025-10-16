@@ -100,3 +100,96 @@ select
     '[' || rtrim(' _ _Oracle_ _ ') || ']' as rtrim,
     '[' || rtrim('_ _Oracle_ _','_') || ']' as rtrim_2
 from dual;
+
+
+-- 1. 문자열
+-- 2. 숫자    : round / trunc(반올림/내림), ceil(올림), floor(내림), mod(나머지)
+-- 3. 날씨    : sysdate(시스템날짜), add_months(몇달뒤에), next_day, last_day
+-- 4. 변환    : to_char (날짜형식변환), to_date
+-- 5. 조건    : decode, case(조건분기), nvl, nvl2 (null)
+-----------------------
+-- 2. 숫자
+select round(1234.5678), round(1234.5678 , 2), trunc(1234.5678 , 2), ceil(1.1), floor(4.8), mod(10,3)
+from dual;
+-----------------------
+-- 3. 날씨
+select sysdate, add_months(sysdate, 2), months_between('25-12-1','24-12-1')
+from dual;
+
+select next_day(sysdate, '월요일') "다음주 월요일", last_day(sysdate) "해당 월의 마지막 날짜"
+from dual;
+
+-----------------------
+-- 4. 변환 
+select to_char(sysdate, 'YYYY-MM-DD'), to_date('2025-10-16', 'YYYY-MM-DD')
+from dual;
+
+select to_char(1234)+1, to_number('5678')+1
+from dual;
+
+-- select to_cher('일이삼사') + 1, to_number('5678') + 1 오류
+-- from dual;
+
+-- 5. 조건
+select nvl( null, '대체값')
+from dual;
+
+select nvl( to_char(comm), '입력안됨.')
+from emp;
+
+select nvl2(null, 'A','B') -- null일 때 b, 아니면 a
+from dual;
+
+select nvl2(mgr, mgr, '--') from emp; -- 오류나는 이유
+select nvl2(mgr, to_char(mgr), '--') from emp; -- 해결방안
+
+select decode( deptno, 10, '부서10', 20, '부서20', 30, '부서30' )
+from emp;
+
+select case 
+            when deptno=10 then '부서10' 
+            when deptno=20 then '부서20' 
+            when deptno=30 then '부서30' 
+            else                '부서x'
+       end
+from emp;
+
+select case deptno
+            when 10 then '부서10' 
+            when 20 then '부서20' 
+            when 30 then '부서30' 
+            else         '부서x'
+       end
+from emp;
+
+--- 45
+select empno, ename, sal, comm, sal+comm, nvl(comm,0), sal+nvl(comm,0)
+from emp;
+
+--- 46
+select empno, ename, comm, nvl2(comm,'O','X'), sal*12 + nvl2(comm,comm,0) as annsal
+from emp;
+
+--- 47
+select empno, ename, job, sal, decode(job, 'MANAGER', sal*1.1, 'SALESMAN', sal*1.05, 'ANALYST', sal, sal*1.03) as upsal
+from emp;
+
+--- 48
+select empno, ename, job, sal,
+    case job
+        when 'MANAGER' then sal*1.1
+        when 'SALESMAN' then  sal*1.05
+        when 'ANALYST' then sal
+        else    sal*1.03
+    end as upsal
+from emp;
+
+--- 49
+select empno, ename, comm,
+    case
+        when comm is null then '해당사항 없음'
+        when comm = 0 then '수당없음'
+        when comm > 0 then '수당 : ' || comm
+        else '기타'
+    end as comm_text
+from emp;

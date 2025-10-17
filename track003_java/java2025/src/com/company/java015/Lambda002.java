@@ -23,6 +23,7 @@ public class Lambda002 {
 		};								// 처리할 일이 한 줄이면 {} 생략 가능
 		a2.hi();
 		
+		
 		//InterB2
 		InterB2 b = new InterB2() {
 			@Override

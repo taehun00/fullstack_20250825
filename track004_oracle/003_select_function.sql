@@ -193,3 +193,34 @@ select empno, ename, comm,
         else '기타'
     end as comm_text
 from emp;
+
+-- ex001
+select empno, substr(empno, 1, 2) || rpad('*', 2, '*') as masking_empno, ename, substr(ename, 1, 1) || rpad('*',LENGTH(ENAME) - 1, '*') as masking_ename
+from emp
+where length(ename) in (5,6);
+
+
+-- ex002
+select empno, ename, sal, trunc(sal/21.5, 2) as day_pay, round(sal/(21.5*8), 1) as time_pay
+from emp;
+
+-- ex003
+select empno,
+       ename,
+       hiredate,
+       to_char(next_day(add_months(hiredate, 3), '월요일'), 'YYYY-MM-DD') as r_job,
+       nvl(to_char(comm), 'n/a') as comm
+from emp;
+
+-- ex004
+select empno, ename, mgr,
+    case
+        when mgr is null then '00000'
+        when substr(mgr,1,2) = 75 then '5555'
+        when substr(mgr,1,2) = 76 then '6666'
+        when substr(mgr,1,2) = 77 then '7777'
+        when substr(mgr,1,2) = 78 then '8888'
+        else to_char(mgr)
+    end as chg_mgr
+from emp;
+

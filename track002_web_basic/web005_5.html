@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display:flex</title>
+    <style>
+        * {margin:0; padding:0;}
+        h3 {
+            border-left: 10px solid red; background-color: bisque; padding:2%;
+        }
+        .container {width: 80%; margin:2% auto; background-color: #ccc; padding: 2%;}
+        .item { background-color:aqua; color: white; padding:2%;}
+        .i2{background-color: blue;}
+        .i3{background-color: blueviolet;}
+        /*기본 html 흐름*/
+        .c1{display:block;}
+        /*자식요소들을 가로로 정렬하고, 유연한 레이아웃*/
+        .c2{display:flex;}
+
+        .c3{display: flex; flex-direction: row;}
+        .c4{display: flex; flex-direction: column-reverse;}
+
+        .c5{display: flex;}
+        .c5 .item{ flex : none;}
+        .c5 .item.i2{margin-left:auto; }
+
+        .c6{ display: flex; flex-direction: column; height: 300px;}
+        .c6 .i1{margin-top:auto;}
+        
+
+        /* [좌우정렬] 아이템들을 좌우 끝에 배치 - 가운데 여백은 자동생성*/
+        .c7{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* [가운데정렬] 감싸는 박스 flex, 높이값: 100px*/
+        .c8{
+            display: flex;
+            height: 100px;
+        }
+        .c8 .i1{
+            margin: auto;
+        }
+</style>
+</head>
+<body>
+    <div>
+        <h3>001. display:flex / block 비교</h3>
+        <div class="container c1">
+            <div class="item i1">AAA</div>
+            <div class="item i2">BBB</div>
+            <div class="item i3">CCC</div>
+        </div>
+        <div class="container c2">
+            <div class="item i1">AAA</div>
+            <div class="item i2">BBB</div>
+            <div class="item i3">CCC</div>
+        </div>
+    </div>
+
+    <div>
+        <h3>002. flex 방향설정</h3>
+        <div class="container c3">
+            <div class="item i1">AAA</div>
+            <div class="item i2">BBB</div>
+            <div class="item i3">CCC</div>
+        </div>
+        <div class="container c4">
+            <div class="item i1">AAA</div>
+            <div class="item i2">BBB</div>
+            <div class="item i3">CCC</div>
+        </div>
+    </div>
+
+    <div>
+        <h3>003. 네비게이션</h3>
+        <div class="container c5">
+            <div class="item i1">HOME</div>
+            <div class="item i2">ABOUT</div>
+            <div class="item i3">CONTACT</div>
+        </div>
+    </div>
+
+    <div>
+        <h3>004. footer 아래 정렬</h3>
+        <div class="container c6">
+            <div class="item i1">Copyright 2025</div>
+        </div>
+    </div>
+
+    <div>
+        <h3>005. 좌우정렬</h3>
+        <div class="container c7">
+            <div class="item i1">LEFT</div>
+            <div class="item i2">CENTER</div>
+            <div class="item i3">RIGHT</div>
+        </div>
+    </div>
+
+    <div>
+        <h3>006. 가운데정렬</h3>
+        <div class="container c8">
+            <div class="item i1">CENTER CENTER CENTER</div>
+        </div>
+    </div>
+</body>
+</html>

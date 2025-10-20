@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+/* Q1. mycontainer 가로사이즈 50% 페이지정중앙배치 */
+/* Q2. mycontainer h3 왼쪽선, 패딩, 배경색 */
+.mycontainer {width:50%; margin:2em auto; background-color:aqua; padding: 20px; border-radius: 20px;}
+.mycontainer h3 {border-left: 3px solid red; padding: 2em; background-color: antiquewhite;}
+

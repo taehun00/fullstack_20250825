@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {margin: 0; padding: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-image: linear-gradient(135deg, #fff1eb, #ace0f9);}
+        h3 {text-align: center; color:#34495e; margin-bottom: 40px;}
+        .portfolio {width: 250px; margin: 0 auto 30px auto; border-radius: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 20px; transition: all 0.3s ease;
+                cursor: pointer;}
+        .portfolio:hover {
+            transform: scale(1.1) rotate(3deg);
+            filter: brightness(1.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .project1 {background-image: linear-gradient(135deg, #fceabb, #f8b500);}
+        .project2 {background-image: linear-gradient(135deg, #d5fefd, #a1c4fd);}
+        .project3 {background-image: linear-gradient(135deg, #fbc2eb, #a6c1ee);}
+        .portfolio img {width: 90px; height: 90px; border-radius: 50px;
+                        object-fit: cover; border: 3px solid #34495e;
+                        display: block; margin: auto;} /* 이미지를 박스로 만들어야 가운데 정렬 가능 */
+        .portfolio h4 {margin-top: 10px; margin-bottom: 5px; font-size: 18px; color: #2c3e50;}
+        .portfolio p {font-size: 14px; color:#555; margin-bottom: 10px;}
+        .portfolio a {font-size: 13px; color:#34495e; text-decoration: none;}
+        .portfolio h5 {margin-top: 20px; font-size: 16px; color: #2c3e50;}
+        .portfolio ul {text-align: left; padding-left: 20px; color: #2c3e50;}
+    </style>
+</head>
+<body>
+    <div>
+        <h3>
+            📁 프로젝트 설명카드
+        </h3>
+        <div class="portfolio project1">
+            <p>
+                <img src="./img/portfolio1.jpg" alt="도서 추천 웹앱">
+            </p>
+            <h4>
+                도서 추천 웹앱
+            </h4>
+            <p>
+                기획자: 사장님
+            </p>
+            <p>
+                사용자 취향 기반으로 도서를 추천하는 웹 서비스
+            </p>
+            <p>
+                <a href="" title="GitHub 저장소">GitHub 저장소 보기</a>
+            </p>
+            <h5>핵심 기능</h5>
+            <ul>
+                <li> 사용자 입력 기반 추천 알고리즘</li>
+                <li> 카드 UI를 활용한 도서 정보 시각화</li>
+                <li> 팀원 역할 분담 및 협업 관리</li>
+                <li> 프로젝트 썸네일 이미지</li>
+            </ul>
+        </div>
+        <div class="portfolio project2">
+            <p>
+                <img src="./img/portfolio2.jpg" alt="반응형 포트폴리오 사이트">
+            </p>
+            <h4>반응형 포트폴리오 사이트</h4>
+            <p>
+                프론트엔드: June
+            </p>
+            <p>
+                디자이너와 협업하여 제작한 개인 포트폴리오 웹사이트
+            </p>
+            <p>
+                <a href="" title="베포된 페이지">베포된 페이지 보기</a>
+            </p>
+            <h5>주요 기술</h5>
+            <ul>
+                <li>HTML5 / CSS3 / JavaScript</li>
+                <li>미디어쿼리를 활용한 반응형 디자인</li>
+                <li>Figma 기반 UI 설계</li>
+                <li>프로젝트 썸네일 이미지</li>
+            </ul>
+        </div>
+        <div class="portfolio project3">
+            <p>
+                <img src="./img/portfolio3.jpg" alt="AI 기반 독서 취향 분석기">
+            </p>
+            <h4>AI 기반 독서 취향 분석기</h4>
+            <P>
+                AI 분석: Mina
+            </P>
+            <p>
+                독서 이력 데이터를 기반으로 취향을 분석하고 도서를 추천
+            </p>
+            <p>
+                <a href="" title="프로젝트">프로젝트 상세 보기</a>
+            </p>
+            <h5>기술 스택</h5>
+            <ul>
+                <li>Python / Pandas / Scikit-learn</li>
+                <li>자연어 처리 기반 키워드 분석</li>
+                <li>데이터 시각화 및 사용자 피드백 반영</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

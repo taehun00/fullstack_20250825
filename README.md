@@ -9,7 +9,7 @@
 ---
 ## Contact & Link
 <!--![프로필](./track001_github/me.png) -->
-<img src = "./track001_github/me.png" alt = "프로필" width = "100">
+<img src = "./track001_github/taehun.png" alt = "프로필" width = "100">
 
 | 항목       | 내용 |
 |------------|------|
@@ -40,16 +40,31 @@
 ---
 
 ## 포트폴리오
-
+[rpg 미니 프로젝트](https://www.youtube.com/watch?v=BP88lz3tHtM)
 ---
 
 ## 🛠️ 트러블슈팅 기록
-<div  style="background-color:rgba(0,0,0,0.15); padding:20px; border-radius:30px; box-shadow:0 0 5px rgba(0,0,0,0 5)">
+
+### 🧩 Git 트러블슈팅
 
 - [트러블슈팅 001: 커밋 오류와 해결방안](./track001_github/troubleshooting001.md)
 - [트러블슈팅 002: 확장자 충돌로 인한 Push 오류 해결](./track001_github/troubleshooting002.md)
 - [트러블슈팅 003: Git Pull 시 병합 충돌(Merge Conflict) 해결](./track001_github/troubleshooting003.md)
+- [트러블슈팅 004: GitHub 403 오류 — Push 권한 문제 해결](./track001_github/troubleshooting004.md)
 
+
+### 🔍 Web 트러블슈팅
+- [트러블슈팅 001: HTML5 iframe 오류: frameborder 속성 제거 및 CSS 대체](./track002_web_basic/web_trouble/troubleshooting001.md)
+- 
+
+### ☕ Java 트러블슈팅
+
+- [트러블슈팅 001: Java 컴파일 오류 — string 클래스 인식 실패](./track003_java/java_trouble/troubleshooting001.md)
+- [트러블슈팅 002: Java 문자열 인덱스 초과 오류 — char 비교 실수로 인한 예외 발생](./track003_java/java_trouble/troubleshooting002.md)
+- [트러블슈팅 003: Java Scanner 입력 : next() vs nextLine()](./track003_java/java_trouble/troubleshooting003.md)
+- [트러블슈팅 004: Java 문자열 비교 시 변수 이름 혼동으로 인한 조건문 오류](./track003_java/java_trouble/troubleshooting004.md)
+- [트러블슈팅 006: 자바 메서드 반환 오류: 모든 실행 경로에 return이 필요](./track003_java/java_trouble/troubleshooting006.md)
+- [트러블슈팅 007: Java 객체 배열 초기화 누락으로 인한 NullPointerException](./track003_java/java_trouble/troubleshooting007.md)
 ---
 
 ## 📚 참고문헌

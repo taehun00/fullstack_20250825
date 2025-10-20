@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자기소개 페이지</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+/* 기본 설정 */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #fef6e4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* 헤더 */
+.title {
+  background-color: #ff6f61;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  border-bottom: 4px solid #ffd166;
+}
+
+/* 버튼 */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.button-container button {
+  background-color: #06d6a0;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #04b58a;
+}
+
+/* About 섹션 */
+.about {
+  background-color: #fff8f0;
+  padding: 60px 20px;
+  border-bottom: 4px solid #fae5d0;
+}
+
+.about .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about1, .about2, .about3 {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.about1:hover,
+.about2:hover,
+.about3:hover {
+  transform: translateY(-8px);
+}
+
+.profile {
+  width: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.about h3 {
+  font-size: 22px;
+  color: #ff6f61;
+  margin-bottom: 10px;
+}
+
+.about li {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.about a {
+  color: #06d6a0;
+  text-decoration: none;
+}
+
+.about a:hover {
+  text-decoration: underline;
+}
+
+.about1, .about2, .about3 {
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* 성격 섹션 */
+.values{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-bottom: 4px solid #f1f5f6;
+}
+.values-section {
+  background-color: #fff8f0;
+  padding: 60px 20px;
+  
+}
+
+.values-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: left;
+}
+
+.values-card h3 {
+  font-size: 26px;
+  color: #ff6f61;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.typing-box {
+  background-color: #fffaef;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  line-height: 1.6;
+}
+
+/* 프로젝트 섹션 */
+.project-section {
+  background-color: #e3f2fd;
+  padding: 60px 20px;
+}
+
+.project-title {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.card-media iframe,
+.card-media img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border: none;
+  display: block;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h4 {
+  font-size: 20px;
+  color: #ff6f61;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.card-content {
+  animation: fadeIn 3s ease-in-out forwards;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* 스택 섹션 */
+.stacks-section {
+  background-color: #fff8f0;
+  padding: 60px 20px;
+}
+
+.stacks-title {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.tag-cloud {
+  text-align: center;
+  padding: 20px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #ffd166;
+  color: #333;
+  padding: 8px 14px;
+  margin: 6px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.tag:hover {
+  background-color: #ffcc00;
+}
+
+/* 각 기술 섹션 */
+section[id] {
+  padding: 80px 20px;
+  background-color: #ffffff;
+  border-top: 1px solid #eee;
+}
+
+section[id] h3 {
+  font-size: 24px;
+  color: #ff6f61;
+  margin-bottom: 10px;
+}
+
+section[id] p {
+  font-size: 16px;
+  color: #555;
+}
+
+#git{
+  padding-top: 100px;
+}
+#java {
+  padding-top: 100px;
+}
+#springboot{
+  padding-top: 100px;
+}
+#html{
+  padding-top: 100px;
+}
+#css{
+  padding-top: 100px;
+}
+#react{
+  padding-top: 100px;
+}
+#mysql{
+  padding-top: 100px;
+}
+    </style>
+  </head>
+    <body>
+      <header class="title">
+        <h2>Tae Hun</h2>
+
+        <div class="button-container">
+          <button type="button" class="bu_about" onclick="location.href='#about'">About</button>
+          <button type="button" class="bu_values" onclick="location.href='#values'">Values</button>
+          <button type="button" class="bu_project" onclick="location.href='#project'">Project</button>
+          <button type="button" class="bu_stacks" onclick="location.href='#stacks'">Stacks</button>
+          <button type="button" class="bu_contact" onclick="location.href='#contact'">Contact</button>
+        </div>
+      </header>
+      <section class="about">
+        <div class="container">
+          <div class="about1">
+            <p><img class="mt-3 profile" src="img/my.jpg" alt=""></p>
+            <h3 class="mt-4">성태훈</h3>
+            <ul>
+              <li>iiss07007@gmail.com</li>
+              <li><a href="https://github.com/taehun00/">깃허브 주소</a></li>
+            </ul>
+          </div>
+          <div class="about2">
+            <h3 class="">Project</h3>
+            <ul>
+              <li>마켓 노트</li>
+            </ul>
+          </div>
+          <div class="about3">
+            <h3>Stacks</h3>
+            <ul>
+              <li>Frontend : HTML, CSS, JavaScript, Flutter, React</li>
+              <li>Backend : Java, Python, Nodejs</li>
+              <li>Database :</li>
+              <li>Tools : Git, VS Code, Intellij</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="values">
+        <div class="container">
+          <div>
+            <h3>성격 (Personality)</h3>
+            <div id="personality" class="typing-box"></div>
+          </div>
+          <div>
+            <h3>Philosophy</h3>
+            <div id="philosophy" class="typing-box"></div>
+          </div>
+        </div>
+      </section>
+      <!-- JavaScript 함수 시작-->
+      <script>
+        function typeText(lines, containerId, delayBetweenLines = 200, typingSpeed = 30) {
+          const container = document.getElementById(containerId);
+          let lineIndex = 0;
+
+          function typeLine() {
+            if (lineIndex >= lines.length) return;
+
+            const line = lines[lineIndex];
+            const p = document.createElement("p");
+            container.appendChild(p);
+
+            let charIndex = 0;
+            function typeChar() {
+              if (charIndex < line.length) {
+                p.innerHTML += line.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeChar, typingSpeed);
+              } else {
+                lineIndex++;
+                setTimeout(typeLine, delayBetweenLines);
+              }
+            }
+
+            typeChar();
+          }
+
+          typeLine();
+        }
+
+        // 타이핑할 문장들
+        const personalityLines = [
+          "저는 ESTP 유형으로, 현실적이고 활동적인 성향을 가지고 있습니다.",
+          "빠르게 상황을 파악하고 행동으로 옮기는 것을 좋아하며,",
+          "그 과정에서 성실함과 꼼꼼함을 바탕으로 실수를 줄이고 완성도를 높이려 노력합니다."
+        ];
+
+        const philosophyLines = [
+          "“작은 디테일이 큰 차이를 만든다.” 이 문장은 저의 일하는 태도를 가장 잘 설명합니다.",
+          "겉으로는 빠르게 움직이는 것처럼 보여도,",
+          "그 안에는 치밀한 계획과 세심한 검토가 담겨 있습니다."
+        ];
+
+        // 실행
+        typeText(personalityLines, "personality");
+        setTimeout(() => {
+          typeText(philosophyLines, "philosophy");
+        }, personalityLines.length * 200 + 4000); // personality 끝난 후 시작
+      </script>
+      <!-- JavaScript 함수 끝 -->
+      <section class="project-section"> <!--experience-->
+        <h3 class="project-title">프로젝트</h3>
+        <div class="card-container">
+
+            <div class="project-card">
+              <div class="card-media">   <!-- project 1-->
+                <iframe class="w-40 border-0" src="https://www.youtube.com/embed/BP88lz3tHtM?si=-ZHHCAZ8XvvNoFXs" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              <div class="card-content">
+                <h4>🎬 개인 프로젝트1</h4>
+                <p">이 영상은 프로젝트의 핵심 기능을 소개합니다. 사용자 흐름과 인터페이스를 시각적으로 확인할 수 있어요.</p>
+              </div>
+            </div>
+          
+            <div class="project-card">
+              <div class="card-media"> <!-- project 2-->
+                <a href="https://github.com/taehun00/shopping-app.git" target="_blank">
+                  <img src="img/project.jpg" alt="프로젝트 이미지">
+                </a>
+              </div>
+              <div class="card-content">
+                <h4>🖼️ 마켓 노트</h4>
+                <p>로그인, 회원가입</p>
+                <p>물품 조회, 추가, 삭제</p>
+                <p>장바구니 상품 추가, 조회, 삭제</p>
+                <p>메모 생성, 조회, 수정, 삭제</p>
+              </div>
+            </div>
+        </div>
+      </section>
+      <section class="stacks-section">
+        <h3 class="stacks-title">스택(stacks)</h3>
+        <div class="tag-cloud">
+          <a href="#git" class="tag">Git</a>
+          <a href="#java" class="tag">Java</a>
+          <a href="#springboot" class="tag">Spring Boot</a>
+          <a href="#html" class="tag">HTML</a>
+          <a href="#" class="tag">CSS</a>
+          <a href="#" class="tag">React</a>
+          <a href="#" class="tag">MySQL</a>
+        </div>
+      </section>
+      <section id="git">
+        <h3>git</h3>
+        <p></p>
+      </section>
+      <section id="java">
+        <h3>Java</h3>
+        <p>객체지향 언어로 백엔드 개발에 활용됩니다.</p>
+      </section>
+
+      <section id="springboot">
+        <h3>Spring Boot</h3>
+        <p>Java 기반의 웹 프레임워크로 빠른 개발이 가능합니다.</p>
+      </section>
+
+      <section id="html">
+        <h3>HTML</h3>
+        <p>웹 페이지의 구조를 정의하는 마크업 언어입니다.</p>
+      </section>
+
+      <section id="css">
+        <h3>CSS</h3>
+        <p></p>
+      </section>
+
+      <section id="react">
+        <h3>React</h3>
+        <p></p>
+      </section>
+
+      <section id="mysql">
+        <h3>MySQL</h3>
+        <p></p>
+      </section>
+
+      <section id="contact" class="contact m-5">
+        <div class="container">
+            <h3 class="text-center">Contact Me</h3>
+            <p class="text-center">  열정적인 개발자 성태훈 문의 주세요! </p>
+            
+            <script type="text/javascript"
+                    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+            </script>
+            <script type="text/javascript">
+            (function(){
+                emailjs.init({
+                    publicKey: "3BYbJ5FJy04XiS3XP",
+                });
+            })();
+            ////////////////////////////
+            function sendEmail( e ){
+                e.preventDefault();  //무조건 전송기능 막기
+                var templateParams = {
+                    title: document.getElementById("title").value,
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    message: document.getElementById("message").value,
+                };
+
+                emailjs.send('taehun0612', 'template_32mpowz', templateParams).then(
+                (response) => {
+                    alert("메일이 성공적으로 전송됐습니다.");
+                    console.log('SUCCESS!', response.status, response.text);
+                },
+                (error) => {
+                    alert("메일 전송에 실패했습니다.")
+                    console.log('FAILED...', error);
+                },
+                );
+            }
+
+            </script>
+
+
+
+            <form onsubmit="sendEmail(event)">
+                <div class="mb-3 mt-3">
+                    <label for="name" class="form-label">name:</label>
+                    <input type="text" class="form-control" id="name" 
+                          placeholder="이름을 적어주세요!" name="name">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="email" class="form-label">email:</label>
+                    <input type="email" class="form-control" id="email" 
+                          placeholder="이메일을 적어주세요!" name="email">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="title" class="form-label">title:</label>
+                    <input type="text" class="form-control" id="title" 
+                          placeholder="제목을 적어주세요!" name="title">
+                </div>
+                <div class="mb-3">
+                    <label for="message">Comments:</label>
+                    <textarea class="form-control" rows="5" id="message" name="massage"></textarea>            
+                </div>
+                <div class="mb-3 text-end">
+                    <button type="submit" class="btn btn-success">메일보내기</button>
+                </div>
+            </form> 
+        </div><!--end container-->
+      </section>
+    </body>
+  </html>

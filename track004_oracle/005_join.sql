@@ -233,3 +233,42 @@ order by d.deptno, e1.empno;
 
 
 
+
+
+
+
+
+select empno, ename, d.deptno, dname
+from emp e, dept d
+where e.deptno = d.deptno;
+
+select empno, ename, d.deptno, dname
+from emp e join dept d on (e.deptno = d.deptno);
+
+select empno, ename, deptno, dname
+from emp join dept using(deptno);
+
+select empno, ename, deptno, dname
+from emp natural join dept;
+
+
+
+
+select * from dept;
+
+select empno, ename, d.deptno, dname
+from emp e, dept d
+where e.deptno(+) = d.deptno;
+
+select empno, ename, d.deptno, dname
+from emp e right outer join dept d on e.deptno = d.deptno;
+
+select empno, ename, d.deptno, dname
+from dept d left outer join emp e on e.deptno = d.deptno;
+
+select empno, ename, d.deptno, dname
+from emp e full outer join dept d on e.deptno = d.deptno;
+
+
+
+

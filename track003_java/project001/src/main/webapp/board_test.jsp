@@ -16,11 +16,11 @@
    <div class="container card  my-5">
       <h3  class="card-header"> DAO TEST </h3>
       
-      <pre class="alert alert-success">
+     <!--  <pre class="alert alert-success">
       1. insert
       	insert into post (id, app_user_id, title, content, pass)
 		values ( post_seq.nextval, ?, ?, ?, ?)
-      </pre>
+      </pre> -->
 		
 		
 <%-- 		<% 
@@ -31,9 +31,9 @@
 		dto.setContent("내용");
 		dto.setPass("1234");
 		out.println( dao.insert(dto) );
-		%> --%>
+		%>  --%>
 		
-		<pre class="alert alert-success">
+		<%-- <pre class="alert alert-success">
 		2. selectAll
 		
 		select	p.*, u.email  email
@@ -42,6 +42,33 @@
 		<%
 		PostDao dao = new PostDao();
 		out.println(dao.selectAll());
+		%> --%>
+		
+<%-- 		<%PostDao dao = new PostDao();
+		out.println(dao.select(3));
+		%> --%>
+		
+<%-- 		<%PostDao dao = new PostDao();
+		out.println(dao.update_hit(3));
+		%> --%>
+		<%-- <%PostDao dao = new PostDao();
+		PostDto dto = new PostDto();
+		dto.setTitle("4");
+		dto.setContent("hihi");
+		dto.setId(13);
+		dto.setPass("1234");
+		
+		out.println(dao.delete(dto));
+		%> --%>
+		
+		<%PostDao dao = new PostDao();
+		PostDto dto = new PostDto();
+		dto.setTitle("111111111");
+		dto.setContent("2222222222");
+		dto.setId(17);
+		dto.setPass("123");
+		
+		out.println(dao.update(dto));
 		%>
    </div>
 </body>

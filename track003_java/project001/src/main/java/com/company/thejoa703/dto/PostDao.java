@@ -89,8 +89,8 @@ public class PostDao {
 //	3. 글번호 해당하는 글가져오기
  	public PostDto select(int id){
  		PostDto result = new PostDto();
- 		String sql = "select * from post where id=?\r\n";
- 				
+ 		String sql = "select * from post where id=?";
+	
  		// 드 커 프 리
  		Connection conn = null;  PreparedStatement pstmt = null;   ResultSet  rset = null;
 		String driver   = "oracle.jdbc.driver.OracleDriver";
@@ -105,7 +105,18 @@ public class PostDao {
 			conn = DriverManager.getConnection(url, user, pass);
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
 			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				result = new PostDto(
+						rset.getInt("id"), rset.getInt("app_user_id"), rset.getString("title"),
+						rset.getString("content"), rset.getString("pass"), rset.getTimestamp("created_at").toLocalDateTime(),
+						rset.getInt("hit")
+						//, rset.getString("email")
+				);
+				
+			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -135,7 +146,9 @@ public class PostDao {
 			conn = DriverManager.getConnection(url, user, pass);
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
 			
+			if (pstmt.executeUpdate() > 0) { result = 1; }
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -166,6 +179,14 @@ public class PostDao {
 			conn = DriverManager.getConnection(url, user, pass);
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setInt(3, dto.getId());
+			pstmt.setString(4, dto.getPass());
+			
+			if(pstmt.executeUpdate() > 0) { result = 1; }
+			
+			
 			
 			
 		} catch (Exception e) {
@@ -197,7 +218,10 @@ public class PostDao {
 			conn = DriverManager.getConnection(url, user, pass);
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getId());
+			pstmt.setString(2, dto.getPass());
 			
+			if (pstmt.executeUpdate() > 0) {result = 1;}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

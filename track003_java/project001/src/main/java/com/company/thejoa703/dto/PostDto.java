@@ -69,6 +69,12 @@ public class PostDto {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 }
 

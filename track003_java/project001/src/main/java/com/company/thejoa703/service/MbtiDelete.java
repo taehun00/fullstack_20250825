@@ -15,11 +15,24 @@ public class MbtiDelete implements MbtiService {
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//1. 데이터 넘겨받기
+		request.setCharacterEncoding("UTF-8");
+		
+		//String title = request.getParameter("title");
+		//String content = request.getParameter("content");
+		String pass = request.getParameter("pass");
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		PostDao dao = new PostDao();
+		PostDto dto = new PostDto();
+		
+		dto.setId(id);
+		dto.setPass(pass);
+		
+		request.setAttribute("result", dao.delete(dto));
 
-		//2. 드카프리 ( PostDao )
 
-		//3. 데이터 넘겨주기
+
+		
 	}
 
 }

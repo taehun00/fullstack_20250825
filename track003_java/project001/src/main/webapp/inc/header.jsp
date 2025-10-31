@@ -34,6 +34,7 @@
     	<!-- 로그인을 한 경우 -->
    <% String email = (String)session.getAttribute("email"); // session 서버에 저장,	브라우저 닫힐때 / request 1번만 사용
    Integer sid = (Integer)session.getAttribute("APP_USER_ID");
+   
    if(email != null){ %>
       <li class="nav-item center">
         <a class="nav-link" href="<%=request.getContextPath() %>/member/mypage.jsp?APP_USER_ID=<%=sid%>">

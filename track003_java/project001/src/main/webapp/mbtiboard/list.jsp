@@ -28,7 +28,7 @@
       			<tr>
       				<td>${ list.size() - status.index }</td>
       				<td>
-      					<a href="<%=request.getContextPath()%>/detail.do?id=${dto.id}">
+      					<a href="${pageContext.request.contextPath}/detail.do?id=${dto.id}">
       						${dto.title}
       					</a>
       				</td>
@@ -38,7 +38,12 @@
       			</tr>
       		</c:forEach>
       </table>
-	  <p class="text-end"><a href="<%=request.getContextPath() %>/writeView.do" class="btn btn-primary">글쓰기</a></p>	
+      <% if(email != null) {		%>
+	  <p class="text-end"><a href="${pageContext.request.contextPath}/writeView.do" class="btn btn-primary">글쓰기</a></p>	
+	  <% }else{ %>
+		  <p class="alert alert-primary">로그인을 하면 글쓰기 가능합니다.</p>
+	  <% }	%>
    </div>
+   
    
 <%@include file="../inc/footer.jsp" %>

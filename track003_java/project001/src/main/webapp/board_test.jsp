@@ -51,6 +51,7 @@
 <%-- 		<%PostDao dao = new PostDao();
 		out.println(dao.update_hit(3));
 		%> --%>
+		
 		<%-- <%PostDao dao = new PostDao();
 		PostDto dto = new PostDto();
 		dto.setTitle("4");

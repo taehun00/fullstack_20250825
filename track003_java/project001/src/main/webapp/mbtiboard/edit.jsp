@@ -5,11 +5,10 @@
 
    <div class="container card  my-5 p-4">
       <h3 class="card-header"> MBTI 글수정</h3>
-      <form action="<%=request.getContextPath()%>/edit.do" method="post">
-      	<input type="hidden" name="app_user_id" value="">
+      <form action="${pageContext.request.contextPath}/edit.do?id=${dto.id}" method="post">
       	<div class="mb-3 mt-3">
       		<label for="title" class="form-label"> TITLE </label>
-      		<input type="email" class="form-control" id="title" placeholder="내용을 입력해주세요" name="title" value="">
+      		<input type="text" class="form-control" id="title" placeholder="내용을 입력해주세요" name="title" value="${dto.title}">
       	</div>
       	<div class="mb-3">
       		<label for="pass" class="form-label"> PASS </label>
@@ -17,7 +16,7 @@
       	</div>
       	<div class="mb-3">
       		<label for="content" class="form-label"> CONTENT </label>
-      		<textarea class="form-control" id="content" placeholder="내용을 입력해주세요" name="content"></textarea>
+      		<textarea class="form-control" id="content" placeholder="내용을 입력해주세요" name="content">${dto.content}</textarea>
       	</div>
       	<div class="mb-3 text-end">
         	<button type="submit" class="btn btn-primary">글수정</button>

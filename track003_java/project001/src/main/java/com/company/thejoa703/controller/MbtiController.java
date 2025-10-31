@@ -64,6 +64,9 @@ public class MbtiController extends HttpServlet {
 			request.getRequestDispatcher("mbtiboard/list.jsp").forward(request,  response);
 		}else if( path.equals("/writeView.do")) {
 			//□ 	/ 			mbtiBoard/write.jsp
+			
+			
+			
 			request.getRequestDispatcher("mbtiboard/write.jsp").forward(request,  response);
 		}else if( path.equals("/write.do")) {
 			//■  MbtiInsert 	알림창 +  list.do
@@ -81,27 +84,43 @@ public class MbtiController extends HttpServlet {
 		}else if( path.equals("/detail.do")) {
 			//■  MbtiDetail		mbtiBoard/detail.jsp
 			service = new MbtiDetail(); service.exec(request, response);
-			
 			request.getRequestDispatcher("mbtiboard/detail.jsp").forward(request,  response);
+			
 		}else if( path.equals("/editView.do")) {
 			//■  MbtiUpdateView	mbtiBoard/edit.jsp 
 			service = new MbtiUpdateView(); service.exec(request, response);
-			
 			request.getRequestDispatcher("mbtiboard/edit.jsp").forward(request,  response);
+			
 		}else if( path.equals("/edit.do")) {
 			//■  MbtiUpdate		알림창 +  mbtiBoard/detail.jsp 
 			service = new MbtiUpdate(); service.exec(request, response);
 			
-			out.println("<script>alert('수정했습니다.'); location.href='list.do'; </script>");
+			int id = Integer.parseInt(request.getParameter("id"));
+			//String result = (String)request.getAttribute("result");
+			Object resultObj = request.getAttribute("result");
+			String result = String.valueOf(resultObj);
+			if(result.equals("1")) {
+				out.println("<script>alert('수정했습니다.'); location.href='detail.do?id="+id+"'; </script>");
+			}else {
+				out.println("<script>alert('비밀번호를 확인해주세요.'); history.go(-1); </script>");
+			}
+			
 		}else if( path.equals("/deleteView.do")) {
 			//□		/			mbtiBoard/delete.jsp 
-			
 			request.getRequestDispatcher("mbtiboard/delete.jsp").forward(request,  response);
+			
 		}else if( path.equals("/delete.do")) {
 			//■  MbtiDelete		알림창 +  list.do
 			service = new MbtiDelete(); service.exec(request, response);
 			
-			out.println("<script>alert('삭제했습니다.'); location.href='list.do'; </script>");
+			int id = Integer.parseInt(request.getParameter("id"));
+			Object resultObj = request.getAttribute("result");
+			String result = String.valueOf(resultObj);
+			if(result.equals("1")) {
+				out.println("<script>alert('삭제했습니다.'); location.href='list.do?id="+id+"'; </script>");
+			}else {
+				out.println("<script>alert('비밀번호를 확인해주세요.'); history.go(-1); </script>");
+			}
 		}
 	}
 

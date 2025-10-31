@@ -5,7 +5,7 @@
 
    <div class="container card  my-5 p-4">
       <h3 class="card-header"> MBTI 글쓰기</h3>
-      <form action="<%=request.getContextPath()%>/write.do" method="post">
+      <form action="${pageContext.request.contextPath}/write.do" method="post">
       	<input type="hidden" name="app_user_id" value="">
       	<div class="mb-3 mt-3">
       		<label for="title" class="form-label"> TITLE </label>
@@ -21,7 +21,7 @@
       	</div>
         <div class="mb-3 text-end">
         	<button type="submit" class="btn btn-primary">글쓰기</button>
-        	<a href="<%=request.getContextPath() %>/list.do">목록보기</a>
+        	<a href="${pageContext.request.contextPath}/list.do">목록보기</a>
       	</div>
       
       </form>

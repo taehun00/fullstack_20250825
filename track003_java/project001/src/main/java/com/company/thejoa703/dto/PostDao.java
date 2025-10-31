@@ -13,6 +13,7 @@ public class PostDao {
 		int result = -1;
 		String sql =" insert into post (id, app_user_id, title, content, pass) "
 				+ " values ( post_seq.nextval, ?, ?, ?, ?) ";
+				//+ " order by id desc";
 		// 드 커 프 리
 		Connection conn = null;  PreparedStatement pstmt = null;   ResultSet  rset = null;
 		String driver   = "oracle.jdbc.driver.OracleDriver";

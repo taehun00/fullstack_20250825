@@ -1,4 +1,4 @@
-package com.company.java010_bank;
+package com.company.java2025.src.com.company.java010_bank;
 
 import java.util.Scanner;
 

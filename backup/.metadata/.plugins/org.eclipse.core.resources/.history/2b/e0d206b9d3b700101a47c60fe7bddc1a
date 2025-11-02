@@ -1,0 +1,39 @@
+package service;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.user.UserDao;
+import model.user.UserDto;
+
+public class UserLogin implements UserInterface {
+
+	@Override
+	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		UserDao dao = new UserDao();
+		UserDto dto = new UserDto();
+		
+		dto.setEmail(email);
+		dto.setPassword(password);
+		int result = dao.loginCheck(dto);
+		
+		if (result == 1) {
+		    UserDto userInfo = dao.getUserInfoByEmail(email, password); // 사용자 정보 조회
+		    request.setAttribute("dto", userInfo); // ✅ JSP에서 출력할 정보로 넘기기
+		}
+
+		request.setAttribute("result", result);
+
+	}
+
+}

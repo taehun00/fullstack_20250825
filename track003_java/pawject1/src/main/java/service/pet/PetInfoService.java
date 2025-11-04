@@ -19,11 +19,7 @@ public class PetInfoService implements PetInterface {
 		PetDao dao = new PetDao();
 		PetDto dto = dao.getPetByUserId(userid);
 		
-		if (dto == null) {
-		    System.out.println("PetInfoService: dto is null for userid = " + userid);
-		} else {
-		    System.out.println("PetInfoService: dto loaded = " + dto.getPetname());
-		}
+
 		
 		request.setAttribute("dto", dto);
 	}

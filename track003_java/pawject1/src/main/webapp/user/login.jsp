@@ -5,7 +5,7 @@
 
 <div class="container mt-5">
 	<h3> 로그인 </h3>
-	<form action="${pageContext.request.contextPath}/login.user" method="post">
+	<form action="${pageContext.request.contextPath}/login.u" method="post">
 
 	  <div class="mb-3 mt-3">
 	    <label for="email" class="form-label">Email:</label>
@@ -20,7 +20,7 @@
 	</form>
 	
 	<div class="mt-3">
-		<a href="${pageContext.request.contextPath}/user/signup.jsp" class="btn btn-outline-secondary">회원가입</a>
+		<a href="${pageContext.request.contextPath}/joinView.u" class="btn btn-outline-secondary">회원가입</a>
 	</div>
 	
 </div>

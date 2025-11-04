@@ -27,7 +27,7 @@
 
     <div class="mt-4 text-end">
     	<a href="${pageContext.request.contextPath}/petinfo.pet?userid=${dto.userid}" class="btn btn-success">펫정보</a>
-        <a href="<%= request.getContextPath() %>/logout.user" class="btn btn-outline-danger">로그아웃</a>
+        <a href="<%= request.getContextPath() %>/logout.u" class="btn btn-outline-danger">로그아웃</a>
     </div>
 </div>
 

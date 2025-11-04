@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ include file="../inc/header.jsp" %>
 
 <div class="container card my-5 p-4">
@@ -20,15 +19,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>${dto.petid}</td>
-                <td>${dto.userid}</td>
-                <td>${dto.petname}</td>
-                <td>${dto.petbreed}</td>
-                <td>${dto.birthdate}</td>
-                <td>${dto.pettypeid}</td>
-                <td>${dto.createdat}</td>
-            </tr>
+        	<c:forEach var="pet" items="${dtoList}">
+	            <tr>
+	                <td>${pet.petid}</td>
+	                <td>${dto.userid}</td>
+	                <td>${dto.petname}</td>
+	                <td>${dto.petbreed}</td>
+	                <td>${dto.birthdate}</td>
+	                <td>${dto.pettypeid}</td>
+	                <td>${dto.createdat}</td>
+	            </tr>
+            </c:forEach>
         </tbody>
     </table>
 

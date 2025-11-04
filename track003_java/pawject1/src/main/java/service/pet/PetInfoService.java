@@ -1,6 +1,7 @@
 package service.pet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,12 +17,13 @@ public class PetInfoService implements PetInterface {
 		request.setCharacterEncoding("UTF-8");
 		
 		int userid = Integer.parseInt(request.getParameter("userid"));
+		
 		PetDao dao = new PetDao();
-		PetDto dto = dao.getPetByUserId(userid);
+		List<PetDto> dtoList = dao.getPetsByUserId(userid);
 		
 
 		
-		request.setAttribute("dto", dto);
+		request.setAttribute("dtoList", dtoList);
 	}
 
 }

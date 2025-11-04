@@ -5,7 +5,7 @@
 
 <div class="container mt-5">
     <h3> 회원가입 </h3>
-    <form action="${pageContext.request.contextPath}/signup.user" method="post">
+    <form action="${pageContext.request.contextPath}/join.u" method="post">
         <div class="mb-3 mt-3">
             <label for="email" class="form-label">Email:</label>
             <input type="email" class="form-control" id="email" required placeholder="Enter email" name="email">
@@ -20,7 +20,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">회원가입</button>
-        <a href="${pageContext.request.contextPath}/user/login.jsp" class="btn btn-outline-secondary ms-2">로그인으로 돌아가기</a>
+        <a href="${pageContext.request.contextPath}/loginView.u" class="btn btn-outline-secondary ms-2">로그인으로 돌아가기</a>
     </form>
 </div>
 

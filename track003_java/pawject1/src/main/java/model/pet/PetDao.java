@@ -5,10 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PetDao {
-	public PetDto getPetByUserId(int userid) {
-		PetDto result = null;
+	public List<PetDto> getPetsByUserId(int userid) {
+	    List<PetDto> resultList = new ArrayList<>();
 		String sql = "SELECT * FROM pet WHERE userid = ?";
 		
 		Connection conn = null;  PreparedStatement pstmt = null;   ResultSet  rset = null;
@@ -27,21 +29,20 @@ public class PetDao {
 			
 			rset = pstmt.executeQuery();
 			
-			if(rset.next()) {
-				result = new PetDto();
-				result.setPetid(rset.getInt("petid"));
-				result.setUserid(rset.getInt("userid"));
-				result.setPetname(rset.getString("petname"));
-				result.setPetbreed(rset.getString("petbreed"));
-				result.setBirthdate(rset.getString("birthdate"));
+			while (rset.next()) {
+				PetDto dto = new PetDto();
+	            dto.setPetid(rset.getInt("petid"));
+	            dto.setUserid(rset.getInt("userid"));
+	            dto.setPetname(rset.getString("petname"));
+	            dto.setPetbreed(rset.getString("petbreed"));
+	            dto.setBirthdate(rset.getString("birthdate"));
+	            dto.setPettypeid(rset.getInt("pettypeid"));
+	            dto.setCreatedat(rset.getTimestamp("createdat").toLocalDateTime());
 
-				result.setPettypeid(rset.getInt("pettypeid"));
-				result.setCreatedat(rset.getTimestamp("createdat").toLocalDateTime());
-				
-				System.out.println("[PetDao] 펫 정보 로딩 완료: " + result.getPetname());
-			} else {
-			    System.out.println("[PetDao] rset.next() 실패 → result는 null");
+	            resultList.add(dto);
 			}
+			System.out.println("[PetDao] 펫 정보 로딩 완료: " + resultList.size() + "마리");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,7 +52,7 @@ public class PetDao {
 			if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
 		}
 		
-		return result;
+		return resultList;
 	}
 	
 	

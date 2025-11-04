@@ -10,29 +10,30 @@ import javax.servlet.http.HttpSession;
 import model.user.UserDao;
 import model.user.UserDto;
 
-
-public class UserLogin implements UserInterface {
+public class UserTitle implements UserInterface {
 
 	@Override
 	public void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String email = (String) session.getAttribute("email");
 		
 		UserDao dao = new UserDao();
-		UserDto dto = new UserDto();
+		UserDto result = dao.getUserInfoByEmail(email);
 		
-		dto.setEmail(email);
-		dto.setPassword(password);
-		int result = dao.loginCheck(dto);
-		HttpSession  session = request.getSession(); 
+		request.setAttribute("dto", result);
 		
-		session.setAttribute("email", email);
-
-		request.setAttribute("result", result);
-
+		//UserDao dao = new UserDao();
+		//UserDto dto = new UserDto();
+		
+		//dto.setEmail(email);
+		//dto.setPassword(password);
+		
+		
+		
+		//request.setAttribute("dto", dao.getUserInfoByEmail(email, password));
 	}
 
 }

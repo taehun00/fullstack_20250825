@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import model.user.UserDto;
 
@@ -44,6 +45,8 @@ public class UserDao {
 		return result;
 	}
 
+
+	
 	public int loginCheck(UserDto dto) {
 		int result = 0;
 		String sql = "SELECT COUNT(*) FROM users WHERE email=? AND password=?";
@@ -86,10 +89,10 @@ public class UserDao {
 		
 	}
 
-	public UserDto getUserInfoByEmail(String email, String password) {
+	public UserDto getUserInfoByEmail(String email) {
 		UserDto result = null;
 		//UserDto result = new UserDto();
-		String sql = "select userid, email, nickname, createdat from users where email=? and password=?";
+		String sql = "select userid, email, nickname, createdat from users where email=?";
 	
 		Connection conn = null;  PreparedStatement pstmt = null;   ResultSet  rset = null;
 		String driver   = "oracle.jdbc.driver.OracleDriver";
@@ -104,7 +107,6 @@ public class UserDao {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, email);
-			pstmt.setString(2, password);
 			
 			rset = pstmt.executeQuery();
 			
@@ -135,6 +137,43 @@ public class UserDao {
 			if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
 		}
 		return result;
+	}
+	
+	public int deleteUser(UserDto dto) {
+		int result = 0;
+		String sql = "delete from users where email = ? and userpass = ?";
+
+		Connection conn = null;  PreparedStatement pstmt = null;   ResultSet  rset = null;
+		String driver   = "oracle.jdbc.driver.OracleDriver";
+		String url      = "jdbc:oracle:thin:@localhost:1521:xe";
+		String user     = "system"; 
+		String pass = "1234";
+		
+		try {
+			Class.forName(driver);
+			
+			conn = DriverManager.getConnection(url, user, pass);
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getEmail());
+			pstmt.setString(2, dto.getPassword());
+			
+			
+			if (pstmt.executeUpdate() > 0) result = 1;;
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(rset != null) try { rset.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if(pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+		}
+		return result;
+		
+		
+		
 	}
 
 }

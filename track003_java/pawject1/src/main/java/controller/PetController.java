@@ -36,22 +36,20 @@ public class PetController extends HttpServlet {
 	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 	    response.setContentType("text/html; charset=UTF-8");
-	    PrintWriter out = response.getWriter();
+	    //PrintWriter out = response.getWriter();
 	    String path = request.getServletPath();
 	    
 	    PetInterface service = null;
 	    
 	    
-	    if(path.equals("/petinfo.pet")) {
-	    	service = new PetInfoService();
-	    	service.exec(request, response);
-	    	
-	    	//int userid = Integer.parseInt(request.getParameter("userid"));
-	    	
-	    	//request.getRequestDispatcher("pet/info?userid=" + userid).forward(request, response);
-	    	
-	    	request.getRequestDispatcher("pet/petinfo.jsp").forward(request, response);
-	    }
+		/*
+		 * if(path.equals("/petinfo.pet")) { service = new PetInfoService();
+		 * service.exec(request, response);
+		 * 
+		 * 
+		 * 
+		 * request.getRequestDispatcher("pet/petinfo.jsp").forward(request, response); }
+		 */
 		
 	}
 }

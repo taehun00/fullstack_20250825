@@ -20,7 +20,6 @@ public class PetInfoService implements PetInterface {
 		
 		PetDao dao = new PetDao();
 		List<PetDto> dtoList = dao.getPetsByUserId(userid);
-		
 
 		
 		request.setAttribute("dtoList", dtoList);

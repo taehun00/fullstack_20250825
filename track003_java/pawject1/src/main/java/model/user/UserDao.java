@@ -159,7 +159,7 @@ public class UserDao {
 			pstmt.setString(2, dto.getPassword());
 			
 			
-			if (pstmt.executeUpdate() > 0) result = 1;;
+			if (pstmt.executeUpdate() > 0) result = 1;
 			
 			
 		} catch (Exception e) {

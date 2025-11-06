@@ -22,12 +22,12 @@
         	<c:forEach var="pet" items="${dtoList}">
 	            <tr>
 	                <td>${pet.petid}</td>
-	                <td>${dto.userid}</td>
-	                <td>${dto.petname}</td>
-	                <td>${dto.petbreed}</td>
-	                <td>${dto.birthdate}</td>
-	                <td>${dto.pettypeid}</td>
-	                <td>${dto.createdat}</td>
+	                <td>${pet.userid}</td>
+	                <td>${pet.petname}</td>
+	                <td>${pet.petbreed}</td>
+	                <td>${pet.birthdate}</td>
+	                <td>${pet.pettypeid}</td>
+	                <td>${pet.createdat}</td>
 	            </tr>
             </c:forEach>
         </tbody>

@@ -21,13 +21,9 @@ public class UserLogout implements UserInterface {
 		HttpSession session = request.getSession();
 		
 		
-		
 		session.invalidate();
 		
 
-		
-		
-		
 		out.println("<script>alert('로그아웃 성공'); location.href='loginView.u';</script>");
 	}
 

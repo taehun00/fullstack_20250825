@@ -88,55 +88,7 @@ public class UserController extends HttpServlet {
 	    	//out.println("<script> location.href='loginView.u'; </script>");
 	    	
 	    }
-	    
-	    
-	    
-	    
-	    
-	    
-		/*
-		 * if(path.equals("/signup.user")) { service = new UserJoin(); // UserJoin 클래스
-		 * 실행 service.exec(request, response); // 처리
-		 * 
-		 * // 결과 꺼내기 Object resultObj = request.getAttribute("dto"); String result =
-		 * String.valueOf(resultObj);
-		 * 
-		 * if (result.equals("1")) {
-		 * out.println("<script>alert('회원가입 성공!'); location.href='login.do';</script>");
-		 * } else { out.
-		 * println("<script>alert('회원가입 실패! 관리자에게 문의하세요.'); history.go(-1);</script>");
-		 * }
-		 * 
-		 * } else if (path.equals("/loginView.user")) {
-		 * request.getRequestDispatcher("user/home.jsp").forward(request, response);
-		 * 
-		 * } else if (path.equals("/login.user")) { service = new UserLogin();
-		 * service.exec(request, response);
-		 * 
-		 * 
-		 * Object resultObj = request.getAttribute("result"); String result =
-		 * String.valueOf(resultObj);
-		 * 
-		 * if (result.equals("1")) {
-		 * out.println("<script>alert('로그인 성공!'); location.href='home.user';</script>");
-		 * //request.getRequestDispatcher("user/home.jsp").forward(request, response);
-		 * // 로그인 성공 → 홈으로 이동 } else { out.
-		 * println("<script>alert('로그인 실패! 이메일 또는 비밀번호를 확인하세요.'); history.go(-1);</script>"
-		 * ); }
-		 * 
-		 * } else if (path.equals("/home.user")) { service = new UserHome();
-		 * service.exec(request, response);
-		 * 
-		 * 
-		 * 
-		 * request.getRequestDispatcher("user/home.jsp").forward(request, response);
-		 * 
-		 * } else if (path.equals("/logout.user")){ service = new UserLogout();
-		 * service.exec(request, response);
-		 * 
-		 * 
-		 * }
-		 */
+
 
 	
 	}

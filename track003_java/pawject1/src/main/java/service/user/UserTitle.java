@@ -23,17 +23,9 @@ public class UserTitle implements UserInterface {
 		UserDao dao = new UserDao();
 		UserDto result = dao.getUserInfoByEmail(email);
 		
+		
+		
 		request.setAttribute("dto", result);
-		
-		//UserDao dao = new UserDao();
-		//UserDto dto = new UserDto();
-		
-		//dto.setEmail(email);
-		//dto.setPassword(password);
-		
-		
-		
-		//request.setAttribute("dto", dao.getUserInfoByEmail(email, password));
 	}
 
 }

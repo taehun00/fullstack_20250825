@@ -27,10 +27,12 @@ public class UserLogin implements UserInterface {
 		dto.setEmail(email);
 		dto.setPassword(password);
 		int result = dao.loginCheck(dto);
+		
 		HttpSession  session = request.getSession(); 
 		
 		session.setAttribute("email", email);
-
+		// session.setAttribute("userid", result.getUserid());
+		
 		request.setAttribute("result", result);
 
 	}

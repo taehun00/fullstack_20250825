@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.pet.PetInfoService;
 import service.pet.PetInterface;
-import service.user.UserInterface;
 
 /**
  * Servlet implementation class PetController
@@ -36,20 +35,48 @@ public class PetController extends HttpServlet {
 	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 	    response.setContentType("text/html; charset=UTF-8");
-	    //PrintWriter out = response.getWriter();
+	    PrintWriter out = response.getWriter();
 	    String path = request.getServletPath();
 	    
 	    PetInterface service = null;
 	    
 	    
-		/*
-		 * if(path.equals("/petinfo.pet")) { service = new PetInfoService();
-		 * service.exec(request, response);
-		 * 
-		 * 
-		 * 
-		 * request.getRequestDispatcher("pet/petinfo.jsp").forward(request, response); }
-		 */
+		
+		 if(path.equals("/petinfo.pet")) {
+		 service = new PetInfoService();
+		 service.exec(request, response);
+		 
+		 request.getRequestDispatcher("pet/petinfo.jsp").forward(request, response); 
+		 
+		 }else if(path.equals("/petaddView.pet")){
+			 
+			 request.getRequestDispatcher("pet/petadd.jsp").forward(request, response);
+			 
+		 }else if(path.equals("/petadd.pet")){
+			 //service = new PetAdd();
+			 //service.exec(request, response);
+			 
+			 out.println("<script>alert('반려동물 추가완료'); location.href='petinfo.pet'; </script>");
+		 }else if(path.equals("petupdateView.pet")) {
+			 
+			 request.getRequestDispatcher("pet/petupdate.jsp").forward(request, response);
+		 }else if(path.equals("petupdate.pet")) {
+			 //service = new PetUpdate();
+			 //service.exec(request, response);
+			 
+			 out.println("<script>alert('반려동물 수정완료'); location.href='petinfo.pet'; </script>");
+		 }else if(path.equals("petdeleteView.pet")) {
+			 
+			 request.getRequestDispatcher("pet/petdelete.jsp").forward(request, response);
+			 
+		 }else if(path.equals("petdelete.pet")) {
+			//service = new PetDelete();
+			//service.exec(request, response);
+			 
+			 out.println("<script>alert('반려동물 삭제완료'); location.href='petinfo.pet'; </script>");
+		 }
+		 
+		 
 		
 	}
 }

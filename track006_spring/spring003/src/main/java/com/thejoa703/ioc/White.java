@@ -1,0 +1,14 @@
+package com.thejoa703.ioc;
+
+import org.springframework.stereotype.Component;
+
+@Component("white")
+public class White implements IceCream {
+
+	@Override
+	public void taste() {
+		// TODO Auto-generated method stub
+		System.out.println("바닐라 아이스크림은 부드럽고 달콤해요!");
+	}
+
+}

@@ -284,3 +284,44 @@ select * from exerciseinfo;
 
 commit;
 
+create table userinfo(
+    no number not null primary key,
+    email varchar2(100) not null unique,
+    age number
+);
+
+create sequence userinfo_seq;
+
+insert into userinfo values (userinfo_seq.NEXTVAL, 'iis07007@naver.com', 26);
+
+select * from userinfo order by no desc;
+
+select * from userinfo where no=24;
+
+update userinfo set age = 27 where no = 1;
+
+delete from userinfo where no = 1;
+
+
+create table milk(
+    mno number not null primary key,
+    mname varchar2(100) not null,
+    mnum number not null,
+    mtotal number
+);
+
+create sequence milk_seq;
+
+desc milk;
+
+insert into milk values (milk_seq.NEXTVAL, '서울우유', 101, 1001);
+
+select * from milk;
+
+select * from milk where mno=1;
+
+update milk set mname = '서울우유1', mnum = 102 where mno = 1;
+
+delete from milk where mno = 1;
+
+commit;

@@ -325,3 +325,40 @@ update milk set mname = '서울우유1', mnum = 102 where mno = 1;
 delete from milk where mno = 1;
 
 commit;
+
+
+
+CREATE TABLE sboard1 (
+  ID           NUMBER          NOT NULL,
+  APP_USER_ID  NUMBER          NOT NULL,
+  BTITLE       VARCHAR2(1000)  NOT NULL,
+  BCONTENT     CLOB            NOT NULL,
+  BPASS        VARCHAR2(255)   NOT NULL,
+  BFILE        VARCHAR2(255),
+  BHIT         NUMBER(10),
+  BIP          VARCHAR2(255)   NOT NULL,
+  CREATE_AT    TIMESTAMP(6)
+);
+create sequence sboard1_seq;
+
+INSERT INTO sboard1 (
+  ID, APP_USER_ID, BTITLE, BCONTENT, BPASS, BFILE, BHIT, BIP, CREATE_AT
+) VALUES (
+  sboard1_seq.NEXTVAL, 1001, '첫 번째 게시글', '내용입니다', '1234', 'file.jpg', 0, '192.168.0.1', SYSTIMESTAMP
+);
+
+SELECT * FROM sboard1;
+
+SELECT * FROM sboard1 WHERE ID = 1;
+
+UPDATE sboard1
+SET BTITLE = '수정된 제목',
+    BCONTENT = '수정된 내용',
+    BFILE = null,
+    CREATE_AT = SYSTIMESTAMP
+WHERE ID = 1;
+
+
+DELETE FROM sboard1 WHERE ID = 1;
+
+desc sboard1;

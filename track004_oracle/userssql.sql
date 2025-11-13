@@ -352,13 +352,18 @@ SELECT * FROM sboard1;
 SELECT * FROM sboard1 WHERE ID = 1;
 
 UPDATE sboard1
-SET BTITLE = '수정된 제목',
-    BCONTENT = '수정된 내용',
+SET BTITLE = '게시글3',
+    BCONTENT = '내용3',
     BFILE = null,
     CREATE_AT = SYSTIMESTAMP
-WHERE ID = 1;
+WHERE ID = 3;
 
 
 DELETE FROM sboard1 WHERE ID = 1;
 
 desc sboard1;
+commit;
+
+update sboard1
+  	set bhit = bhit + 1
+    where id = 4;

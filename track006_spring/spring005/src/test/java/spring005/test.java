@@ -64,18 +64,22 @@ public class test {
 	   dto.setId(6); dto.setBpass("123");
 	   System.out.println(dao.delete(dto));
    }
-   @Ignore
+   @Test
    public void test9() throws UnknownHostException{
 	   Sboard1Dto dto = new Sboard1Dto();
 	   dto.setAppUserId(1001);
-   		dto.setBtitle("게시글11"); dto.setBcontent("내용11");
+   		dto.setBtitle("게시글25"); dto.setBcontent("내용25");
    		dto.setBpass("123");
 	   System.out.println(service.insert(dto));
    }
-   @Test
+   @Ignore
    public void test10() {
 	   
-	   System.out.println(service.select(4));
+	   int updated = dao.updateHit(24);
+	    System.out.println("update count = " + updated);
+
+	   System.out.println(service.select(24));
+	   
 	   
    }
    

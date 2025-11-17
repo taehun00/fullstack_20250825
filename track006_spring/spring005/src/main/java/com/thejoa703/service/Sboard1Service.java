@@ -11,5 +11,7 @@ public interface Sboard1Service {
 	public int update(Sboard1Dto dto);//기능
 	public int delete(Sboard1Dto dto);//기능
 	public Sboard1Dto selectUpdateForm(int id);
-	public int updateHit(int id);
+
 }
+
+

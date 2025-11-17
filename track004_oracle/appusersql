@@ -1,0 +1,25 @@
+create table appuser(
+    APP_USER_ID NUMBER(5) NOT NULL,
+    EMAIL       VARCHAR2(100) NOT NULL,
+    PASSWORD    VARCHAR2(100),
+    MBTI_TYPE_ID    NUMBER(3),
+    CREATED_AT  DATE DEFAULT SYSDATE,
+    CONSTRAINT pk_appuser PRIMARY KEY (APP_USER_ID)
+);
+
+create sequence appuser_seq;
+
+desc appuser;
+
+select * from appuser;
+
+insert into appuser values (1, 'iis1@naver.com', '123', 1, SYSDATE);
+update appuser
+set password = '1234'
+where app_user_id=1 and password='123';
+select * from appuser where app_user_id=1;
+
+
+delete from appuser where app_user_id=26;
+
+commit;

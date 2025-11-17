@@ -50,10 +50,6 @@ public class Sboard1ServiceImpl implements Sboard1Service {
 
 
 	
-	public int updateHit(int id) {
-		return 0;
-	}
-	
 
 	
 }

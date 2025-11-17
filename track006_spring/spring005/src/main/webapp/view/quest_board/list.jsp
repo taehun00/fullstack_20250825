@@ -21,6 +21,7 @@
       	<caption>mbti </caption>
       	<thead>
       		<tr>
+      			<th scope="col">DTO</th>
       			<th scope="col">NO</th>
       			<th scope="col">TITLE</th>
       			<th scope="col">NAME</th>
@@ -28,10 +29,21 @@
       			<th scope="col">HIT</th>
       		</tr>	
       	</thead>
-      	<tbody> 
-	  		<tr><td>${list}</td></tr>
-	  		<tr><td><a href="${pageContext.request.contextPath }/detail.quest?id=23">detail</a></td></tr>
+      	<tbody>
+      		<c:forEach var="dto" items="${list}" varStatus="status">
+      			<tr>
+      				<td>${dto}</td>
+      				<td>${list.size()-status.index}</td>
+      				<td><a href="${pageContext.request.contextPath }/detail.quest?id=${dto.id}">
+      					${dto.btitle}
+      				</td>
+      				<td>${dto.appUserId}</td>
+      				<td>${dto.createAt}</td>
+      				<td>${dto.bhit}</td>
+      			</tr>
+      		</c:forEach>
       	</tbody>
+
       </table> 
 		<p class="text-end">
 			<a href="${pageContext.request.contextPath}/write.quest" class="btn btn-primary">글쓰기</a>

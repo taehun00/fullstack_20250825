@@ -349,7 +349,7 @@ INSERT INTO sboard1 (
 
 SELECT * FROM sboard1;
 
-SELECT * FROM sboard1 WHERE ID = 1;
+SELECT * FROM sboard1 WHERE ID = 25;
 
 UPDATE sboard1
 SET BTITLE = '게시글3',
@@ -367,3 +367,15 @@ commit;
 update sboard1
   	set bhit = bhit + 1
     where id = 4;
+    
+    
+alter table sboard1 modify bhit default 0;
+alter table sboard1 modify create_at default systimestamp;
+select id, bhit from sboard1 where id=24;
+update sboard1 set bhit = 0 where bhit is null;
+ALTER TABLE sboard1 
+MODIFY create_at DEFAULT SYSTIMESTAMP;
+UPDATE sboard1 
+SET create_at = SYSTIMESTAMP 
+WHERE create_at IS NULL;
+delete from sboard1 where id = 24;

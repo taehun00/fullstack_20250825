@@ -3,6 +3,7 @@ package com.thejoa703.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +33,13 @@ public class UserController {
 	public String join_post(AppUserDto dto, RedirectAttributes rttr) {
 		String result = "회원가입 실패";
 		
-		if(service.insert(dto) > 0) {result = "회원가입 성공";}
+		if(service.join(dto.getEmail()) == 0) {
+			if(service.insert(dto) > 0)
+
+			result = "회원가입 성공";
+		}
+		
+
 		rttr.addFlashAttribute("success", result);
 		return "redirect:/login.users";
 	}
@@ -47,42 +54,64 @@ public class UserController {
 	public String login_post(AppUserDto dto, RedirectAttributes rttr, HttpSession session) {
 		String result = "로그인 실패";
 				
-		if(service.login(dto) !=null) {
-		result = "로그인 성공";
-		session.setAttribute("loginUser", service.login(dto));
-		
+		AppUserDto loginUser = service.login(dto);
+		if(loginUser != null) {
+		    result = "로그인 성공";
+		    session.setAttribute("loginUser", loginUser);
+		    rttr.addFlashAttribute("success", result);
+		    return "redirect:/mypage.users";
+		} else {
+		    rttr.addFlashAttribute("success", result);
+		    return "redirect:/login.users";
 		}
-		
-		//rttr.addFlashAttribute("userlist", service.login(dto));
-		rttr.addFlashAttribute("success", result);
-		
-		return "redirect:/mypage.users";
-		
+
 	}
 	
 	@RequestMapping("mypage.users")
 	public String mypage(HttpSession session, Model model) {
-		AppUserDto dto = (AppUserDto) session.getAttribute("loginUser");
+		AppUserDto loginUser = (AppUserDto) session.getAttribute("loginUser");
+		//DB에서 최신데이터 조회 코드
+		AppUserDto dto = service.select(loginUser.getAppUserId());
 		model.addAttribute("user", dto);
 		
 		return "member/mypage";
 	}
 	
 	@RequestMapping(value="/edit.users", method= RequestMethod.GET)
-	public String edit_get() {
+	public String edit_get(int id, Model model) {
+		model.addAttribute("dto", service.select(id));
 		
 		return "member/edit";
 	}
 	
 	@RequestMapping(value="/edit.users", method= RequestMethod.POST)
-	public String edit_post() {
+	public String edit_post(AppUserDto dto, RedirectAttributes rttr) {
+		String result = "수정 실패";
 		
-		return "redirect:/mypage.users";
+		if(service.update(dto)>0) {
+			result = "수정 성공";
+		}
+		
+		rttr.addFlashAttribute("success", result);
+		
+		return "redirect:/mypage.users?id=" + dto.getAppUserId();
 	}
 	
-	@RequestMapping("delete.users")
-	public String delete() {
+	@RequestMapping(value= "/delete.users", method= RequestMethod.GET)
+	public String delete(AppUserDto dto, Model model) {
+		model.addAttribute("dto", dto);
 		
+		return "member/delete";
+	}
+	@RequestMapping(value= "/delete.users", method= RequestMethod.POST)
+	public String delete(AppUserDto dto, RedirectAttributes rttr) {
+		String result = "삭제 실패";
+		
+		if(service.delete(dto)>0) {
+			result="삭제 성공";
+		}
+		
+		rttr.addFlashAttribute("success", result);
 		return "redirect:/list.users";
 	}
 	

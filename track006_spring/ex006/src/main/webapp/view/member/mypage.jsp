@@ -21,7 +21,16 @@ $(function(){
 			</tbody>
 		</table>
 		<!-- mvc1 - 코드가 뒤죽박죽 - 스파게티 코드라고해요~! -->
+		
+		<div class="mb-3">
+			<a href="${pageContext.request.contextPath}/edit.users?id=${user.appUserId}" class="btn btn-success form-control">수정</a>
+		</div>
+		<div class="mb-3">
+			<a href="${pageContext.request.contextPath}/delete.users?id=${user.appUserId}" class="btn btn-secondary form-control">삭제</a>
+		</div> 
 	</div>
+	
+	
 	
 <%@ include file="../inc/footer.jsp" %>
 

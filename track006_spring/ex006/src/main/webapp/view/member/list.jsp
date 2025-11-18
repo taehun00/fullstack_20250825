@@ -2,6 +2,15 @@
     pageEncoding="UTF-8"%>
     
 <%@include file="../inc/header.jsp" %>
+
+<script>
+$(function(){
+	let result = '${success}';
+	
+	if(result == "삭제 실패"){ alert(result); location.href='list.users'; }
+	else if(result.length !=0 ){ alert(result); }
+});
+</script>
    <div class="container card  my-5 p-4">
       <h3 class="card-header"> MBTI QUEST BOARD</h3>  
       <table class="table table-striped table-bordered table-hover">

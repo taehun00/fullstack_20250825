@@ -10,7 +10,7 @@ public interface AppUserService {
 	public int delete(AppUserDto dto);
 	public AppUserDto select(int id);
 	public List<AppUserDto> selectAll();
-	
+	public int join(String email);
 	public AppUserDto login(AppUserDto dto);
 
 }

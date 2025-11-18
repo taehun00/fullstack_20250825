@@ -31,6 +31,10 @@ public class AppUserServiceImpl implements AppUserService {
 	}
 
 	
+	public int join(String email) {
+		return dao.join(email);
+	}
+
 	public List<AppUserDto> selectAll() {
 		return dao.selectAll();
 	}

@@ -16,4 +16,5 @@ public class AppUserDto {
 	private String password;
 	private int mbtiTypeId;
 	private Date createdAt;
+	private String ufile;
 }

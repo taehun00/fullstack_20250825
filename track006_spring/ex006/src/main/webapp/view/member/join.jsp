@@ -5,7 +5,8 @@
 <!-- 	header		 --> 
 <div class="container mt-5">
 	<h3>WELCOME! 회원가입</h3>
-	<form action=""  method="post">
+	<form action="${pageContext.request.contextPath}/join.users"  
+		  method="post" encType="multipart/form-data">
 		<div class="mb-3 mt-3">
 			<label  for="email" class="form-label">Email:</label> 
 			<input  type="email" class="form-control" id="email"
@@ -24,6 +25,10 @@
 				<option value="3">INFJ</option>
 			</select>
 			
+		</div>
+		<div class="mb-3">
+		    <label for="file" class="form-label">FILE:</label>
+		    <input type="file" class="form-control" id="file" placeholder="파일을 입력해주세요" name="file">
 		</div>
 		<button type="submit" class="btn btn-primary">회원가입</button>
 	</form>

@@ -14,4 +14,6 @@ public interface AppUserDao {
 	public int join(String email);
 	public AppUserDto login(AppUserDto dto);
 
+	public int insert2(AppUserDto dto);
+	public int update2(AppUserDto dto);
 }

@@ -20,6 +20,10 @@ $(function(){
 				<tr> <th scope="row">회원가입날짜</th>    <td>${user.createdAt } </td></tr>
 			</tbody>
 		</table>
+		<div class="mb-3">
+		    <label for="ufile" class="form-label">File:</label>
+		    <img src="${pageContext.request.contextPath}/upload/${user.ufile}" alt=""/>
+		</div>
 		<!-- mvc1 - 코드가 뒤죽박죽 - 스파게티 코드라고해요~! -->
 		
 		<div class="mb-3">

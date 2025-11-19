@@ -1,6 +1,8 @@
 package spring005;
 
 import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -64,7 +66,7 @@ public class test {
 	   dto.setId(6); dto.setBpass("123");
 	   System.out.println(dao.delete(dto));
    }
-   @Test
+   @Ignore
    public void test9() throws UnknownHostException{
 	   Sboard1Dto dto = new Sboard1Dto();
 	   dto.setAppUserId(1001);
@@ -81,6 +83,14 @@ public class test {
 	   System.out.println(service.select(24));
 	   
 	   
+   }
+   
+   @Test
+   public void test11() {
+	   HashMap<String, String> para = new HashMap<>();
+	   para.put("search", "%글%");
+	   
+	   System.out.println(dao.selectSearch(para));
    }
    
 }

@@ -20,6 +20,10 @@
   	insert into sboard1 (id,app_user_id,btitle,bcontent,bpass,bip)
   	values (sboard1_seq.NEXTVAL, #{appUserId}, #{btitle}, #{bcontent}, #{bpass}, #{bip})
   </insert>
+  <insert id="insert2" parameterType="com.thejoa703.dto.Sboard1Dto">
+  	insert into sboard1 (id,app_user_id,btitle,bcontent,bpass,bfile,bip)
+  	values (sboard1_seq.NEXTVAL, #{appUserId}, #{btitle}, #{bcontent}, #{bpass}, #{bfile}, #{bip})
+  </insert>
   <select resultMap="Sboard1Map" id="selectAll"><!-- resultType="Sboard1Dto" -->
   	select * from sboard1
   </select>
@@ -31,6 +35,13 @@
   	set btitle=#{btitle}, bcontent=#{bcontent}
   	where id=#{id} and bpass=#{bpass}
   </update>
+  
+  <update id="update2" parameterType="com.thejoa703.dto.Sboard1Dto">
+  	update sboard1
+  	set btitle=#{btitle}, bcontent=#{bcontent}, bfile=#{bfile}
+  	where id=#{id} and bpass=#{bpass}
+  </update>
+  
   <update id="updateHit" parameterType="int">
   	update sboard1
   	set bhit = bhit + 1
@@ -39,4 +50,8 @@
   <delete id="delete" parameterType="com.thejoa703.dto.Sboard1Dto">
   	delete from sboard1 where id=#{id} and bpass=#{bpass}
   </delete>
+  <!-- ajax - search -->
+  <select resultMap = "Sboard1Map" id="selectSearch" parameterType="java.util.HashMap">
+  	select * from sboard1 where btitle like #{search}
+  </select>
 </mapper>

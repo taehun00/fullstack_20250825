@@ -10,6 +10,7 @@
 		<result property="password" column="password"/>
 		<result property="mbtiTypeId" column="mbti_type_id"/>
 		<result property="createdAt" column="created_at"/>
+		<result property="ufile" column="ufile"/>
 	</resultMap>
 
 	<insert	id="insert" parameterType="com.thejoa703.dto.AppUserDto">
@@ -17,11 +18,21 @@
 		
 		values (appuser_seq.NEXTVAL, #{email}, #{password}, #{mbtiTypeId})
 	</insert>
+	<insert id="insert2" parameterType="com.thejoa703.dto.AppUserDto">
+	  	insert into appuser (app_user_id, email, password, mbti_type_id, ufile)
+		
+		values (appuser_seq.NEXTVAL, #{email}, #{password}, #{mbtiTypeId}, #{ufile})
+    </insert>
 	<update id="update" parameterType="com.thejoa703.dto.AppUserDto">
 		update appuser
 		set email=#{email}, password=#{password}, mbti_type_id=#{mbtiTypeId}
 		where app_user_id = #{appUserId}
 	</update>
+	<update id="update2" parameterType="com.thejoa703.dto.AppUserDto">
+	  	update appuser
+		set email=#{email}, password=#{password}, mbti_type_id=#{mbtiTypeId}, ufile=#{ufile}
+		where app_user_id = #{appUserId}
+    </update>
 	<delete id="delete" parameterType="com.thejoa703.dto.AppUserDto">
 		delete from appuser where email=#{email} and password=#{password}
 	</delete>

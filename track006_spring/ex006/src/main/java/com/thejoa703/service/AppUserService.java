@@ -2,6 +2,8 @@ package com.thejoa703.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.thejoa703.dto.AppUserDto;
 
 public interface AppUserService {
@@ -13,4 +15,6 @@ public interface AppUserService {
 	public int join(String email);
 	public AppUserDto login(AppUserDto dto);
 
+	public int insert2(MultipartFile file, AppUserDto dto);
+	public int update2(MultipartFile file, AppUserDto dto);
 }

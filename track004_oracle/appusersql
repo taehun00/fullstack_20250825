@@ -8,6 +8,8 @@ create table appuser(
 );
 
 ALTER TABLE appuser MODIFY created_at DEFAULT SYSDATE;
+ALTER TABLE appuser
+ADD ufile VARCHAR2(255) DEFAULT 'default.png';
 
 
 create sequence appuser_seq;
@@ -18,9 +20,10 @@ select * from appuser;
 
 insert into appuser values (1, 'iis1@naver.com', '123', 1, SYSDATE);
 update appuser
-set password = '1234'
-where app_user_id=1 and password='123';
-select * from appuser where app_user_id=1;
+set mbti_type_id = 2
+where app_user_id=48;
+select * from appuser where app_user_id=39;
+select * from appuser where email = 'iis1@naver.com';
 
 
 delete from appuser where app_user_id=26;

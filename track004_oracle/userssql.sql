@@ -368,6 +368,11 @@ update sboard1
   	set bhit = bhit + 1
     where id = 4;
     
+SELECT column_name, data_default
+FROM user_tab_columns
+WHERE table_name = 'SBOARD1'
+  AND column_name = 'CREATE_AT';
+
     
 alter table sboard1 modify bhit default 0;
 alter table sboard1 modify create_at default systimestamp;

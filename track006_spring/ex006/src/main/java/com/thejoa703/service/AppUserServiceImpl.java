@@ -17,6 +17,19 @@ import com.thejoa703.dto.AppUserDto;
 public class AppUserServiceImpl implements AppUserService {
 	@Autowired AppUserDao dao;
 	
+	public int deleteAdmin(AppUserDto dto) {
+		// TODO Auto-generated method stub
+		return dao.deleteAdmin(dto);
+	}
+
+	@Override
+	public int updateAdmin(AppUserDto dto) {
+		// TODO Auto-generated method stub
+		return dao.updateAdmin(dto);
+	}
+
+	
+	
 	public int insert(AppUserDto dto) {
 		return dao.insert(dto);
 	}

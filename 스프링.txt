@@ -49,3 +49,19 @@
     servlet-context.xml
     FileUpload.java
     Controller.java
+
+
+
+
+
+# AJAX
+1.글검색
+2.아이디중복검사
+3.유저 수정, 삭제
+
+1)model
+table, dto, dao#, service
+    select * from emp where ename like '$S%';
+
+2)view(AJAX)
+3)controller

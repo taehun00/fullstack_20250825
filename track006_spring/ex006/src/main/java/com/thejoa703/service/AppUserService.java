@@ -17,4 +17,7 @@ public interface AppUserService {
 
 	public int insert2(MultipartFile file, AppUserDto dto);
 	public int update2(MultipartFile file, AppUserDto dto);
+	
+	public int deleteAdmin(AppUserDto dto);
+	public int updateAdmin(AppUserDto dto);
 }

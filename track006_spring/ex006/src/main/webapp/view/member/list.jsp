@@ -19,6 +19,7 @@ $(function(){
       		<tr>
       			<th scope="col">NO</th>
       			<th scope="col">EMAIL</th>
+      			<th scope="col">MBTI TYPE</th>
       			<th scope="col">DATE</th>
       			<th scope="col">수정</th>
       			<th scope="col">삭제</th>
@@ -29,6 +30,7 @@ $(function(){
       			<tr>
       				<td>${list.size()-status.index}</td>
       				<td>${dto.email }</td>
+      				<td>${dto.mbtiTypeId }</td>
       				<td>${dto.createdAt }</td>
       				<td><a href="${pageContext.request.contextPath }/edit.users?id=${dto.appUserId }">
       					수정

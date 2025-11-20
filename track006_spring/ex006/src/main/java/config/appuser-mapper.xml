@@ -38,7 +38,7 @@
 	</delete>
 	
 	<select resultType="int" id="join" parameterType="string">
-    	SELECT COUNT(*) FROM appuser WHERE email = #{email}
+    	select count(*) from appuser where email = #{email}
 	</select>
 	
 	<select resultMap="AppUserMap" id="login" parameterType="com.thejoa703.dto.AppUserDto">
@@ -54,5 +54,13 @@
 	<select resultMap="AppUserMap" id="selectAll">
 		select * from appuser order by app_user_id desc
 	</select>
-	
+	<!-- 관리자용 -->
+	<delete id="deleteAdmin" parameterType="com.thejoa703.dto.AppUserDto">
+		delete from appuser where email=#{email}
+	</delete>
+	<update id="updateAdmin" parameterType="com.thejoa703.dto.AppUserDto">
+	  	update appuser
+		set mbti_type_id=#{mbtiTypeId}
+		where app_user_id =#{appUserId}
+    </update>
 </mapper>

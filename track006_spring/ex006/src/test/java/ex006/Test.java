@@ -57,8 +57,9 @@ public class Test {
 	@org.junit.Test
 	public void test5() {
 		AppUserDto dto = new AppUserDto();
-		dto.setEmail("iis2@naver.com"); dto.setPassword("123");
-		System.out.println(service.delete(dto));
+		dto.setAppUserId(48);
+		dto.setMbtiTypeId(33);
+		System.out.println(dao.updateAdmin(dto));
 	}
 	
 	

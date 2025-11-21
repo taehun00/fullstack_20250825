@@ -34,7 +34,7 @@ update appuser
 set email='iis22@naver.com' , password = '1234' , mbti_type_id = 1
 where email='iis2@naver.com' and password='123';
 
-
+desc emp;
 
 
 commit;

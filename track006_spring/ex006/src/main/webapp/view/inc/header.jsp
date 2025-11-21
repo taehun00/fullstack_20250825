@@ -44,7 +44,7 @@
 	      </li>
 	</c:if>
 	      <li class="nav-item">
-	        <a class="nav-link" href="/ex006/list.users">Quest Board</a>
+	        <a class="nav-link" href="/ex006/list.users">유저관리</a>
 	      </li>  
     </ul> 
   </div>

@@ -56,7 +56,7 @@
 	</select>
 	<!-- 관리자용 -->
 	<delete id="deleteAdmin" parameterType="com.thejoa703.dto.AppUserDto">
-		delete from appuser where email=#{email}
+		delete from appuser where app_user_id=#{appUserId}
 	</delete>
 	<update id="updateAdmin" parameterType="com.thejoa703.dto.AppUserDto">
 	  	update appuser

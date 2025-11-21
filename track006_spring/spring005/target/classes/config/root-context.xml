@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd">
 
-<context:component-scan base-package="com.thejoa703.service, com.thejoa703.dao" />
+	<context:component-scan base-package="com.thejoa703.service, com.thejoa703.dao" />
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.thejoa703.dao"/>
@@ -21,6 +21,7 @@
 			<list>
 				<value>classpath:config/test-mapper.xml</value>
 				<value>classpath:config/Sboard1-mapper.xml</value>
+				<value>classpath:config/emp-mapper.xml</value>
 			</list>
 		</property>
 	</bean>

@@ -36,15 +36,19 @@ public class AjaxSearchController {
 	}	
 	
 	@RequestMapping("/updateAdmin")
-	public Map<String, Object> updateAdmin(@RequestParam AppUserDto dto){
+	public Map<String, Object> updateAdmin(@RequestParam int appUserId, @RequestParam int mbtiTypeId){
 		Map<String, Object> result = new HashMap<>();
+		AppUserDto dto = new AppUserDto();
+		dto.setAppUserId(appUserId); dto.setMbtiTypeId(mbtiTypeId);
 		result.put("result", service.updateAdmin(dto));
 		return result;
 	}
 	
 	@RequestMapping("/deleteAdmin")
-	public Map<String, Object> deleteAdmin(@RequestParam AppUserDto dto){
+	public Map<String, Object> deleteAdmin(@RequestParam int appUserId){
 		Map<String, Object> result = new HashMap<>();
+		AppUserDto dto = new AppUserDto();
+		dto.setAppUserId(appUserId);
 		result.put("result", service.deleteAdmin(dto));
 		return result;
 	}

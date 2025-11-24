@@ -37,4 +37,57 @@ where email='iis2@naver.com' and password='123';
 desc emp;
 
 
+create table authorities(
+    userid varchar2(100) not null,
+    auth   varchar2(100) not null
+);
+alter table authorities rename column userid to email;
+
+desc authorities;
+desc appuser;
+
+select * from authorities;
+insert into authorities values ('iis1@naver.com', 'MEMBER');
+
+select u.email, u.password, a.auth
+from appuser u
+join authorities a
+on u.email = a.email;
+
+select u.email, u.password, a.auth
+from appuser u
+left outer join authorities a
+on u.email = a.email
+where u.email = 'iis1@naver.com';
+
+select u.email, u.password, a.auth
+from appuser u
+right outer join authorities a
+on u.email = a.email
+where u.email = 'iis1@naver.com';
+
+select email, password, auth
+from appuser
+natural join authorities
+where email = 'iis1@naver.com';
+
+select email, u.password, a.auth
+from appuser u
+left outer join authorities a
+using(email)
+where email = 'iis1@naver.com';
+
+desc sboard1;
+select * from sboard1;
+insert into sboard1 ( ID    , APP_USER_ID , btitle, bcontent, bpass, bfile,  bip )
+      select  sboard1_seq.nextval , APP_USER_ID , btitle, bcontent, bpass, bfile,  bip   from sboard1;
+      
+
+select *
+from ( select row_number() over ( order by create_at desc ) as rnum,
+    id , app_user_id , btitle, bcontent, bpass, bfile, bhit, bip, create_at
+    from sboard1
+) A
+where A.rnum between 1 and 10;
+
 commit;

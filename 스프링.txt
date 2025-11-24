@@ -248,43 +248,94 @@ Aop 설정
    >> https://docs.spring.io/spring-framework/docs/2.0.x/reference/aop.html
 
 
+https://mybatis.org/mybatis-3/ko/dynamic-sql.html
+
+
+■ MYBATIS
+> 동적sql
+WHY)
+select * from emp;
+select * from emp  where ename='Scott';
+select * from emp  where job='SALESMAN';
+
+SQL 구문)  MYBATIS 3개
+
+
+Q1) select * from emp  where  ${searchType} = #{keyword}
+1-1. select * from emp  where ename='Scott';
+1-2. select * from emp  where job='SALESMAN';
+
+${searchType} → ''안붙음  stmt
+#{keyword}    → ''자동    pstmt
+
+Q2) select * from emp where ename=#{ename} <if test = "job != null"> and job=#{job} </if>
+
+select * from emp where ename='SMITH'
+select * from emp where ename='SMITH' and job='CLERK'
+
+Q3) select * from emp where
+
+    <choose>
+        <when test="ename != null"> and ename=#{ename} </when>
+        <when test="job   != null"> and job=#{job}     </when>
+        <otherwise> and mgr=#{mgr} </otherwise>
+    </choose>
+
+select * from emp where empno=7369 and mgr=7902
+select * from emp where empno=7369 and ename='SMITH' and mgr=7902
+select * from emp where empno=7369 and ename='SMITH' and job='CLERK'
+select * from emp where empno=7369 and ename='SMITH' and job='CLERK' and mgr=7902
+
+Q4) select * from emp
+
+    <where>
+        <if test="ename != null"> and ename=#{ename} </if>
+        <if test="job != null"> and job=#{job} </if>
+    </where>
+
+select * from emp
+select * from emp where ename='SMITH'
+select * from emp where job='CLERK'
+select * from emp where empno=7369 and ename='SMITH' and job='CLERK'
+
+Q5)
+<update>
+    update emp
+    <set>
+        <if test="ename != null"> ename=#{ename}, </if>
+        <if test="job != null"> job=#{job}, </if>
+    </set>
+    where empno=#{empno}
+</update>
+
+update emp set ename=#{ename} where empno=#{empno}
+update emp set job=#{job}     where empno=#{empno}
+update emp set ename=#{ename}, job=#{job}, where empno=#{empno}
+
+Q6) forEach
+select * from emp
+<where>
+    empno input <foreach item="no" collection="list" separator="," open="(" close=")"> #{no} </foreach>
+</where>
+select * from emp where empno in ( 7369, 7499, 7521 )
+
+Q7) join
+> desc authorities
+이름     널?       유형            
+------ -------- ------------- 
+EMAIL NOT NULL VARCHAR2(100) 
+AUTH   NOT NULL VARCHAR2(100) 
+
+> desc appuser
+이름           널?       유형            
+------------ -------- ------------- 
+APP_USER_ID  NOT NULL NUMBER(38)    
+EMAIL        NOT NULL VARCHAR2(100) 
+PASSWORD              VARCHAR2(100) 
+MBTI_TYPE_ID          NUMBER(38)    
+CREATED_AT            DATE          
+UFILE                 VARCHAR2(255) 
 
 
 
-
-
-
-
-> 주제 
-■1. 주요기능 - crud
-1-1. 멤버관리
-             사용자측                                           관리자측
-CREATE       회원가입                                           회원가입
-READ         로그인/아이디찾기/비밀번호찾기/마이페이지            전체유저정보확인
-UPDATE       정보수정                                      정보수정, 회원정보수정
-DELETE       탈퇴                                              회원탈퇴
-
-1-2. 퀘스트관리
-              사용자측             관리자측
-CREATE           X              게시판글쓰기
-READ        전체읽기, 상세읽기    전체읽기, 상세읽기
-UPDATE           X                글수정
-DELETE           X                글삭제
-
-■2. 흐름도 
-[사용자] ── 회원가입 ──▶ DB 저장
-   │
-   ├─▶ 로그인 / 아이디찾기 / 비밀번호찾기 ──▶ 마이페이지 조회
-   │
-   ├─▶ 정보수정 ──▶ DB 업데이트
-   │
-   └─▶ 탈퇴 ──▶ DB 삭제
-
-[관리자] ── 회원가입 ──▶ DB 저장
-   │
-   ├─▶ 전체 유저정보 확인 ──▶ DB 조회
-   │
-   ├─▶ 회원정보 수정 ──▶ DB 업데이트
-   │
-   └─▶ 회원탈퇴 ──▶ DB 삭제
 

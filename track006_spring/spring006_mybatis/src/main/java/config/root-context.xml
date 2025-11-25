@@ -22,6 +22,7 @@
 				<value>classpath:config/test-mapper.xml</value>
 				<value>classpath:config/Sboard1-mapper.xml</value>
 				<value>classpath:config/emp-mapper.xml</value>
+				<value>classpath:config/appuser-mapper.xml</value>
 			</list>
 		</property>
 	</bean>

@@ -3,7 +3,7 @@
 <!-- 	header		 --> 
 <div class="container mt-5">
 	<h3>WELCOME! 회원가입</h3>
-	<form action="${pageContext.request.contextPath}/uploadJoin.users"  	
+	<form action="${pageContext.request.contextPath}/security/join"  	
 			method="post"  encType="multipart/form-data" >
 		<div class="mb-3 mt-3">
 			<label  for="email" class="form-label">Email:</label> 
@@ -29,7 +29,7 @@
 					}else{ // 아니라면 ajax  - iddouble /POST / email / 
 						$.ajax({
 							url:"${pageContext.request.contextPath}/iddouble",
-							type:"POST",
+							type:"GET",
 							data:{email : keyword} , 
 							success:function( res ){  //res = {cnt: 1}
 								console.log(res);  
@@ -67,6 +67,7 @@
 			
 		</div>
 		<button type="submit" class="btn btn-primary">회원가입</button>
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 </div> 
 <!-- 	footer		 --> 

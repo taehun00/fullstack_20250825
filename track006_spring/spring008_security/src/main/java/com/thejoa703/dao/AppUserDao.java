@@ -28,6 +28,8 @@ public interface AppUserDao {
 	 * 				  / 수정하기 updateAdmin 
 	 * 				  / 삭제하기 deleteAdmin    */
 	public int   deleteAdmin(AppUserDto dto);
+	int deleteAuthoritiesByEmail(String email);
+
 	public int   updateAdmin(AppUserDto dto);
 	
 	// security

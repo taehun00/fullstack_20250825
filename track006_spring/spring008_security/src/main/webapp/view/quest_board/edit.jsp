@@ -31,6 +31,8 @@
 	  	<button type="submit" class="btn btn-primary">글수정</button>
 	  	<a href="javascript:history.go(-1)"  class="btn btn-danger">BACK</a>
 	  </div>
+	  
+	  <input  type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
  </form>
   </div>
    

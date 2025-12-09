@@ -54,40 +54,61 @@ public class Sboard1ServiceImpl implements Sboard1Service {
 
 
 	public int insert2(MultipartFile file, Sboard1Dto dto) {
-		if(!file.isEmpty()) {
-			String fileName = file.getOriginalFilename();
-			String uploadPath = "C:/file/";
-			File img = new File(uploadPath + fileName);
-			try {
-				file.transferTo(img);
-				dto.setBfile(fileName);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		try {
-			dto.setBip(InetAddress.getLocalHost().getHostAddress());
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-		
-		return dao.insert2(dto);
+	    if (!file.isEmpty()) {
+	        // 고유한 파일명 생성 (타임스탬프 + 원본명)
+	        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+	        String uploadPath = "C:/file/";
+	        File dir = new File(uploadPath);
+	        if (!dir.exists()) {
+	            dir.mkdirs();
+	        }
+	        File img = new File(uploadPath, fileName);
+	        try {
+	            file.transferTo(img);
+	            dto.setBfile(fileName);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            dto.setBfile(null);
+	        }
+	    } else {
+	        dto.setBfile(null);
+	    }
+
+	    try {
+	        dto.setBip(InetAddress.getLocalHost().getHostAddress());
+	    } catch (UnknownHostException e) {
+	        e.printStackTrace();
+	    }
+
+	    return dao.insert2(dto);
 	}
 
 
 	public int update2(MultipartFile file, Sboard1Dto dto) {
-		if(!file.isEmpty()) {
-			String fileName = file.getOriginalFilename();
-			String uploadPath = "C:/file/";
-			File img = new File(uploadPath + fileName);
-			try {
-				file.transferTo(img);
-				dto.setBfile(fileName);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return dao.update2(dto);
+	    if (!file.isEmpty()) {
+	        // 고유한 파일명 생성 (타임스탬프 + 원본명)
+	        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+	        String uploadPath = "C:/file/";
+	        File dir = new File(uploadPath);
+	        if (!dir.exists()) {
+	            dir.mkdirs();
+	        }
+	        File img = new File(uploadPath, fileName);
+	        try {
+	            if (img.exists()) {
+	                img.delete();
+	            }
+	            file.transferTo(img);
+	            dto.setBfile(fileName);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            dto.setBfile(null);
+	        }
+	    } else {
+	        dto.setBfile(null);
+	    }
+
+	    return dao.update2(dto);
 	}
 
 	/* Search - Ajax */

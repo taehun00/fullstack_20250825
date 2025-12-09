@@ -28,17 +28,22 @@
 	<select resultMap="appUserMap"  id="selectAll">
 		select * from appuser   order by app_user_id desc
 	</select>
-	<select resultMap="appUserMap"  id="select" parameterType="AppUserDto">
-		select * from appuser   where app_user_id=#{appUserId} 
+	<select id="select" resultMap="appUserMap" parameterType="int">
+	    select * from appuser
+	    where app_user_id = #{appUserId}
 	</select>
+
 	
-	<select resultMap="appUserMap"  id="selectEmail"  parameterType="AppUserDto">
+	<select resultMap="appUserMap"  id="selectEmail"  parameterType="String">
 		select * from appuser   where email=#{email} 
 	</select>
 	
 	<select resultType="int"  id="selectLogin" parameterType="AppUserDto">
 		select count(*) cnt from appuser  where  email=#{email}   and password=#{password}
 	</select>
+	<!-- <select resultType="int"  id="selectLogin" parameterType="AppUserDto">
+		select count(*) cnt from appuser  where  email=#{email}   and password=#{password}
+	</select> -->
 	
 	<!-- upload -->
 	<!-- upload -->
@@ -63,6 +68,10 @@
 	<delete id="deleteAdmin"  parameterType="AppUserDto">
 		delete from appuser where app_user_id=#{appUserId}   
 	</delete>
+	<delete id="deleteAuthoritiesByEmail" parameterType="String">
+	    DELETE FROM authorities WHERE email = #{email}
+	</delete>
+	
 	<update id="updateAdmin"  parameterType="AppUserDto">
 		update appuser  set  MBTI_TYPE_ID=#{mbtiTypeId}  
 		where app_user_id=#{appUserId}

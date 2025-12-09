@@ -1,5 +1,6 @@
 package com.thejoa703.security;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,11 @@ public class CustomUser extends User{
 	
 	AppUserAuthDto dto;
 
+	public CustomUser() {
+        super("anonymous", "", new ArrayList<>());
+    }
+
+	
 	public CustomUser(String username, 
 						String password, 
 						Collection<? extends GrantedAuthority> authorities) {

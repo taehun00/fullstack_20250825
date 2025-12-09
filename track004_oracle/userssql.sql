@@ -1,3 +1,153 @@
+INSERT INTO users (userid, email, nickname, password, ufile, createdat)
+                VALUES (users_seq.NEXTVAL, ?, ?, ?, ?, SYSDATE);
+                
+INSERT INTO users (userid, email, nickname, password, createdat)
+                VALUES (users_seq.NEXTVAL, 'iis@naver.com', 'gg', '123', SYSDATE);
+
+SELECT COUNT(*) FROM users WHERE email=? AND password=?;
+
+SELECT COUNT(*) FROM users WHERE email='iis@naver.com' AND password='123';
+ALTER TABLE users
+ADD mobile VARCHAR2(200) UNIQUE;
+
+select userid, email, nickname, ufile, createdat from users where email=?;
+
+select userid, email, nickname, ufile, createdat from users where email='iis@naver.com';
+
+UPDATE users
+SET email    = ?,
+    nickname = ?, 
+    password = ?
+WHERE email = ?;
+
+UPDATE users
+SET email    = 'iis55@naver.com',
+    nickname = 'qwer', 
+    password = '1234'
+WHERE email = 'iis@naver.com';
+
+delete from users where email = ? and password = ?;
+
+delete from users where email = 'iis@naver.com' and password = '123';
+
+INSERT INTO users (userid, email, nickname, password, ufile, mobile, createdat)
+           VALUES (users_seq.NEXTVAL, 'iis10@naver.com', 'th10', '123', '1.png', '01010', SYSDATE);
+           
+INSERT INTO authorities (email, auth)
+VALUES ('iis@naver.com', 'ROLE_MEMBER');
+
+desc users;
+delete from users;
+select * from users;
+select * from authorities;
+select * from pet;
+desc pet;
+ALTER TABLE pet
+ADD pfile VARCHAR2(255) DEFAULT 'default.png';
+INSERT INTO pet (petid, userid, petname, petbreed, birthdate, pettypeid, createdat)
+VALUES (pet_seq.NEXTVAL, 44, '여름이', '말티즈', '2024-06-12', 1, SYSDATE);
+
+INSERT INTO pet (petid, userid, petname, petbreed, birthdate, pettypeid, createdat, pfile)
+VALUES (pet_seq.NEXTVAL, 44, '봄', '페르시안', '2022-06-12', 1, SYSDATE, '2.png');
+
+SELECT p.petid,
+       p.petname,
+       p.petbreed,
+       p.birthdate,
+       p.pettypeid,
+       p.createdat,
+       p.pfile
+FROM pet p
+JOIN users u ON p.userid = u.userid
+WHERE u.userid = 33
+ORDER BY p.createdat DESC;
+
+SELECT *
+FROM (
+    SELECT ROW_NUMBER() OVER (ORDER BY p.createdat DESC) AS rnum,
+           p.petid,
+           u.email,
+           p.petname,
+           p.petbreed,
+           p.birthdate,
+           p.pettypeid,
+           p.createdat,
+           p.pfile
+    FROM pet p
+    JOIN users u ON p.userid = u.userid
+) A
+WHERE A.rnum BETWEEN 1 AND 5;
+
+SELECT p.petid,
+       p.petname,
+       p.petbreed,
+       p.birthdate,
+       p.pettypeid,
+       p.createdat,
+       p.pfile
+FROM pet p
+JOIN users u ON p.userid = u.userid
+WHERE u.email = 'iis@naver.com'   -- 로그인한 유저 이메일
+  AND p.petid = 21;  -- 선택한 펫 ID
+  
+  UPDATE pet
+SET petname   = '여름이2',
+    petbreed  = '말티즈',
+    pettypeid = 1,
+    pfile     = '3.png'
+WHERE petid   = 21;
+
+DELETE FROM pet
+WHERE petid = 23;
+
+  select     u.email, password, auth
+  from       users u    left join   authorities a   on  u.email = a.email  
+  where      u.email='iis@naver.com';
+select * from users where email='iis@naver.com';
+
+SELECT 
+    p.petid,
+    u.email,
+    p.petname,
+    p.petbreed,
+    p.birthdate,
+    p.pettypeid,
+    p.createdat,
+    p.pfile
+FROM pet p
+JOIN users u ON p.userid = u.userid
+WHERE p.petname LIKE '%' || '2' || '%'
+ORDER BY u.createdat DESC;
+
+select * from pet;
+
+SELECT email
+FROM users
+WHERE nickname = 'th';
+SELECT password
+FROM users
+WHERE nickname = 'th' AND email = 'iis@naver.com';
+SELECT *
+FROM (
+    SELECT ROW_NUMBER() OVER (ORDER BY createdat DESC) AS rnum,
+           userid,
+           email,
+           nickname,
+           password,
+           ufile,
+           createdat,
+           mobile
+    FROM users
+) A
+WHERE A.rnum BETWEEN 1 AND 11;
+SELECT u.userid,
+       u.email,
+       u.nickname,
+       u.createdat
+FROM users u
+WHERE u.nickname LIKE '%' || 'h' || '%'
+ORDER BY u.createdat DESC;
+
 CREATE TABLE users (
   userid     NUMBER PRIMARY KEY,
   email      VARCHAR2(200) NOT NULL UNIQUE,
@@ -5,8 +155,14 @@ CREATE TABLE users (
   password   VARCHAR2(100) NOT NULL,
   createdat  DATE NOT NULL
 );
+ALTER TABLE users
+ADD ufile VARCHAR2(255);
+ALTER TABLE users
+MODIFY ufile DEFAULT 'default.png';
 
+desc users;
 CREATE SEQUENCE users_seq;
+desc authorities;
 
 CREATE TABLE pettype (
   pettypeid NUMBER PRIMARY KEY,
@@ -384,3 +540,147 @@ UPDATE sboard1
 SET create_at = SYSTIMESTAMP 
 WHERE create_at IS NULL;
 delete from sboard1 where id = 24;
+
+
+drop table food;
+drop table foodbrand;
+drop table foodnutrient;
+drop table nutrient;
+drop table nutrientrange;
+CREATE TABLE FOODBRAND (
+    BRANDID        NUMBER           PRIMARY KEY,
+    BRANDNAME      VARCHAR2(100)    NOT NULL,
+    COUNTRY        VARCHAR2(100),
+    BRANDTYPE      VARCHAR2(50)     NOT NULL,   
+    ORIGIN         VARCHAR2(50),             
+    BRANDINFO      VARCHAR2(500)
+
+);
+CREATE TABLE FOOD (
+    FOODID          NUMBER          PRIMARY KEY NOT NULL,
+    FOODNAME        VARCHAR2(100)       NOT NULL,
+    BRANDID         NUMBER              NOT NULL,
+    DESCRIPTION     VARCHAR2(500),
+    MAININGREDIENT  VARCHAR2(200)       NOT NULL,
+    SUBINGREDIENT   VARCHAR2(200),
+    PETTYPEID       NUMBER              NOT NULL,   -- 1 고양이/2강아지
+    CATEGORY        VARCHAR2(50)        NOT NULL,   -- 처방식/일반/ 등등
+    PETAGEGROUP     VARCHAR2(50),               -- 키튼-퍼피/어덜트/시니어 
+    ISGRAINFREE     CHAR(1)          CHECK (UPPER(isgrainfree) IN ('Y','N')),
+
+    calorie         NUMBER(5,1),                -- kcal/100g
+    foodtype        VARCHAR2(20),               -- 건식/습식
+    foodimg         VARCHAR2(300),              -- 사료 이미지 경로
+    createdat       DATE            DEFAULT SYSDATE,    
+    updatedat       DATE            DEFAULT NULL
+);
+CREATE TABLE FOOD (
+    FOODID          NUMBER          PRIMARY KEY,
+    FOODNAME        VARCHAR2(100)   NOT NULL,
+    BRANDID         NUMBER          NOT NULL,
+    DESCRIPTION     VARCHAR2(500),
+    MAININGREDIENT  VARCHAR2(200)   NOT NULL,
+    SUBINGREDIENT   VARCHAR2(200),
+    PETTYPEID       NUMBER          NOT NULL,
+    CATEGORY        VARCHAR2(50)    NOT NULL,
+    PETAGEGROUP     VARCHAR2(50),
+    ISGRAINFREE     CHAR(1)         CHECK (UPPER(ISGRAINFREE) IN ('Y','N')),
+    CALORIE         NUMBER(5,1),
+    FOODTYPE        VARCHAR2(20),
+    FOODIMG         VARCHAR2(300),
+    CREATEDAT       DATE DEFAULT SYSDATE,
+    UPDATEDAT       DATE DEFAULT NULL,
+
+    CONSTRAINT FK_FOOD_BRAND FOREIGN KEY (BRANDID)
+        REFERENCES FOODBRAND(BRANDID),
+
+    CONSTRAINT FK_FOOD_PETTYPE FOREIGN KEY (PETTYPEID)
+        REFERENCES PETTYPE(PETTYPEID)
+);
+CREATE TABLE FOODNUTRIENT(
+    FOODID NUMBER,
+    NUTRIENTID NUMBER,
+    AMOUNT NUMBER
+);
+
+CREATE TABLE NUTRIENT(
+    NUTRIENTID NUMBER PRIMARY KEY,
+    NUTRIENTNAME VARCHAR2(100) NOT NULL,
+    UNIT VARCHAR2(50) 
+);
+
+CREATE TABLE NUTRIENTRANGE(
+    RANGEID NUMBER PRIMARY KEY,
+    PETTYPEID NUMBER,
+    NUTRIENTID NUMBER,
+    MINVALUE NUMBER NOT NULL,
+    MAXVALUE NUMBER NOT NULL,
+    RANGELABEL VARCHAR2(50) NOT NULL
+);
+INSERT INTO foodbrand (
+    brandid, brandname, country, origin, brandtype, brandinfo
+) VALUES (
+    1,
+    'PureTail',
+    '미국',
+    '해외',
+    '프리미엄',
+    '프리미엄 단백질과 기능성 영양 균형에 집중한 브랜드'
+);
+INSERT INTO food VALUES (food_seq.NEXTVAL, '신장케어 연어 앤 귀리', 1,
+'신장 부담을 줄여주는 저인·저단백 연어 기반 처방식.',
+'연어', '귀리', 1, '처방식', '어덜트', 'N', 330.0, '건식', 'food_001.png' , SYSDATE, NULL);
+INSERT INTO NUTRIENT VALUES (1, '인', '%');
+INSERT INTO NUTRIENT VALUES (2, '나트륨', '%');
+INSERT INTO NUTRIENT VALUES (3, '요오드', 'mg/kg');
+INSERT INTO NUTRIENT VALUES (4, '탄수화물', '%');
+INSERT INTO NUTRIENT VALUES (5, '지방', '%');
+INSERT INTO NUTRIENT VALUES (6, '단백질', '%');
+INSERT INTO NUTRIENT VALUES (7, '마그네슘', '%');
+INSERT INTO NUTRIENT VALUES (8, '구리', 'mg/kg');
+INSERT INTO NUTRIENT VALUES (9, '칼륨', '%');
+INSERT INTO NUTRIENT VALUES (10, '칼슘', '%');
+INSERT INTO NUTRIENT VALUES (11, '옥살산', 'mg/kg');
+
+INSERT INTO nutrientrange VALUES (1, 1, 6, 18, 23, '고양이_신장_초저단백');
+INSERT INTO nutrientrange VALUES (2, 1, 1, 0.4, 0.6, '고양이_신장_저인');
+INSERT INTO nutrientrange VALUES (3, 1, 2, 0.15, 0.25, '고양이_신장_저나트륨');
+INSERT INTO nutrientrange VALUES (4, 1, 7, 0.04, 0.07, '고양이_신장_저마그네슘');
+
+INSERT INTO foodnutrient VALUES (1, 6, 20.5);
+INSERT INTO foodnutrient VALUES (1, 1, 0.48);
+INSERT INTO foodnutrient VALUES (1, 2, 0.19);
+INSERT INTO foodnutrient VALUES (1, 7, 0.05);
+
+CREATE TABLE REVIEW (
+    REVIEWID NUMBER PRIMARY KEY,
+    USERID NUMBER NOT NULL,
+    BRANDID NUMBER,
+    FOODID NUMBER,
+    REVIEWIMG VARCHAR2(300) DEFAULT NULL,
+    RATING NUMBER(1) CHECK (RATING BETWEEN 1 AND 5),
+    TITLE VARCHAR2(100), 
+    REVIEWCOMMENT VARCHAR2(500),
+    CREATEDAT DATE DEFAULT SYSDATE,
+    UPDATEDAT DATE DEFAULT NULL
+);    
+
+select * from users;
+select * from authorities;
+select * from pet;
+delete from authorities;
+delete from users;
+delete from pet;
+delete from execboard;
+SELECT * FROM users WHERE email = 'b@b';
+SELECT * FROM authorities WHERE email = 'b@b';
+
+UPDATE authorities
+SET auth = 'ROLE_ADMIN'
+WHERE userId = 143
+  AND auth = 'ROLE_MEMBER';
+
+commit;
+
+DROP TRIGGER sync_authorities_email;
+desc users;

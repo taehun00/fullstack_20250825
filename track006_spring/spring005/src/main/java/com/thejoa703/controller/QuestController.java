@@ -30,10 +30,12 @@ public class QuestController {
 	}
 	
 	@RequestMapping(value="/write.quest", method=RequestMethod.POST)
-	public String write_post(Sboard1Dto dto, RedirectAttributes rttr) {
+	public String write_post(@RequestParam("file") MultipartFile file   ,Sboard1Dto dto, RedirectAttributes rttr) {
+
+		
 		String result = "글쓰기 실패";
 		
-		if(service.insert(dto)>0) {result = "글쓰기 성공"; }
+		if(service.insert2(file, dto)>0) {result = "글쓰기 성공"; }
 		rttr.addFlashAttribute("success", result);
 		return "redirect:/list.quest";
 	}

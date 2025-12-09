@@ -24,7 +24,7 @@
 		      <td>${dto.mbtiTypeId}</td>
 		    </tr>
 		    <tr>
-		      <th scope="row">회원가입날짜</th>
+		      <th scope="row">회원가입날짜!</th>
 		      <td>${dto.createdAt}</td>
 		    </tr>
 		  </tbody>

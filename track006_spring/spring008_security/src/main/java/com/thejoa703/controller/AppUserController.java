@@ -107,14 +107,25 @@ public class AppUserController {
 		return "redirect:/login.users"; 
 	}
 	
-	@RequestMapping(value="/uploadEdit.users" , method=RequestMethod.POST) //수정기능
-	public String uploadEdit_post(  @RequestParam("file") MultipartFile file   
-			,  AppUserDto dto ,  RedirectAttributes rttr) { 
-		String result = "비밀번호를 확인해주세요";
-		if( service.update2(file,dto)  > 0  ) {  result ="수정 성공"; }
-		rttr.addFlashAttribute("success" , result);
-		return "redirect:/mypage.users"; 
+	@RequestMapping(value="/uploadEdit.users", method=RequestMethod.POST)
+	public String uploadEdit_post(@RequestParam("file") MultipartFile file,
+	                              AppUserDto dto,
+	                              RedirectAttributes rttr) {
+	    String result = "비밀번호를 확인해주세요";
+
+	    // DB에서 유저 조회 후 email 보정
+	    AppUserDto user = service.select(dto.getAppUserId());
+	    if (user != null && user.getEmail() != null) {
+	        dto.setEmail(user.getEmail());
+	    }
+
+	    if (service.update2(file, dto) > 0) {
+	        result = "수정 성공";
+	    }
+	    rttr.addFlashAttribute("success", result);
+	    return "redirect:/mypage.users";
 	}
+
 }
 
 

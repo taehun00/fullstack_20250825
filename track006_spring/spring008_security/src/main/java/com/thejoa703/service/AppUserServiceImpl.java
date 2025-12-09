@@ -40,23 +40,43 @@ public class AppUserServiceImpl  implements AppUserService{
 	   dto.setUfile(fileName); 
 	   return dao.insert2(dto);
 	}
-	@Override public int update2(MultipartFile file, AppUserDto dto) { 
-		// 기존에 bfile 이 있어서 값이 처리됨.
-	   if(  !file.isEmpty() ) {  // 파일이 비어있는게 아니라면
-		   String fileName   = file.getOriginalFilename(); // 원본파일이름
-		   String uploadPath = "C:/file/";
-		   File   img        = new File(uploadPath + fileName);  //java.io.File
-		   try { 
-			   file.transferTo(img); //파일올리기
-			   dto.setUfile(fileName); 
-		   }catch (IOException e) { e.printStackTrace(); }
-	   }
-	   return dao.update2(dto);
+	
+	
+	@Override
+	public int update2(MultipartFile file, AppUserDto dto) {
+	    if (!file.isEmpty()) {
+	        String fileName = file.getOriginalFilename();
+	        String uploadPath = "C:/file/";
+	        File img = new File(uploadPath + fileName);
+	        try {
+	            file.transferTo(img);
+	            dto.setUfile(fileName); // AppUserDto 필드명에 맞게 세팅
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return dao.update2(dto);
 	}
+
 	
 	@Override public int iddouble(String email) { return  dao.iddouble(email); }
 	
-	@Override public int deleteAdmin(AppUserDto dto) { return dao.deleteAdmin(dto); }
+	@Override public int deleteAdmin(AppUserDto dto) {
+		
+		AppUserDto user = dao.select(dto.getAppUserId());
+		if (user != null) {
+	        dao.deleteAuthoritiesByEmail(user.getEmail()); // 반드시 user.getEmail() 사용
+	        return dao.deleteAdmin(dto);
+	    }
+
+		
+		return 0; 
+	}
+	
+	@Override
+	public int deleteAuthoritiesByEmail(String email) {
+		return 0;
+	}
 	@Override public int updateAdmin(AppUserDto dto) { return dao.updateAdmin(dto); }
 	@Override
 	public int insertAuth(AuthDto dto) {

@@ -24,12 +24,19 @@
        <!-- 디스패처보다 먼저 실행             모든 경로            무제한허가 -->
        <security:intercept-url pattern="/security/all"    access="permitAll"/>
        <security:intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')"/>
+
+       
        <!-- 로그인폼 필요 -->
        <security:form-login
        		login-page="/security/login"
        		authentication-success-handler-ref="successHandler"
        		authentication-failure-forward-url="/security/fail"
        		
+       />
+       <security:logout
+	       	logout-url="/security/logout"
+	       	logout-success-url="/security/login"
+	       	invalidate-session="true"
        />
     </security:http>
 

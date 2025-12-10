@@ -189,3 +189,11 @@ START WITH 1 INCREMENT BY 1
 NOCACHE;
 
 commit;
+select * from authorities;
+select * from appuser;
+desc authorities;
+desc appuser;
+delete from appuser;
+delete from authorities;
+delete from appuser where app_user_id=106 and password='123';
+select * from appuser where app_user_id=105;

@@ -2,6 +2,7 @@ package com.thejoa703;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.jupiter.api.Disabled;
@@ -98,12 +99,27 @@ class Boot001ApplicationTests {
         System.out.println(sservice.update(file, dto));
 	}
 
-	@Test
+	@Disabled@Test
 	void tests3() {
 		//System.out.println(sservice.selectAll());
 		
 		System.out.println(sservice.select(5));
 		//Sboard2Dto dto = new Sboard2Dto(); dto.setId(4); dto.setBpass("1234");
 		//System.out.println(sservice.delete(dto));
+	}
+	
+	@Test
+	public void test4_paging() {
+		HashMap<String, Integer> para = new HashMap<>();
+		para.put("start", 1);
+		para.put("end", 10);
+		System.out.println(dao.select10(para));
+		System.out.println(dao.selectTotalCnt());
+		
+		HashMap<String, Object> para2 = new HashMap<>();
+		para2.put("search", "6");
+		para2.put("start", 1);
+		para2.put("end", 3);
+		System.out.println("..." + dao.selectsearch(para2));
 	}
 }

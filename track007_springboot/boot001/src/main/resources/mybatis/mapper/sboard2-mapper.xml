@@ -47,4 +47,28 @@
 	where id=#{id}
 	</select>
 	
+	<!-- pagging -->
+	<select id="select10" parameterType="java.util.HashMap" resultMap="sboard2Map">
+		select * from(
+			select row_number() over(order by id desc) as rnum, 
+				id, app_user_id, btitle, bcontent, bpass, bfile, bip, bhit, created_at
+			from sboard2
+		) A
+		where A.rnum between #{start} and #{end}
+	</select>
+	<select id="selectTotalCnt" resultType="int">
+		select count(*) from sboard2
+	</select>
+	
+	
+	<select id="selectsearch" parameterType="java.util.HashMap" resultMap="sboard2Map">
+		select * from(
+			select row_number() over(order by id desc) as rnum, 
+				id, app_user_id, btitle, bcontent, bpass, bfile, bip, bhit, created_at
+			from sboard2
+			where btitle Like '%' || #{search} || '%'
+		) A
+		where A.rnum between #{start} and #{end}
+	</select>
+	
 </mapper>

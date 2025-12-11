@@ -1,5 +1,6 @@
 package com.thejoa703.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -19,4 +20,10 @@ public interface Sboard2Service {
 	public Sboard2Dto select(int id);	// 조회수 올리기 + 상세보기
 	
 	public Sboard2Dto selectUpdateForm(int id);	// 수정하기폼
+	
+	public List<Sboard2Dto> select10(int pageNo);	
+	
+	public int selectTotalCnt();
+	
+	public List<Sboard2Dto> searchList(String keyword, int pageNo);
 }

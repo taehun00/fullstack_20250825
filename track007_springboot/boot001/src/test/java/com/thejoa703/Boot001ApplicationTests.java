@@ -108,7 +108,7 @@ class Boot001ApplicationTests {
 		//System.out.println(sservice.delete(dto));
 	}
 	
-	@Test
+	@Disabled@Test
 	public void test4_paging() {
 		HashMap<String, Integer> para = new HashMap<>();
 		para.put("start", 1);
@@ -116,10 +116,27 @@ class Boot001ApplicationTests {
 		System.out.println(dao.select10(para));
 		System.out.println(dao.selectTotalCnt());
 		
-		HashMap<String, Object> para2 = new HashMap<>();
-		para2.put("search", "6");
-		para2.put("start", 1);
-		para2.put("end", 3);
-		System.out.println("..." + dao.selectsearch(para2));
 	}
+	
+	 @Disabled@Test
+	    public void test4_paging1() {
+	       //1. 10개씩 가져오기
+	       HashMap<String, Integer> para = new HashMap<>(); 
+	       para.put("start", 1);
+	       para.put("end", 10);
+	       System.out.println("............" + dao.select10(para));
+	       
+	       //2. 전체갯수
+	       System.out.println("............" + dao.selectTotalCnt());
+	        
+	       //3. 검색어 + 3개씩 가져오기
+	       HashMap<String, Object> para2 = new HashMap<>(); 
+	       para2.put("search", "2");
+	       para2.put("start", 1);  // (1) 1,3  (2)4,6 (3)7,9
+	       para2.put("end"  , 3);
+	       System.out.println("............" + dao.selectSearch(para2));       
+
+	       //4. 검색어 + 3개씩 가져오기  ( 검색어 있는걸로 테스트 - t)
+	       System.out.println("............" + dao.selectSearchTotalCnt("23"));
+	    }
 }

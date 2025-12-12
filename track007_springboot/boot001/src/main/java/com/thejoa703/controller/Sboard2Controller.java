@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -97,19 +98,22 @@ public class Sboard2Controller {
 	}
 	
 	@GetMapping("/search")
-    public HashMap<String, Object> search(@RequestParam String keyword,
-                                              @RequestParam(defaultValue = "1") int pageNo) {
-        int totalCount = service.selectTotalCnt();
-        UtilPaging paging = new UtilPaging(totalCount, pageNo);
+	@ResponseBody
+    public HashMap<String, Object> search(@RequestParam(value="keyword", required=false) String keyword,
+                                              @RequestParam(value="pageNo", defaultValue = "1") int pageNo) {
+		HashMap<String, Object> result = new HashMap<>();
+		
+        List<Sboard2Dto> list = service.selectSearch(keyword, pageNo);
 
-        List<Sboard2Dto> list = service.searchList(keyword, pageNo);
-
-        HashMap<String, Object> result = new HashMap<>();
+        int totalCount = service.selectSearchTotalCnt(keyword);
+        UtilPaging paging = new UtilPaging(totalCount, pageNo, 3, 10);
+        
         result.put("list", list);
         result.put("paging", paging);
         result.put("keyword", keyword);
 
-        return result; // JSON 반환
+        return result;
     }
+	
 
 }

@@ -27,8 +27,8 @@ public interface Sboard2Dao {
 	
 	public int selectTotalCnt();
 	
-	public List<Sboard2Dto> selectsearch(HashMap<String, Object> params);
+	public List<Sboard2Dto> selectSearch(HashMap<String, Object> para);
 
-	
+	public int selectSearchTotalCnt(String search);
 	
 }

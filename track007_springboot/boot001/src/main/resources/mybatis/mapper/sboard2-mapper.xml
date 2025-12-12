@@ -61,14 +61,20 @@
 	</select>
 	
 	
-	<select id="selectsearch" parameterType="java.util.HashMap" resultMap="sboard2Map">
+	<select id="selectSearch" parameterType="java.util.HashMap" resultMap="sboard2Map">
 		select * from(
 			select row_number() over(order by id desc) as rnum, 
 				id, app_user_id, btitle, bcontent, bpass, bfile, bip, bhit, created_at
 			from sboard2
-			where btitle Like '%' || #{search} || '%'
+			where btitle Like '%' || #{search, jdbcType=VARCHAR} || '%'
 		) A
 		where A.rnum between #{start} and #{end}
+	</select>
+	
+	<select id="selectSearchTotalCnt" parameterType="string" resultType="int">
+		select count(*)
+		from sboard2
+		where btitle Like '%' || #{search, jdbcType=VARCHAR} || '%'
 	</select>
 	
 </mapper>

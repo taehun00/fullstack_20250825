@@ -88,17 +88,26 @@ public class Sboard2ServiceImpl implements Sboard2Service{
 		return dao.selectTotalCnt();
 	}
 	
-	@Override
-	public List<Sboard2Dto> searchList(String keyword, int pageNo) {
-        int start = (pageNo - 1) * 10 + 1;
-		int end = start + 9;
-		
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("search", keyword);
-        params.put("start", start);
-        params.put("end", end);
 
-        return dao.selectsearch(params);
-    }
+	
+	/* Paging + Search */
+	@Override
+	public List<Sboard2Dto> selectSearch(String keyword, int pageNo) {
+		HashMap<String, Object> para = new HashMap<>();
+		int pageSize=3;
+		
+		para.put("search", keyword);
+		int start = (pageNo - 1) * pageSize + 1;;
+		para.put("start", start);
+		para.put("end", start + pageSize - 1);
+		
+		return dao.selectSearch(para);
+	}
+
+	@Override
+	public int selectSearchTotalCnt(String keyword) {
+		
+		return dao.selectSearchTotalCnt(keyword);
+	}
 
 }

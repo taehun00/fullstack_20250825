@@ -15,18 +15,23 @@ public class UtilPaging {
 	private  int start;         //#7) 
 	private  int end;			//#8)
 	   
-	   
 	public UtilPaging(int listtotal, int pageNo) {
+		this(listtotal, pageNo, 10, 10);
+	}
+	
+	public UtilPaging(int listtotal, int pageNo, int onepagelist, int bottomlist) {
 		this.listtotal = (listtotal<=0)? 1: listtotal;
-		this.onepagelist = 10;
+		this.onepagelist = onepagelist;
 		this.pagetotal = (int)Math.ceil(this.listtotal / (double)onepagelist);
-		this.bottomlist = 10;
+		this.bottomlist = bottomlist;
 		this.current = pageNo;
 		this.start = ((current-1)/bottomlist)*bottomlist + 1;
 		this.end = start + bottomlist - 1;
 		if(end > pagetotal) {
 			end = pagetotal;
 		}
+		
+		this.pstartno = (pageNo - 1) * onepagelist + 1;
 	} 
 	
 	

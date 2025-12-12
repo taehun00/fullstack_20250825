@@ -70,15 +70,105 @@
             class="btn btn-primary">글쓰기</a>
       </p>
       <p class="text-end alert alert-primary">로그인을 하면 글쓰기가능합니다.</p>
-
-	<!-- 🔍 검색 폼 추가 -->
-      <form th:action="@{/board/search}" method="get" class="d-flex mb-3">
-          <input type="text" name="keyword" class="form-control me-2" 
-                 placeholder="검색어를 입력하세요" th:value="${keyword}">
-          <button type="submit" class="btn btn-outline-primary">검색</button>
-      </form>
+      
+		<!-- 검색 part -->      
+		<!-- 검색 part -->       
+		<div class="mb-3 mt-3 alert alert-primary">
+		  <label for="search" class="form-label">SEARCH</label>
+		  <input type="search" class="form-control" id="search" placeholder="검색어를 입력해주세요" name="search">
+		
+		  <div id="resultArea">
+		    <table class="table table-striped table-bordered table-hover my-3">
+		      <caption>검색 결과</caption>
+		      <thead>
+		        <tr>
+		          <th scope="col">NO</th>
+		          <th scope="col">TITLE</th>
+		          <th scope="col">NAME</th>
+		          <th scope="col">DATE</th>
+		          <th scope="col">HIT</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <!-- AJAX 결과가 여기에 들어감 -->
+		      </tbody>
+		    </table>
+		    <!-- 페이징 버튼 영역 -->
+		    <div id="pagingArea" class="mt-2 text-center"  ></div>
+		  </div>
+		</div>
+		<script>
+		$(function(){
+			//#1. 검색어 입력이벤트
+			$("#search").on("keyup", function(){
+				let keyword = $(this).val().trim();
+				
+				if(keyword === ""){
+					$("#resultArea tbody")
+						.empty()
+						.append("<tr><td colspan='5'>검색어를 입력해주세요.</td></tr>");
+					
+					$("pagingArea").empty();
+				}
+				else{ loadPage(keyword, 1); }
+			});
+			//#2. 페이징처리
+			function loadPage(keyword, pageNo){
+				$.ajax({
+					url:"search",
+					type:"GET",
+					data:{keyword : keyword, pageNo : pageNo},
+					success:function(res){
+						//console.log(res);
+						$("#resultArea tbody").empty();
+						$.each( res.list, function( index, dto ){
+							let no = res.paging.listtotal - ((res.paging.current-1) * res.paging.onepagelist) - index;
+							let row = `
+								<tr>
+									<td>${no}</td>
+									<td><a href="detail?id=${dto.id}">${dto.btitle}</a></td>
+									<td>${dto.appUserId}</td>
+									<td>${dto.createdAt}</td>
+									<td>${dto.bhit}</td>
+								</tr>
+							`; //템플릿리터럴
+							
+							$("#resultArea tbody").append(row);
+						});
+						//2. 페이징 버튼
+						let pagingHtml = "";
+						
+						if( res.paging.start > 1 ){
+							pagingHtml += 
+								`<button class="btn btn-sm btn-outline-primary pageBtn" data-page="${res.paging.start-1}">이전</button>`;
+						}
+						
+						for(let i=res.paging.start ; i <= res.paging.end; i++){
+							const active = i === res.paging.current ? "btn-primary" : "btn-outline-primary";
+							pagingHtml += `<button class="btn btn-sm ${active} pageBtn" data-page="${i}">${i}</button>`;
+						}
+						
+						if( res.paging.end < res.paging.pagetotal ){
+							pagingHtml += 
+								`<button class="btn btn-sm btn-outline-primary pageBtn" data-page="${res.paging.end+1}">다음</button>`;
+						}
+						
+						$("#pagingArea").html(pagingHtml);
+						
+						//3. 동적요소에 버튼클릭 이벤트 위임.
+						$(document).on("click", ".pageBtn", function(){
+							const newPage = $(this).data("page");
+							const keyword = $("#search").val();
+							loadPage(keyword, newPage);
+						});
+					},
+				});
+			}
+		});
+		</script>
+	</div>
 	
-   </div>
+
    <!--    #2. layout:fragment="content"    -->
    <!--    http://localhost:8484/boot001/board/list -->
 </body>

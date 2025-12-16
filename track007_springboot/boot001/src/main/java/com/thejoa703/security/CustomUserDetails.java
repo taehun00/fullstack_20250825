@@ -9,11 +9,12 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.thejoa703.dto.AppUserAuthDto;
 import com.thejoa703.dto.AppUserDto;
 
-public class CustomUserDetails implements UserDetails{
+public class CustomUserDetails implements UserDetails, OAuth2User{
 	private AppUserDto user;
 	private AppUserAuthDto authDto;
 	private Map<String, Object> attributes;
@@ -86,6 +87,19 @@ public class CustomUserDetails implements UserDetails{
 	public String getProvider() {
 		return user.getProvider();
 	}
+	@Override
+	public Map<String, Object> getAttributes() {
+		return attributes;
+	}
+	@Override
+	public String getName() {
+		return user.getEmail()+":"+user.getProvider();
+	}
+	public void setAttributes(Map<String, Object> attributes) {
+		this.attributes = attributes;
+	}
+	
+	
 	
 	
 }
